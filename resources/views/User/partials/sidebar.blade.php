@@ -11,7 +11,6 @@
             </div>
             <h4 class="name" style="color: #fff">{{ Auth::user()->name }}</h4>
             <p style="color: #fff">{{ Auth::user()->email }}</p>
-
         </div>
         <nav class="navbar-sidebar2">
             <ul class="list-unstyled navbar__list">
