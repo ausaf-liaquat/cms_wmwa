@@ -44,7 +44,7 @@ class RegisteredUserController extends Controller
                 'name' => 'required|string|max:255',
                 'email' => 'required|string|email|max:255|unique:users',
                 'password' => 'required|string|confirmed|min:8',
-                'category'=>'required'
+                'user_role'=>'required'
             ]);
         }
         $user = User::create([
@@ -56,7 +56,7 @@ class RegisteredUserController extends Controller
             $user->category = 'practitioner';
             $user->save();
         } else {
-            $user->category = $request->get('category');
+            $user->category = $request->get('user_role');
             $user->save();
         }
         $user->attachRole($request->get('role_id'));

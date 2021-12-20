@@ -15,4 +15,12 @@ class DashboardController extends Controller
     {
         return view('Admin.practitioners');
     }
+    public function ServiceUser()
+    {
+        return view('Admin.services_users');
+    }
+    public function Resources()
+    {
+        return view('Admin.resources');
+    }
 }

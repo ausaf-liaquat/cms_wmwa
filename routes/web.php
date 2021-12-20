@@ -22,6 +22,8 @@ Route::get('/dashboard', [App\Http\Controllers\CheckRolesController::class, 'ind
 Route::group(['middleware' => ['auth', 'role:administrator']], function () {
     Route::get('/admin/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('admin.dashboard');
     Route::get('/admin/practitioners-account', [App\Http\Controllers\Admin\DashboardController::class, 'PractitionerAccount'])->name('admin.practitioner');
+    Route::get('admin/service-users', [App\Http\Controllers\Admin\DashboardController::class, 'ServiceUser'])->name("admin.serviceuser");
+    Route::get('admin/resources', [App\Http\Controllers\Admin\DashboardController::class, 'Resources'])->name("admin.resources");
 });
 
 // for Practitioner

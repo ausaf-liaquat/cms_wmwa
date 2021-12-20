@@ -1,0 +1,291 @@
+/* COLOURS */
+.admin, .blue { color:#6e659e;}
+.practitioner { color:#bb9251;}
+.service-user { color:#a82342;}
+
+/* TYPOGRAPHY */
+
+body { 
+    font-family: 'Montserrat',Helvetica,Arial,Lucida,sans-serif;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: 'Montserrat',Helvetica,Arial,Lucida,sans-serif;
+    text-transform:uppercase;
+}
+
+h1 {}
+
+h2 {}
+
+h3 {}
+
+h4 {}
+
+h5 { font-weight:bold; }
+
+.handwritten {
+    font-family: 'Covered By Your Grace', cursive; 
+    text-transform:none;
+}
+.bold {font-weight:700;}
+.modal-backdrop {
+    z-index:999998;
+}
+.modal {
+    z-index:999999;
+}
+.modal-title  {
+    margin-bottom:0;
+    padding-bottom:0;
+}
+.modal-dialog-wide {
+    max-width:80%;
+}
+.modal-dialog-centered.modal-dialog-scrollable .modal-content {
+    max-height:80%;
+}
+/* GENERAL */
+#login-form, #register-form {
+    margin-top:120px;
+    margin-bottom:180px;
+}
+.crm-bkground {
+    background-color:#f2f2f2;
+}
+.crm-container {
+    margin-top:100px;
+    margin-bottom:160px;
+}
+.alert-crm {
+    background-color:#fff;
+}
+.list-group i {
+    font-size:2rem;
+    color:#6e659e;
+}
+#footer-widgets, #exit, #hide, #C4A_btn1 {
+    display:none;
+    visibility:hidden;
+}
+
+.hide {
+    display:none;
+    visibility: hidden;
+}
+.show {
+    display:block;
+    visibility: visible;
+}
+.progress-bar {
+    color:#a82342!important;
+}
+.response, input[type="radio"]+label  {
+    display:block;
+    padding: .5rem .75rem;
+    font-weight: 400;
+    line-height: 1.5;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ccc;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    margin-bottom:1.5rem;
+}
+.hidden-check {
+    padding-left:0;
+}
+.hidden-check .form-check-input {
+    height:0;
+    width:0;
+    border:none;
+    display: none;
+visibility: hidden;
+}
+.hidden-check input[type="radio"]:checked+label{
+    background-color:#a82342;
+    color:#fff;
+    border-color:#a82342;
+} 
+
+/* SIDEBAR */
+
+.sidebar {
+    font-family: 'Montserrat',Helvetica,Arial,Lucida,sans-serif;
+    -webkit-box-shadow: 3px 0px 10px 0px rgba(51,3,NaN,0.4);
+    -moz-box-shadow: 3px 0px 10px 0px rgba(51,3,NaN,0.4);
+    box-shadow: 3px 0px 10px 0px rgba(51,3,NaN,0.4);
+    color:#fff;
+}
+.sidebar .btn-toggle {
+    color:#fff;
+    text-transform:uppercase;
+}
+.sidebar .btn-toggle:hover, .btn-toggle-nav a:hover, .btn-toggle-nav a:focus, .sidebar a.active {
+    color:#fff;
+    background-color:rgba(0,0,0,0.2);
+} 
+.sidebar p, .sidebar a {
+    color:#fff; 
+}
+.sidebar h3 {
+    color:#fff;
+    text-transform:uppercase;
+}
+.sidebar-admin {
+    background-color:#6e659e;
+    color:#fff;
+}
+.sidebar-practitioner {
+    background-color:#bb9251;
+    color:#fff;
+}
+.sidebar-service-users {
+    background-color:#a82342;
+    color:#fff;
+}
+
+/* TABLES */
+
+.btn {
+    text-transform:uppercase;
+}
+.btn-primary {
+    background-color:#6e659e;
+    border-color:#6e659e;
+}
+.btn-save {
+    background-color:#a82342;
+    border-color:#a82342;
+    color:#fff;
+}
+.btn-sml {
+    font-size:0.7rem;
+    padding: .2rem .5rem;
+    margin-right: .25rem;
+}
+.btn-primary.disabled, .btn-primary:disabled {
+    border-color:#ccc;
+    background-color:#ccc;
+}
+table {
+    font-size: .8rem;
+}
+table td {
+    padding: .5rem;
+    vertical-align: middle;
+}
+table .btn {
+    font-size: .8rem;
+    padding: .25rem .4rem;
+}
+
+/* WORKBOOKS */
+.list-group-item {
+    background-color:transparent;
+}
+h1:before {
+border-top-color: #c29144;
+border-top-width: 5px;
+}
+.content-container ul li {
+    padding-left: 36px;
+    font-size:1rem;   
+}
+.content-container ul li .workbook-icon {
+    position: absolute;
+    left: 9px;
+    top: 12px;
+}
+.workbook .workbook-icon {
+    font-size:1.1rem;
+}
+.help {
+    background-color:#f2f2f2;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+    padding:2rem;
+}
+.content-container p {
+     font-size:1rem;   
+}
+.slider-label {
+    padding: 3px 10px;
+    height: 27px;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+}
+.slider-no {
+    padding: 2px 0 0 9px;
+height: 27px;
+width: 27px;
+background-color: #f2f2f2;
+border-radius: 50%;
+}
+.box-container {padding:30px 0;border:solid 10px #fff;}
+.box-container-1 {padding:30px;border:solid 10px #fff;}
+.box-1 { background-color:#eadeca;}
+.box-2 { background-color:#d2d1e1;}
+.section {
+    border-bottom:solid 6px #eadeca;
+    padding-bottom:1rem;
+    margin-bottom:1rem;
+}
+.btn-healthy, .btn-depends, .btn-warn { margin-right: 10px;}
+.btn-healthy { background-color:#f2f2f2!important; border: 1px solid #f2f2f2!important; color:#333; }
+.btn-check:checked+.btn-healthy, .btn-healthy:hover { background-color:#84bc26!important; border: 1px solid #84bc26!important; color:#fff;}
+.btn-depends { background-color:#f2f2f2!important; border: 1px solid #f2f2f2!important; color:#333; }
+.btn-check:checked+.btn-depends, .btn-depends:hover { background-color:#fdd317!important; border: 1px solid #fdd317!important; color:#fff;}
+.btn-warn { background-color:#f2f2f2!important; border: 1px solid #f2f2f2!important; color:#333; }
+.btn-check:checked+.btn-warn, .btn-warn:hover { background-color:#e52021!important; border: 1px solid #e52021!important; color:#fff;}
+
+table.workbook th, table.workbook td {
+    padding:30px 0;
+    border:solid 10px #fff;
+    border-top:solid 10px #fff;
+    border-bottom:solid 10px #fff;
+    border-bottom-color:#fff;
+}
+table.workbook p {
+    margin-bottom:0;
+}
+.table.workbook>:not(caption)>*>*, .table.workbook thead th, .table.workbook>:not(:last-child)>:last-child>* {
+     border-bottom:solid 10px #fff;
+     padding:30px;
+     border-bottom-color:#fff;
+}
+table.workbook tr th:nth-child(1), table.workbook tr td:nth-child(1) {
+     background-color:#eadeca;
+}
+table.workbook tr th:nth-child(2), table.workbook tr td:nth-child(2) {
+     background-color:#d2d1e1;
+}
+img.img-logo {
+    height:150px;
+    margin-bottom:30px;
+}
+img.img-advert {
+    height:250px;
+}
+.topic-title {
+    font-size:8rem;
+    line-height:0.85;
+    color:#fff;
+    background-color:#6e659e;
+    padding:5rem 0;
+}
+#footer-bottom span.info, #footer-bottom span.links {
+    font-size: 10px;
+    text-align: center;
+    line-height: 1.5;
+    color: #fff;
+    display: block;
+}
+#footer-bottom {
+    background-color: #333!important;
+    padding: 15px 0 20px 0;
+}
+
+#footer-bottom span.links {
+    margin-top: 15px;
+}
