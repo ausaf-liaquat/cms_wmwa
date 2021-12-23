@@ -43,7 +43,7 @@ class WelcomePractitioner extends Notification
         ->subject("Welcome Email")
             ->line("Welcome " . $notifiable->name)
             ->line('Please set your password first.')
-            ->action('Setup password', url(route('password.reset', ['token' => $this->token, 'email' => $notifiable->getEmailForPasswordReset()], false)))
+            ->action('Setup password', url(route('practitioner.password.reset', ['token' => $this->token, 'email' => $notifiable->getEmailForPasswordReset()], false)))
             ->line('Thank you for using our application!');
     }
 

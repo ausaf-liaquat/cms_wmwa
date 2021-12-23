@@ -274,6 +274,11 @@ img.img-advert {
     background-color:#6e659e;
     padding:5rem 0;
 }
+p a, h5 a {
+    color: #6d659e;
+    font-weight: bold;
+    font-size: 14px;
+}
 #footer-bottom span.info, #footer-bottom span.links {
     font-size: 10px;
     text-align: center;

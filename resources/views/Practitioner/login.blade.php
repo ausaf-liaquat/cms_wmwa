@@ -48,9 +48,9 @@
         </div>
         <button class="mb-1 w-100 btn btn-primary" type="submit">Login</button>
         {{-- @if (Route::has('password.request')) --}}
-        <p class="mb-3 text-muted float-start"><a href="{{ route('password.request') }}">Forgotten your password?</a>
-        </p>
+        {{-- <p class="mb-3 text-muted float-start"><a href="{{ route('password.request') }}">Forgotten your password?</a>
+        </p> --}}
         {{-- @endif --}}
-        <p class="mb-3 text-muted float-end">No account? <a href="{{ route('register') }}">Regsiter Here.</a></p>
+        
     </form>
 @endsection

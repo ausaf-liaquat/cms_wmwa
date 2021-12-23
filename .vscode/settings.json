@@ -1,9 +1,6 @@
 {
-    "terminal.integrated.env.windows": {
-    
-    },
+    "terminal.integrated.env.windows": {},
     "terminal.integrated.fontSize": 16,
-    "editor.fontSize": 19,
     "editor.fontWeight": null,
-    "editor.codeLensFontSize": 5,
+    "editor.codeLensFontSize": 5
 }

@@ -14,7 +14,14 @@
         integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <link href="{{ asset('assets/css/sidebars.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
-    {{-- <link rel="stylesheet" href="https://www.westmerciawomensaid.org/wp-content/themes/Divi/style.css?ver=5.8.2"> --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.0.4/sweetalert2.min.css"
+        integrity="sha512-iuMkf48pM/TdH5DQkNPLWPLIUsVCncQEpuxgcMq/oDmJepdFcu48Wy4MwXggN9WFb4L6rpXQf5YJE/+OXkM1Lw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <style>
+            .swal2-container {
+  z-index: {X};
+}
+        </style>
 </head>
 
 <body>
@@ -37,7 +44,9 @@
     <script src="{{ asset('assets/js/sidebars.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/additional-methods.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.0.4/sweetalert2.all.min.js"
+    integrity="sha512-niNQgNQ4mHtOdt//YjERRRbsmlc9aH+1c+fIQ9bQWD5kByzpE10EBDOhyV/n+anhaLW9GN4Dalu/z9QrXBvDUQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     @yield('extrajs')
 </body>
 

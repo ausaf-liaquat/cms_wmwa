@@ -44,7 +44,7 @@ class RegisteredUserController extends Controller
                 'name' => 'required|string|max:255',
                 'email' => 'required|string|email|max:255|unique:users',
                 'password' => 'required|string|confirmed|min:8',
-                'user_role'=>'required'
+                // 'user_role'=>'required'
             ]);
         }
         $user = User::create([

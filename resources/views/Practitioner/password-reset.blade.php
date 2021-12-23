@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('title') Practitioner Password Reset @endsection
 @section('content')
-    <form id="login-form" method="POST" action="{{ route('practitioner.login') }}">
+    <form id="login-form" method="POST" action="{{ route('practitioner.password.update') }}">
         @if (session('status'))
             <div class="alert alert-success alert-dismissible fade show">
                 <span class="badge rounded-pill bg-success">Success</span>
@@ -37,7 +37,7 @@
         <p class="mb-3">Please enter new password</p>
         <div class="form-floating mb-3">
             <input type="email" class="form-control " id="email" placeholder="name@example.com" name="email"
-                value="{{ old('email', $request->email) }}" disabled>
+                value="{{ old('email', $request->email) }}" readonly>
             <label for="floatingInput">Email address</label>
         </div>
         <div class="form-floating mb-3">
@@ -46,7 +46,7 @@
         </div>
 
         <div class="form-floating mb-3">
-            <input type="password" class="form-control  " id="passwordconfirm" placeholder="Password" name="password">
+            <input type="password" class="form-control  " id="passwordconfirm" placeholder="Password" name="password_confirmation">
             <label for="floatingPassword">Password Confirmation</label>
         </div>
 

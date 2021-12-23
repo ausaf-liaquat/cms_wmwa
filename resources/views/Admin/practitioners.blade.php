@@ -72,15 +72,19 @@
     </div>
 
     <!-- ADD NEW MODAL -->
-    <div class="modal fade" id="addnew" tabindex="-1" aria-labelledby="addnewLabel" aria-hidden="true">
+    <div class="modal fade" id="addnew" aria-labelledby="addnewLabel">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="addnewLabel">Add new practitioner</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
+
                 <form id="addpractitioners">
                     <div class="modal-body">
+                        <div class="alert alert-danger print-error-msg" style="display:none">
+                            <ul></ul>
+                        </div>
                         <p>Add a new practioner by filling out the form below. An email will automatically be sent to them
                             inviting them to join the WMWA system.</p>
 
@@ -97,7 +101,7 @@
                         <div class="form-floating mb-3">
                             <select class="form-select" name="practitioner_role" id="practitioner_role"
                                 aria-label="Floating label select example" required>
-                                
+
                                 <option value="">Select Role</option>
                                 <option value="School Nurse">School Nurse</option>
                                 <option value="Social Worker">Social Worker</option>
@@ -120,7 +124,7 @@
     </div>
 
     <!-- EDIT MODAL -->
-    <div class="modal fade" id="edit" tabindex="-1" aria-labelledby="editLabel" aria-hidden="true">
+    <div class="modal fade" id="edit" aria-labelledby="editLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -354,28 +358,36 @@
                         data: form.serialize(),
                         dataType: 'JSON',
 
-
                         success: function(data) {
-
-                            // Swal.fire({
-                            //     icon: 'success',
-                            //     title: 'Records saved',
-                            //     showConfirmButton: false,
-                            //     timer: 2500
-                            // })
-                            // location.reload();
+                            if ($.isEmptyObject(data.error)) {
+                                 $('#addnew').modal('hide');
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Practitioner added',
+                                showConfirmButton: true,
+                                timer: 2500
+                            }).then((result) => {
+                                // Reload the Page
+                                location.reload();
+                            });
+                            } else {
+                                printErrorMsg(data.error);
+                            }
+                           
+                           
 
                         },
-
-
                     })
                 }
-
-
             });
 
-
-
+            function printErrorMsg (msg) {
+            $(".print-error-msg").find("ul").html('');
+            $(".print-error-msg").css('display','block');
+            $.each( msg, function( key, value ) {
+                $(".print-error-msg").find("ul").append('<li>'+value+'</li>');
+            });
+        }
         });
     </script>
 @endsection

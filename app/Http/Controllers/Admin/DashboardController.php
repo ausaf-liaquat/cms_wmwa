@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Practitioner;
 use App\Notifications\WelcomePractitioner;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Password;
+
 class DashboardController extends Controller
 {
     public function index()
@@ -27,15 +29,20 @@ class DashboardController extends Controller
 
     public function PractitionerStore(Request $request)
     {
-      $practitioner= Practitioner::create([
-           'name'=>$request->practitioner_name,
-           'email'=>$request->practitioner_email,
-           'category'=>$request->practitioner_role
-       ]);
-       $token = Password::getRepository()->create($practitioner);
-       $practitioner->notify(new WelcomePractitioner($token));
-       return response()->json(200);
+        $validator = \Validator::make($request->all(), [
+            'email' => 'unique:practitioners',
+        ]);
+        if ($validator->passes()) {
 
-        
+            $practitioner = Practitioner::create([
+                'name' => $request->practitioner_name,
+                'email' => $request->practitioner_email,
+                'category' => $request->practitioner_role,
+            ]);
+            $token = Password::getRepository()->create($practitioner);
+            $practitioner->notify(new WelcomePractitioner($token));
+            return response()->json(200);
+        }
+        return response()->json(['error' => $validator->errors()->all()]);
     }
 }
