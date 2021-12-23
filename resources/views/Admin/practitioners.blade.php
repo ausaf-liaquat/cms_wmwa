@@ -79,38 +79,42 @@
                     <h4 class="modal-title" id="addnewLabel">Add new practitioner</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <p>Add a new practioner by filling out the form below. An email will automatically be sent to them
-                        inviting them to join the WMWA system.</p>
-                    <form>
+                <form id="addpractitioners">
+                    <div class="modal-body">
+                        <p>Add a new practioner by filling out the form below. An email will automatically be sent to them
+                            inviting them to join the WMWA system.</p>
+
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="practitioner-name" placeholder="Enter Name">
-                            <label for="practitioner-name">Enter Practitioner Name</label>
+                            <input type="text" class="form-control" name="practitioner_name" id="practitioner_name"
+                                placeholder="Enter Name" required>
+                            <label for="practitioner_name">Enter Practitioner Name</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="practitioner-email"
-                                placeholder="name@example.com">
-                            <label for="practitioner-email">Enter Email Address</label>
+                            <input type="email" class="form-control" name="practitioner_email" id="practitioner_email"
+                                placeholder="name@example.com" required>
+                            <label for="practitioner_email">Enter Email Address</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <select class="form-select" id="practitioner-role"
-                                aria-label="Floating label select example">
-                                <option selected>Practitioner Role</option>
-                                <option value="1">School Nurse</option>
-                                <option value="2">Social Worker</option>
-                                <option value="3">WMWA Internal</option>
-                                <option value="3">Ambassador</option>
+                            <select class="form-select" name="practitioner_role" id="practitioner_role"
+                                aria-label="Floating label select example" required>
+                                
+                                <option value="">Select Role</option>
+                                <option value="School Nurse">School Nurse</option>
+                                <option value="Social Worker">Social Worker</option>
+                                <option value="WMWA Internal">WMWA Internal</option>
+                                <option value="Ambassador">Ambassador</option>
                             </select>
-                            <label for="practitioner-role">Select Role</label>
+                            <label for="practitioner_role">Select Role</label>
                         </div>
-                    </form>
-                    <p><mark>Do you want an email notification sent to the practitioner? If so we need content for
-                            this.</mark></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-success">Add practitioner</button>
-                </div>
+
+                        <p><mark>Do you want an email notification sent to the practitioner? If so we need content for
+                                this.</mark></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancel</button>
+                        <button id="addpract" type="button" class="btn btn-success">Add practitioner</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -305,4 +309,73 @@
             </div>
         </div>
     </div>
+@endsection
+@section('extrajs')
+    <script>
+        $(document).ready(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $('#addpract').click(function() {
+                var form = $("#addpractitioners");
+                form.validate({
+                    rules: {
+                        practitioner_role: {
+
+                            required: true
+                        },
+
+                    },
+                    highlight: function(element) {
+                        $(element).parent().addClass('has-error');
+                    },
+                    unhighlight: function(element) {
+                        $(element).parent().removeClass('has-error');
+                    },
+                    errorElement: 'span',
+                    errorClass: 'invalid-feedback',
+                    errorPlacement: function(error, element) {
+                        if (element.parent('.input-group').length) {
+                            error.insertAfter(element.parent());
+                        } else {
+                            error.insertAfter(element);
+                        }
+                    }
+                });
+                if (form.valid() == true) {
+
+                    $.ajax({
+                        url: "{{ route('practitioner.store') }}",
+                        method: "POST",
+
+                        data: form.serialize(),
+                        dataType: 'JSON',
+
+
+                        success: function(data) {
+
+                            // Swal.fire({
+                            //     icon: 'success',
+                            //     title: 'Records saved',
+                            //     showConfirmButton: false,
+                            //     timer: 2500
+                            // })
+                            // location.reload();
+
+                        },
+
+
+                    })
+                }
+
+
+            });
+
+
+
+        });
+    </script>
 @endsection

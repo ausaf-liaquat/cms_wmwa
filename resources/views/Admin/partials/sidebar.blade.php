@@ -1,56 +1,82 @@
 <div class="flex-shrink-0 p-5 sidebar sidebar-admin" style="width: 280px;">
     <h3>Admin Dashboard</h3>
-    <p>Welcome {{ Auth::user()->name}}</p>
-  <ul class="list-unstyled ps-0">
-    <li class="border-top mt-5 mb-3"></li>
-    <li class="mb-4 mt-1">
-      <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#notifications-collapse" aria-expanded="true">
-        Dashboard
-      </button>
-      <div class="collapse show" id="notifications-collapse">
-        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-          <li><a href="{{route("admin.dashboard")}}" class="link-dark rounded active">Notifications</a></li>
-        </ul>
-      </div>
-    </li>
-    <li class="mb-4 mt-1">
-      <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#accounts-collapse" aria-expanded="false">
-        Accounts
-      </button>
-      <div class="collapse" id="accounts-collapse">
-        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-          <li><a href="{{route("admin.practitioner")}}" class="link-dark rounded">Practitioners</a></li>
-          <li><a href="{{route("admin.serviceuser")}}" class="link-dark rounded">Services Users</a></li>
-        </ul>
-      </div>
-    </li>
-    <li class="mb-4 mt-1">
-      <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#resources-collapse" aria-expanded="false">
-        Resources
-      </button>
-      <div class="collapse" id="resources-collapse">
-        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-          <li><a href="{{ route('admin.resources') }}" class="link-dark rounded">View All</a></li>
-          <li><a class="link-dark rounded" data-bs-toggle="modal" data-bs-target="#addnew">Add New</a></li>
-        </ul>
-      </div>
-    </li>
-    <li class="mb-4 mt-1">
-      <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#forms-collapse" aria-expanded="false">
-        Forms
-      </button>
-      <div class="collapse" id="forms-collapse" style="">
-        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-          <li><a href="../admin/forms-general-enquiry.php" class="link-dark rounded">General Enquiry Form</a></li>
-          <li><a href="#" class="link-dark rounded">Job Application Form</a></li>
-          <li><a href="#" class="link-dark rounded">Referral Form</a></li>
-          <li><a href="#" class="link-dark rounded">Referral Form (Additional Content)</a></li>
-          <li><a href="#" class="link-dark rounded">Referral Form (CDAS)</a></li>
-          <li><a href="#" class="link-dark rounded">Referral Form (C-19)</a></li>
-          <li><a href="#" class="link-dark rounded">Volunteer Expression of Interest</a></li>
-        </ul>
-      </div>
-    </li>
-    <li class="border-top my-3"></li>
-  </ul>
+    <p>Welcome {{ Auth::user()->name }}</p>
+    <ul class="list-unstyled ps-0">
+        <li class="border-top mt-5 mb-3"></li>
+        <li class="mb-4 mt-1">
+            <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+                data-bs-target="#notifications-collapse" aria-expanded="true">
+                Dashboard
+            </button>
+            <div class="collapse show" id="notifications-collapse">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li><a href="{{ route('admin.dashboard') }}" class="link-dark rounded active">Notifications</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="mb-4 mt-1">
+            <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+                data-bs-target="#accounts-collapse" aria-expanded="false">
+                Accounts
+            </button>
+            <div class="collapse" id="accounts-collapse">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li><a href="{{ route('admin.practitioner') }}" class="link-dark rounded">Practitioners</a></li>
+                    <li><a href="{{ route('admin.serviceuser') }}" class="link-dark rounded">Services Users</a></li>
+                </ul>
+            </div>
+        </li>
+        <li class="mb-4 mt-1">
+            <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+                data-bs-target="#resources-collapse" aria-expanded="false">
+                Resources
+            </button>
+            <div class="collapse" id="resources-collapse">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li><a href="{{ route('admin.resources') }}" class="link-dark rounded">View All</a></li>
+                    <li><a class="link-dark rounded" data-bs-toggle="modal" data-bs-target="#addnew">Add New</a></li>
+                </ul>
+            </div>
+        </li>
+        <li class="mb-4 mt-1">
+            <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+                data-bs-target="#forms-collapse" aria-expanded="false">
+                Forms
+            </button>
+            <div class="collapse" id="forms-collapse" style="">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li><a href="../admin/forms-general-enquiry.php" class="link-dark rounded">General Enquiry Form</a>
+                    </li>
+                    <li><a href="#" class="link-dark rounded">Job Application Form</a></li>
+                    <li><a href="#" class="link-dark rounded">Referral Form</a></li>
+                    <li><a href="#" class="link-dark rounded">Referral Form (Additional Content)</a></li>
+                    <li><a href="#" class="link-dark rounded">Referral Form (CDAS)</a></li>
+                    <li><a href="#" class="link-dark rounded">Referral Form (C-19)</a></li>
+                    <li><a href="#" class="link-dark rounded">Volunteer Expression of Interest</a></li>
+                </ul>
+            </div>
+        </li>
+        <li class="border-top my-3"></li>
+        <li class="mb-4 mt-1">
+            <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+                data-bs-target="#account-collapse" aria-expanded="false">
+                Account
+            </button>
+            <div class="collapse" id="account-collapse" style="">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li><a href="#" class="link-dark rounded">Referral Form (C-19)</a></li>
+                    <li> <a class="link-dark rounded" href="{{ route('admin.logout') }}"
+                            onclick="event.preventDefault();document.getElementById('logout-form').submit();"
+                            style="color:#fff">
+                            Sign out
+                        </a>
+                        <form id="logout-form" action="{{ route('admin.logout') }}" method="post">
+                            @csrf
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </li>
+    </ul>
 </div>

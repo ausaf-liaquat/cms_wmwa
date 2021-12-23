@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\User;
+use App\Models\Admin;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -13,7 +14,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $user = User::factory()->create();
-        $this->call(LaratrustSeeder::class);
+        $admin = Admin::factory()->create();
+        // $this->call(LaratrustSeeder::class);
     }
 }
