@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laratrust\Traits\LaratrustUserTrait;
 
-class Practitioner extends Authenticatable
+class Practitioner extends Authenticatable 
 {
     use LaratrustUserTrait;
     use HasFactory, Notifiable;
@@ -22,7 +22,8 @@ class Practitioner extends Authenticatable
         'name',
         'email',
         'password',
-        'category'
+        'category',
+        'status'
     ];
 
     /**
@@ -43,4 +44,12 @@ class Practitioner extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+     /**
+     * Get the comments for the blog post.
+     */
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
 }

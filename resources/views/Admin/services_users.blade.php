@@ -80,48 +80,58 @@
                     <h4 class="modal-title" id="addnewLabel">Add new service user</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <p>Add a new service user by filling out the form below. An email will automatically be sent to them
-                        inviting them to join the WMWA system.</p>
-                    <form>
+                <form id="form_serviceuser">
+                    <div class="modal-body">
+                        <div class="alert alert-danger print-error-msg" style="display:none">
+                            <ul></ul>
+                        </div>
+                        <div class="spinner">
+                            <div class="bounce1"></div>
+                            <div class="bounce2"></div>
+                            <div class="bounce3"></div>
+                        </div>
+                        <p>Add a new service user by filling out the form below. An email will automatically be sent to them
+                            inviting them to join the WMWA system.</p>
+
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="service-user-name" placeholder="Enter Name">
-                            <label for="service-user-name">Enter Name</label>
+                            <input type="text" class="form-control" name="serviceuser_name" id="serviceuser_name" placeholder="Enter Name" required>
+                            <label for="serviceuser_name">Enter Name</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="service-user-email"
-                                placeholder="name@example.com">
-                            <label for="service-user-email">Enter Email Address</label>
+                            <input type="email" class="form-control" name="serviceuser_email" id="serviceuser_email"
+                                placeholder="name@example.com" required>
+                            <label for="serviceuser_email">Enter Email Address</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <select class="form-select" id="service-user-cat" aria-label="Service User Category">
-                                <option selected>Category</option>
-                                <option value="1">Woman</option>
-                                <option value="2">Man</option>
-                                <option value="3">Youth/Child</option>
-                                <option value="3">Survivor/Ambassador</option>
+                            <select class="form-select" name="serviceuser_category" id="serviceuser_category" aria-label="Service User Category" required>
+                                <option value="">Category</option>
+                                <option value="Woman">Woman</option>
+                                <option value="Man">Man</option>
+                                <option value="Youth/Child">Youth/Child</option>
+                                <option value="Survivor/Ambassador">Survivor/Ambassador</option>
                             </select>
-                            <label for="service-user-cat">Select Category</label>
+                            <label for="serviceuser_category">Select Category</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <select class="form-select" id="service-user-practitioner"
-                                aria-label="Associated Practitioner">
-                                <option selected>Assign Practitioner</option>
-                                <option value="1">Name Surname</option>
-                                <option value="2">Name Surname</option>
-                                <option value="3">Name Surname</option>
-                                <option value="3">Name Surname</option>
+                            <select class="form-select" name="serviceuser_practitioner" id="serviceuser_practitioner"
+                                aria-label="Associated Practitioner" required>
+                                <option value="">Assign Practitioner</option>
+                                @forelse ($practitioners as $item)
+                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                @empty
+                                    <option value="">No result found.</option>
+                                @endforelse
                             </select>
-                            <label for="service-user-practitioner">Select Practitioner</label>
+                            <label for="serviceuser_practitioner">Select Practitioner</label>
                         </div>
-                    </form>
-                    <p><mark>Do you want an email notification sent to the service user? If so we need content for
-                            this.</mark></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-success">Add service user</button>
-                </div>
+                        <p><mark>Do you want an email notification sent to the service user? If so we need content for
+                                this.</mark></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancel</button>
+                        <button id="addserviceuser" type="button" class="btn btn-success">Add service user</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -237,4 +247,118 @@
     </div>
 
 
+@endsection
+@section('extrajs')
+<script>
+    $(document).ready(function() {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        // Add Practitioner
+        $('#addserviceuser').click(function() {
+            var form = $("#form_serviceuser");
+            form.validate({
+                rules: {
+                    serviceuser_category: {
+
+                        required: true
+                    },
+
+                },
+                highlight: function(element) {
+                    $(element).parent().addClass('has-error');
+                },
+                unhighlight: function(element) {
+                    $(element).parent().removeClass('has-error');
+                },
+                errorElement: 'span',
+                errorClass: 'invalid-feedback',
+                errorPlacement: function(error, element) {
+                    if (element.parent('.input-group').length) {
+                        error.insertAfter(element.parent());
+                    } else {
+                        error.insertAfter(element);
+                    }
+                }
+            });
+            if (form.valid() == true) {
+
+                $.ajax({
+                    url: "{{ route('serviceuser.store') }}",
+                    method: "POST",
+
+                    data: form.serialize(),
+                    dataType: 'JSON',
+                    beforeSend: function() {
+                        $('.spinner').show()
+                    },
+                    success: function(data) {
+                        if ($.isEmptyObject(data.error)) {
+                            $('#addnew').modal('hide');
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Service User added',
+                                showConfirmButton: true,
+                                timer: 2500
+                            }).then((result) => {
+                                // Reload the Page
+                                location.reload();
+                            });
+                        } else {
+                            printErrorMsg(data.error);
+                        }
+
+
+
+                    },
+                    complete: function() {
+                        $('.spinner').hide();
+                    },
+                })
+            }
+        });
+
+        function printErrorMsg(msg) {
+            $(".print-error-msg").find("ul").html('');
+            $(".print-error-msg").css('display', 'block');
+            $.each(msg, function(key, value) {
+                $(".print-error-msg").find("ul").append('<li>' + value + '</li>');
+            });
+        }
+
+
+    });
+    // Duplicate Email Checker
+    function duplicateEmail(element) {
+        var email = $(element).val();
+        $.ajax({
+            type: "POST",
+            url: "{{ route('serviceuser.checkEmail') }}",
+            data: {
+                email: email
+            },
+            dataType: "json",
+            success: function(res) {
+                if (res.exists) {
+
+                    $('#email-error')
+                        .css('color', 'red')
+                        .html("This Email already exists!");
+                    $('#addpract').prop('disabled', true);
+
+                } else {
+                    // $('#email-error')
+                    //     .css('display', 'none')
+                    $('#addpract').prop('disabled', false);;
+
+                }
+            },
+            error: function(jqXHR, exception) {
+
+            }
+        });
+    }
+</script>
 @endsection

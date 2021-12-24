@@ -35,12 +35,26 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/logout/redirect', [App\Http\Controllers\Admin\LoginController::class, 'Logout'])->name('admin.logout');
 
         Route::get('dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('admin.dashboard');
+        
+        
+        Route::get('resources', [App\Http\Controllers\Admin\DashboardController::class, 'Resources'])->name("admin.resources");
+        //Practitioner
         Route::get('practitioners-account', [App\Http\Controllers\Admin\DashboardController::class, 'PractitionerAccount'])->name('admin.practitioner');
         Route::post('practitioner/store', [App\Http\Controllers\Admin\DashboardController::class, 'PractitionerStore'])->name('practitioner.store');
+        Route::post('practitioner/checkemail', [App\Http\Controllers\Admin\DashboardController::class, 'checkEmail'])->name('practitioner.checkEmail');
+        Route::get('practitioner/{id}/edit', [App\Http\Controllers\Admin\DashboardController::class, 'PractitionerEdit'])->name('practitioner.edit');
+        Route::post('practitioner/{id}/details/updated', [App\Http\Controllers\Admin\DashboardController::class, 'PractitionerUpdate'])->name('practitioner.update');
+        Route::get('practitioner/delete', [App\Http\Controllers\Admin\DashboardController::class, 'PractitionerDelete'])->name('practitioner.delete');
+        Route::get('practitioner/status', [App\Http\Controllers\Admin\DashboardController::class, 'PractitionerStatus'])->name('practitioner.status');
+       
+        // Service User
         Route::get('service-users', [App\Http\Controllers\Admin\DashboardController::class, 'ServiceUser'])->name("admin.serviceuser");
-        Route::get('resources', [App\Http\Controllers\Admin\DashboardController::class, 'Resources'])->name("admin.resources");
-    
-    
+        Route::post('serviceuser/checkemail', [App\Http\Controllers\Admin\DashboardController::class, 'ServiceUsercheckEmail'])->name('serviceuser.checkEmail');
+        Route::post('serviceuser/store', [App\Http\Controllers\Admin\DashboardController::class, 'ServiceUserStore'])->name('serviceuser.store');
+
+
+
+
     });
 });
 
