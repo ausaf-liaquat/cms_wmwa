@@ -1,4 +1,4 @@
-@extends('Admin.layouts.master')
+@extends('Practitioner.layouts.master')
 @section('title')
     Accounts Service users
 @endsection
@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-md-12">
             <h2>Accounts <small>Service Users</small></h2>
-            <p>Total Accounts ({{ $serviceuserscount }})</p>
+            <p>Total Accounts ({{ $practitioner->users->count() }})</p>
 
             <a class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addnew">Add new service user</a>
 
@@ -23,13 +23,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($serviceusers as $item)
+                    @forelse ($practitioner->users as $item)
                         <tr>
                             <th scope="row">{{ $loop->iteration }}</th>
                             <td>{{ $item->name }}</td>
                             <td>{{ $item->email }}</td>
                             <td>{{ $item->category }}</td>
-                            <td>{{ $item->practitioner->name }}</td>
+                            <td>{{ $practitioner->name }}</td>
                             <td><a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#accounts">View</a> <a
                                     class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#accounts">Send</a></td>
                             <td><a class="btn btn-secondary mr-1" data-bs-toggle="modal" data-id="{{ $item->id }}"
@@ -90,18 +90,16 @@
                             </select>
                             <label for="serviceuser_category">Select Category</label>
                         </div>
-                        <div class="form-floating mb-3">
-                            <select class="form-select" name="serviceuser_practitioner" id="serviceuser_practitioner"
-                                aria-label="Associated Practitioner" required>
-                                <option value="">Assign Practitioner</option>
-                                @forelse ($practitioners as $item)
-                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                @empty
-                                    <option value="">No result found.</option>
-                                @endforelse
-                            </select>
-                            <label for="serviceuser_practitioner">Select Practitioner</label>
-                        </div>
+                        <input type="hidden" name="serviceuser_practitioner" id="serviceuser_practitioner" value="{{ Auth::user()->id }}">
+                        <fieldset disabled>
+                            <div class="form-floating mb-3">
+                                <select class="form-select" id="serviceuser_practitioner"
+                                    aria-label="Associated Practitioner">
+                                    <option value="{{ Auth::user()->id }}" selected>{{ Auth::user()->name }}</option>
+                                </select>
+                                <label for="serviceuser_practitioner">Select Practitioner</label>
+                            </div>
+                        </fieldset>
                         <p><mark>Do you want an email notification sent to the service user? If so we need content for
                                 this.</mark></p>
                     </div>
@@ -123,6 +121,14 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    <div class="alert alert-danger print-error-msg" style="display:none">
+                        <ul></ul>
+                    </div>
+                    <div class="spinner">
+                        <div class="bounce1"></div>
+                        <div class="bounce2"></div>
+                        <div class="bounce3"></div>
+                    </div>
                     <p>If you need to edit a service user's details please update the form below and press update.</p>
                     <form>
                         <input type="hidden" name="editserviceuser_id" id="editserviceuser_id">
@@ -148,18 +154,16 @@
                             </select>
                             <label for="editserviceuser_category">Select Category</label>
                         </div>
-                        <div class="form-floating mb-3">
-                            <select class="form-select" id="editserviceuser_practitioner"
-                                aria-label="Associated Practitioner">
-                                <option value="">Assign Practitioner</option>
-                                @forelse ($practitioners as $item)
-                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                @empty
-                                    <option value="">No result found.</option>
-                                @endforelse
-                            </select>
-                            <label for="editserviceuser_practitioner">Select Practitioner</label>
-                        </div>
+                        <input type="hidden" name="editserviceuser_practitioner" id="editserviceuser_practitioner">
+                        <fieldset disabled>
+                            <div class="form-floating mb-3">
+                                <select class="form-select" id="editserviceuser_practitioner"
+                                    aria-label="Associated Practitioner">
+                                    <option value="{{ Auth::user()->id }}" selected>{{ Auth::user()->name }}</option>
+                                </select>
+                                <label for="editserviceuser_practitioner">Select Practitioner</label>
+                            </div>
+                        </fieldset>
                     </form>
                     <p><mark>Do you want an email notification sent to the service user if admin update their details? If so
                             we need content for this.</mark></p>
@@ -181,7 +185,7 @@
                     <h4 class="modal-title" id="deleteLabel">Delete Service User</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ route('serviceuser.delete') }}" method="get">
+                <form action="{{ route('practitioner.serviceuser.delete') }}" method="get">
                     <div class="modal-body">
                         <p>WARNING you are about to delete this service user.</p>
                         <input type="hidden" name="getserviceuser_id" id="getserviceuser_id">
@@ -207,18 +211,15 @@
                                 </select>
                                 <label for="getserviceuser_category">Select Category</label>
                             </div>
-                            <div class="form-floating mb-3">
-                                <select class="form-select" id="getserviceuser_practitioner"
-                                    aria-label="Associated Practitioner">
-
-                                    @forelse ($practitioners as $item)
-                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                    @empty
-                                        <option value="">No result found.</option>
-                                    @endforelse
-                                </select>
-                                <label for="getserviceuser_practitioner">Select Practitioner</label>
-                            </div>
+                            <fieldset disabled>
+                                <div class="form-floating mb-3">
+                                    <select class="form-select" id="getserviceuser_practitioner"
+                                        aria-label="Associated Practitioner">
+                                        <option value="{{ Auth::user()->id }}" selected>{{ Auth::user()->name }}</option>
+                                    </select>
+                                    <label for="getserviceuser_practitioner">Select Practitioner</label>
+                                </div>
+                            </fieldset>
                         </fieldset>
 
                         <p><mark>Do you want an email notification sent to the serivce user if they get removed? If so we
@@ -274,7 +275,7 @@
                 if (form.valid() == true) {
 
                     $.ajax({
-                        url: "{{ route('serviceuser.store') }}",
+                        url: "{{ route('practitioner.serviceuser.store') }}",
                         method: "POST",
 
                         data: form.serialize(),
@@ -323,7 +324,7 @@
             var email = $(element).val();
             $.ajax({
                 type: "POST",
-                url: "{{ route('serviceuser.checkEmail') }}",
+                url: "{{ route('practitioner.serviceuser.checkEmail') }}",
                 data: {
                     email: email
                 },
@@ -356,7 +357,7 @@
             var email = $(element).val();
             $.ajax({
                 type: "POST",
-                url: "{{ route('serviceuser.checkEmail') }}",
+                url: "{{ route('practitioner.serviceuser.checkEmail') }}",
                 data: {
                     email: email
                 },
@@ -387,7 +388,7 @@
         // Edit ServiceUser Details
         function editServiceUserDetail(e) {
             var id = $(e).data("id");
-            var url = '{{ route('serviceuser.edit', ':id') }}';
+            var url = '{{ route('practitioner.serviceuser.edit', ':id') }}';
             url = url.replace(':id', id);
             $.get(url, function(data) {
 
@@ -417,7 +418,7 @@
             var editserviceuser_category = $('#editserviceuser_category').val();
             var editserviceuser_email = $('#editserviceuser_email').val();
             var editserviceuser_practitioner = $('#editserviceuser_practitioner').val();
-            var url = '{{ route('serviceuser.update', ':id') }}';
+            var url = '{{ route('practitioner.serviceuser.update', ':id') }}';
             url = url.replace(':id', id);
             let _token = $('meta[name="csrf-token"]').attr('content');
 
@@ -463,7 +464,7 @@
         // Delete ServiceUser Details
         function getPractitionerDetail(e) {
             var id = $(e).data("serviceuserid");
-            var url = '{{ route('serviceuser.edit', ':id') }}';
+            var url = '{{ route('practitioner.serviceuser.edit', ':id') }}';
             url = url.replace(':id', id);
             $.get(url, function(data) {
 

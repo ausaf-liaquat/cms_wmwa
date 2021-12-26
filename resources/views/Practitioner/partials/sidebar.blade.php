@@ -4,23 +4,23 @@
   <ul class="list-unstyled ps-0">
     <li class="border-top mt-5 mb-3"></li>
     <li class="mb-4 mt-1">
-      <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#notifications-collapse" aria-expanded="true">
+      <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#notifications-collapse" aria-expanded="{{request()->routeIs('practitioner.dashboard') || request()->routeIs('practitioner.accountdetails') ? 'true' : 'false' }}">
         Dashboard
       </button>
-      <div class="collapse show" id="notifications-collapse">
+      <div class="collapse {{request()->routeIs('practitioner.dashboard') || request()->routeIs('practitioner.accountdetails') ? 'show' : '' }}" id="notifications-collapse">
         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-          <li><a href="../practitioners/dashboard.php" class="link-dark rounded active">Notifications</a></li>
-          <li><a href="../practitioners/account-details.php" class="link-dark rounded">Account Details</a></li>
+          <li><a href="{{route('practitioner.dashboard')}}" class="link-dark rounded {{request()->routeIs('practitioner.dashboard') ? 'active' : '' }}">Notifications</a></li>
+          <li><a href="{{route('practitioner.accountdetails')}}" class="link-dark rounded {{request()->routeIs('practitioner.accountdetails') ? 'active' : '' }}">Account Details</a></li>
         </ul>
       </div>
     </li>
     <li class="mb-4 mt-1">
-      <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#accounts-collapse" aria-expanded="false">
+      <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#accounts-collapse" aria-expanded="{{request()->routeIs('practitioner.serviceuser') ? 'true' : 'false' }}">
         Accounts
       </button>
-      <div class="collapse" id="accounts-collapse">
+      <div class="collapse {{request()->routeIs('practitioner.serviceuser') ? 'show' : '' }}" id="accounts-collapse">
         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-          <li><a href="../practitioners/service-users.php" class="link-dark rounded">Services Users</a></li>
+          <li><a href="{{route('practitioner.serviceuser')}}" class="link-dark rounded {{request()->routeIs('practitioner.serviceuser') ? 'active' : '' }}">Services Users</a></li>
         </ul>
       </div>
     </li>
@@ -39,11 +39,11 @@
     <li class="mb-4 mt-1">
         <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
             data-bs-target="#account-collapse" aria-expanded="false">
-            Account
+            Settings
         </button>
         <div class="collapse" id="account-collapse" style="">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                <li><a href="#" class="link-dark rounded">Referral Form (C-19)</a></li>
+                {{-- <li><a href="#" class="link-dark rounded">Referral Form (C-19)</a></li> --}}
                 <li> <a class="link-dark rounded" href="{{ route('practitioner.logout') }}"
                         onclick="event.preventDefault();document.getElementById('logout-form').submit();"
                         style="color:#fff">

@@ -3,10 +3,11 @@
     Practitioners Account
 @endsection
 @section('content')
+
     <div class="row">
         <div class="col-md-12">
             <h2>Accounts <small>Practitioners</small></h2>
-            <p>Total ({{$practitionercount}}) | Active ({{$practitionercount}}) | Pending Requestions (0)</p>
+            <p>Total ({{ $practitionercount }}) | Active ({{ $practitionercount }}) | Pending Requestions (0)</p>
 
             <a class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addnew">Add new practitioner</a>
 
@@ -30,16 +31,19 @@
                             <td>{{ $item->email }}</td>
                             <td>{{ $item->category }}</td>
                             <td>Active</td>
-                            <td><a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#accounts">View
+                            <td><a class="btn btn-primary" data-bs-toggle="modal" data-accountid="{{ $item->id }}"
+                                    onclick='viewaccounts(event.target)' data-bs-target="#accounts">View
                                     Accounts</a>
                             </td>
                             <td><a class="btn btn-secondary mr-1" data-bs-toggle="modal" data-id="{{ $item->id }}"
                                     onclick='editPractitionerDetail(event.target)' data-bs-target="#editpract">Edit</a><a
-                                    class="btn btn-danger" data-bs-toggle="modal" onclick="getPractitionerDetail(event.target)" data-practid="{{ $item->id }}" data-bs-target="#deletepract">Delete</a></td>
+                                    class="btn btn-danger" data-bs-toggle="modal"
+                                    onclick="getPractitionerDetail(event.target)" data-practid="{{ $item->id }}"
+                                    data-bs-target="#deletepract">Delete</a></td>
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="6">No data found.</td>
+                            <td colspan="7" style="text-align: center;font-weight:bold">No data found.</td>
                         </tr>
                     @endforelse
                 </tbody>
@@ -127,8 +131,8 @@
                             <label for="editpractitioner-name">Enter Practitioner Name</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="email" class="form-control" onblur="duplicatePractitionerEmail(this)"
-                                id="editpractitioner_email" placeholder="name@example.com" value="name@website.com">
+                            <input type="email" class="form-control" onkeyup="duplicatePractitionerEmail(this)"
+                                id="editpractitioner_email" placeholder="name@example.com" value="">
                             <label for="editpractitioner_email">Enter Email Address</label>
                             <span class="text-danger mb-4 email-error" id="practitioneremail-error"
                                 style="font-size: small;"></span>
@@ -150,7 +154,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" id="updatepract" onclick="updatePractitionerDetail()" class="btn btn-success">Update practitioner</button>
+                    <button type="button" id="updatepract" onclick="updatePractitionerDetail()"
+                        class="btn btn-success">Update practitioner</button>
                 </div>
             </div>
         </div>
@@ -165,14 +170,14 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form action="{{ route('practitioner.delete') }}" method="get">
-                <div class="modal-body">
-                    <p>WARNING you are about to delete this practioner.</p>
-                    
+                    <div class="modal-body">
+                        <p>WARNING you are about to delete this practioner.</p>
+
                         <input type="hidden" name="getpractitioner_id" id="getpractitioner_id">
                         <fieldset disabled>
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="getpractitioner_name" placeholder="Enter Name"
-                                     >
+                                <input type="text" class="form-control" id="getpractitioner_name"
+                                    placeholder="Enter Name">
                                 <label for="practitioner-name">Enter Practitioner Name</label>
                             </div>
                             <div class="form-floating mb-3">
@@ -182,9 +187,9 @@
                             </div>
                             <div class="form-floating mb-3">
                                 <select class="form-select" id="getpractitioner_role"
-                                    aria-label="Floating label select example" >
+                                    aria-label="Floating label select example">
                                     <option>Practitioner Role</option>
-                                    <option value="School Nurse" >School Nurse</option>
+                                    <option value="School Nurse">School Nurse</option>
                                     <option value="Social Worker">Social Worker</option>
                                     <option value="WMWA Internal">WMWA Internal</option>
                                     <option value="Ambassador">Ambassador</option>
@@ -192,14 +197,16 @@
                                 <label for="practitioner-role">Select Role</label>
                             </div>
                         </fieldset>
-                    
-                    <p><mark>Do you want an email notification sent to the practitioner if they get removed? If so we need
-                            content for this.</mark></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Go Back</button>
-                    <button type="submit" class="btn btn-danger">Delete practitioner</button>
-                </div></form>
+
+                        <p><mark>Do you want an email notification sent to the practitioner if they get removed? If so we
+                                need
+                                content for this.</mark></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Go Back</button>
+                        <button type="submit" class="btn btn-danger">Delete practitioner</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -255,8 +262,8 @@
         <div class="modal-dialog modal-dialog-centered modal-dialog-wide modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="accountsLabel">Service user accounts associated with: << practitioner
-                            name>></h4>
+                    <h4 class="modal-title" id="accountsLabel">Service user accounts associated with: <span
+                            id="viewpractitioner_name"></span></h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body p-5">
@@ -270,31 +277,9 @@
                                 <th scope="col">Category</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">0001</th>
-                                <td>Name Surname</td>
-                                <td>name@website.com</td>
-                                <td>Woman</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">0002</th>
-                                <td>Name Surname</td>
-                                <td>name@website.com</td>
-                                <td>Man</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">0003</th>
-                                <td>Name Surname</td>
-                                <td>name@website.com</td>
-                                <td>Youth/Child</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">0004</th>
-                                <td>Name Surname</td>
-                                <td>name@website.com</td>
-                                <td>Survivor/Ambassador</td>
-                            </tr>
+                        <tbody id="tbody">
+
+
                         </tbody>
                     </table>
                 </div>
@@ -304,6 +289,7 @@
             </div>
         </div>
     </div>
+
 @endsection
 @section('extrajs')
     <script>
@@ -366,9 +352,6 @@
                             } else {
                                 printErrorMsg(data.error);
                             }
-
-
-
                         },
                         complete: function() {
                             $('.spinner').hide();
@@ -432,14 +415,14 @@
                 success: function(res) {
                     if (res.exists) {
 
+                        $('#practitioneremail-error').html(" This Email already exists!");
                         $('#practitioneremail-error')
-                            .css('color', 'red')
-                            .html("This Email already exists!");
+                            .prop('hidden', false);
                         $('#updatepract').prop('disabled', true);
 
                     } else {
-                        // $('#email-error')
-                        //     .css('display', 'none')
+                        $('#practitioneremail-error')
+                            .prop('hidden', true);
                         $('#updatepract').prop('disabled', false);;
 
                     }
@@ -497,18 +480,19 @@
                     $('.spinner').show()
                 },
                 success: function(data) {
-                 
-                    $('#editpract').modal('hide');
-                    
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Practitioner details updated',
-                        showConfirmButton: true,
-                        timer: 2500
-                    }).then((result) => {
-                        // Reload the Page
-                        location.reload();
-                    });
+                    if ($.isEmptyObject(data.error)) {
+                        $('#editpract').modal('hide');
+
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Practitioner details updated',
+                            showConfirmButton: true,
+                            timer: 2500
+                        }).then((result) => {
+                            // Reload the Page
+                            location.reload();
+                        });
+                    }
                     // location.reload();
                 },
                 beforeSend: function() {
@@ -521,7 +505,7 @@
         }
     </script>
     <script>
-        // Edit Practitioner Details
+        // Delete Practitioner Details
         function getPractitionerDetail(e) {
             var id = $(e).data("practid");
             var url = '{{ route('practitioner.edit', ':id') }}';
@@ -542,6 +526,39 @@
             $("#getpractitioner_id").val(id);
 
             $('#deletepract').modal('show');
+        }
+
+        // View Service User Accounts Attached to Practitioner
+        function viewaccounts(e) {
+            var id = $(e).data("accountid");
+
+            var url = '{{ route('practitioner.viewaccounts', ':id') }}';
+            url = url.replace(':id', id);
+            $.get(url, function(data) {
+
+                $('#viewpractitioner_name').html(data.practitioner_viewaccounts.name);
+
+                if (!$.trim(data.practitioner_viewaccounts.users)) {
+                    $("#tbody").empty();
+                    $("#tbody").append("<tr><td class='text-center' colspan='4'>No Data Found.</td></tr>");
+                    $('#accounts').modal('show');
+
+                } else {
+                    $("#tbody").empty();
+
+                    $.each(data.practitioner_viewaccounts.users, function(i, val) {
+
+
+                        $("#tbody").append("<tr><td>" + (i + 1) + "</td><td>" + val.name +
+                            "</td><td>" + val.email + "</td><td>" + val.category + "</td></tr>");
+                    })
+
+                    $('#accounts').modal('show');
+
+                }
+
+            })
+
         }
     </script>
 @endsection

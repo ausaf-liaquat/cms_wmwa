@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Practitioner;
 use App\Models\User;
 use App\Notifications\WelcomePractitioner;
+use App\Notifications\WelcomeServiceUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
 
@@ -19,13 +20,9 @@ class DashboardController extends Controller
     {
         $practitioners = Practitioner::all();
         $practitionercount = Practitioner::count();
-        return view('Admin.practitioners', compact('practitioners','practitionercount'));
+        return view('Admin.practitioners', compact('practitioners', 'practitionercount'));
     }
-    public function ServiceUser()
-    {
-        $practitioners = Practitioner::all();
-        return view('Admin.services_users',compact('practitioners'));
-    }
+    
     public function Resources()
     {
         return view('Admin.resources');
@@ -33,22 +30,16 @@ class DashboardController extends Controller
 
     public function PractitionerStore(Request $request)
     {
-        $validator = \Validator::make($request->all(), [
-            'email' => 'unique:practitioners',
-        ]);
-        if ($validator->passes()) {
 
-            $practitioner = Practitioner::create([
-                'name' => $request->practitioner_name,
-                'email' => $request->practitioner_email,
-                'category' => $request->practitioner_role,
-                'status'=>"Pending",
-            ]);
-            $token = Password::getRepository()->create($practitioner);
-            $practitioner->notify(new WelcomePractitioner($token));
-            return response()->json(200);
-        }
-        return response()->json(['error' => $validator->errors()->all()]);
+        $practitioner = Practitioner::create([
+            'name' => $request->practitioner_name,
+            'email' => $request->practitioner_email,
+            'category' => $request->practitioner_role,
+            'status' => "Pending",
+        ]);
+        $token = Password::getRepository()->create($practitioner);
+        $practitioner->notify(new WelcomePractitioner($token));
+        return response()->json(200);
     }
     public function checkEmail(Request $request)
     {
@@ -82,9 +73,22 @@ class DashboardController extends Controller
     {
         return view('Practitioner.status');
     }
+    public function PractitionerViewAccounts($id)
+    {
+       $practitioner_viewaccounts= Practitioner::where('id',$id)->with('users')->first();
 
-    // Service User 
+       return response()->json(['practitioner_viewaccounts' => $practitioner_viewaccounts], 200);
 
+    }
+    // Service User
+
+    public function ServiceUser()
+    {
+        $serviceusers = User::all();
+        $practitioners = Practitioner::all();
+        $serviceuserscount = User::count();
+        return view('Admin.services_users', compact('serviceusers', 'practitioners', 'serviceuserscount'));
+    }
     public function ServiceUsercheckEmail(Request $request)
     {
         $email = $request->input('email');
@@ -98,22 +102,31 @@ class DashboardController extends Controller
 
     public function ServiceUserStore(Request $request)
     {
-        $validator = \Validator::make($request->all(), [
-            'email' => 'unique:users',
+        $serviceuser = User::create([
+            'name' => $request->serviceuser_name,
+            'email' => $request->serviceuser_email,
+            'category' => $request->serviceuser_category,
+            'practitioner_id' => $request->serviceuser_practitioner,
         ]);
-        if ($validator->passes()) {
-
-            $serviceuser = User::create([
-                'name' => $request->serviceuser_name,
-                'email' => $request->serviceuser_email,
-                'category' => $request->serviceuser_category,
-                'practitioner_id'=>$request->serviceuser_practitioner,
-                
-            ]);
-            // $token = Password::getRepository()->create($serviceuser);
-            // $serviceuser->notify(new WelcomeServiceUser($token));
-            return response()->json(200);
+        $token = Password::getRepository()->create($serviceuser);
+        $serviceuser->notify(new WelcomeServiceUser($token));
+        return response()->json(200);
+    }
+    public function ServiceUserEdit($id)
+    {
+        $serviceuser = User::find($id);
+        return response()->json($serviceuser, 200);
+    }
+    public function ServiceUserUpdate(Request $request, $id)
+    {
+        if ($request->editserviceuser_name != null && $request->editserviceuser_category != null && $request->editserviceuser_practitioner != null) {
+            User::find($id)->update(['name' => $request->editserviceuser_name, 'category' => $request->editserviceuser_category, 'practitioner_id' => $request->editserviceuser_practitioner]);
         }
-        return response()->json(['error' => $validator->errors()->all()]);
+        return response()->json(200);
+    }
+    public function ServiceUserDelete(Request $request)
+    {
+        User::find($request->getserviceuser_id)->delete();
+        return redirect()->route('admin.serviceuser');
     }
 }

@@ -1,48 +1,58 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
-
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
-
-        <form method="POST" action="{{ route('password.update') }}">
-            @csrf
-
-            <!-- Password Reset Token -->
-            <input type="hidden" name="token" value="{{ $request->route('token') }}">
-
-            <!-- Email Address -->
-            <div>
-                <x-label for="email" :value="__('Email')" />
-
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email', $request->email)" required autofocus />
+@extends('layouts.master')
+@section('title') Service User Password Reset @endsection
+@section('content')
+    <form id="login-form" method="POST" action="{{ route('password.update') }}">
+        @if (session('status'))
+            <div class="alert alert-success alert-dismissible fade show">
+                <span class="badge rounded-pill bg-success">Success</span>
+                {{ session('status') }}
+                {{-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button> --}}
             </div>
-
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
-
-                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required />
+        @elseif (session('error'))
+            <div class="alert alert-danger alert-dismissible fade show">
+                <span class="badge rounded-pill bg-danger">Error</span>
+                {{ session('error') }}
+                {{-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button> --}}
             </div>
-
-            <!-- Confirm Password -->
-            <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('Confirm Password')" />
-
-                <x-input id="password_confirmation" class="block mt-1 w-full"
-                                    type="password"
-                                    name="password_confirmation" required />
+        @endif
+        @if ($errors->any())
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <span class="badge rounded-pill bg-danger">Error</span>
+                @foreach ($errors->all() as $error)
+                    <p>{{ $error }}</p>
+                @endforeach
+                {{-- <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> --}}
             </div>
+        @endif
+        @csrf
+        <!-- Password Reset Token -->
+        <input type="hidden" name="token" value="{{ $request->route('token') }}">
 
-            <div class="flex items-center justify-end mt-4">
-                <x-button>
-                    {{ __('Reset Password') }}
-                </x-button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>
+
+        <h2>West Mercia Women's Aid Login</h2>
+        <p class="mb-3">Please enter new password</p>
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control " id="email" placeholder="name@example.com" name="email"
+                value="{{ old('email', $request->email) }}" readonly>
+            <label for="floatingInput">Email address</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="password" class="form-control  " id="password" placeholder="Password" name="password">
+            <label for="floatingPassword">Password</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="password" class="form-control  " id="passwordconfirm" placeholder="Password" name="password_confirmation">
+            <label for="floatingPassword">Password Confirmation</label>
+        </div>
+
+       
+        <button class="mb-1 w-100 btn btn-primary" type="submit">Password Setup</button>
+
+       
+    </form>
+@endsection

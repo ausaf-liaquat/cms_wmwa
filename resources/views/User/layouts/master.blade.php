@@ -10,83 +10,112 @@
 
     <title> @yield('title') {{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Fontfaces CSS-->
-    <link href="{{ asset('assets/css/font-face.css') }}" rel="stylesheet" media="all">
-    <link href="{{ asset('assets/vendor/font-awesome-4.7/css/font-awesome.min.css') }}" rel="stylesheet" media="all">
-    <link href="{{ asset('assets/vendor/font-awesome-5/css/fontawesome-all.min.css') }}" rel="stylesheet" media="all">
-    <link href="{{ asset('assets/vendor/mdi-font/css/material-design-iconic-font.min.css') }}" rel="stylesheet"
-        media="all">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link href="{{ asset('assets/css/sidebars.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    {{-- <link rel="stylesheet" href="https://www.westmerciawomensaid.org/wp-content/themes/Divi/style.css?ver=5.8.2"> --}}
+    <link rel="stylesheet" href="{{ asset('assets/css/index.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.0.4/sweetalert2.min.css"
+        integrity="sha512-iuMkf48pM/TdH5DQkNPLWPLIUsVCncQEpuxgcMq/oDmJepdFcu48Wy4MwXggN9WFb4L6rpXQf5YJE/+OXkM1Lw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        .swal2-container {
+            z-index: {
+                X
+            }
 
-    <!-- Bootstrap CSS-->
-    <link href="{{ asset('assets/vendor/bootstrap-4.1/bootstrap.min.css') }}" rel="stylesheet" media="all">
+            ;
+        }
 
-    <!-- Vendor CSS-->
-    <link href="{{ asset('assets/vendor/animsition/animsition.min.css') }}" rel="stylesheet" media="all">
-    <link href="{{ asset('assets/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css') }}"
-        rel="stylesheet" media="all">
-    <link href="{{ asset('assets/vendor/wow/animate.css') }}" rel="stylesheet" media="all">
-    <link href="{{ asset('assets/vendor/css-hamburgers/hamburgers.min.css') }}" rel="stylesheet" media="all">
-    <link href="{{ asset('assets/vendor/slick/slick.css') }}" rel="stylesheet" media="all">
-    <link href="{{ asset('assets/vendor/select2/select2.min.css') }}" rel="stylesheet" media="all">
-    <link href="{{ asset('assets/vendor/perfect-scrollbar/perfect-scrollbar.css') }}" rel="stylesheet" media="all">
+        .spinner {
+            margin: 5px auto 5px;
+            width: 70px;
+            text-align: center;
+            display: none;
+        }
 
-    <!-- Main CSS-->
-    <link href="{{ asset('assets/css/theme.css') }}" rel="stylesheet" media="all">
+        .spinner>div {
+            width: 18px;
+            height: 18px;
+            background-color: #6e659e;
 
-    @yield('css')
+            border-radius: 100%;
+            display: inline-block;
+            -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+            animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+        }
+
+        .spinner .bounce1 {
+            -webkit-animation-delay: -0.32s;
+            animation-delay: -0.32s;
+        }
+
+        .spinner .bounce2 {
+            -webkit-animation-delay: -0.16s;
+            animation-delay: -0.16s;
+        }
+
+        @-webkit-keyframes sk-bouncedelay {
+
+            0%,
+            80%,
+            100% {
+                -webkit-transform: scale(0)
+            }
+
+            40% {
+                -webkit-transform: scale(1.0)
+            }
+        }
+
+        @keyframes sk-bouncedelay {
+
+            0%,
+            80%,
+            100% {
+                -webkit-transform: scale(0);
+                transform: scale(0);
+            }
+
+            40% {
+                -webkit-transform: scale(1.0);
+                transform: scale(1.0);
+            }
+        }
+
+    </style>
 </head>
 
-<body class="animsition">
-    <div class="page-wrapper">
-        <!-- MENU SIDEBAR-->
+<body>
+    <div class="d-flex crm-bkground">
         @include('User.partials.sidebar')
-        <!-- END MENU SIDEBAR-->
-
-        <!-- PAGE CONTAINER-->
-        <div class="page-container2">
-            <!-- HEADER DESKTOP-->
-            @include('User.partials.navbar')
-            <!-- END HEADER DESKTOP-->
-
-            @yield('content')
-            <!-- END PAGE CONTAINER-->
+        <div class="w-100">
+            <div class="container crm-container p-5">
+                @yield('content')
+            </div>
         </div>
-
     </div>
 
-    @yield('scripts')
+    @include('Practitioner.partials.footer')
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- Jquery JS-->
-    <script src="{{ asset('assets/vendor/jquery-3.2.1.min.js') }}"></script>
+    <script src="{{ asset('assets/js/sidebars.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/additional-methods.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-    <script>
-        // In your Javascript (external .js resource or <script> tag)
-        $(document).ready(function() {
-            $('#select').select2();
-        });
-
-    </script>
-    <!-- Bootstrap JS-->
-    <script src="{{ asset('assets/vendor/bootstrap-4.1/popper.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/bootstrap-4.1/bootstrap.min.js') }}"></script>
-    <!-- Vendor JS       -->
-    <script src="{{ asset('assets/vendor/slick/slick.min.js') }}">
-    </script>
-    <script src="{{ asset('assets/vendor/wow/wow.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/animsition/animsition.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js') }}">
-    </script>
-    <script src="{{ asset('assets/vendor/counter-up/jquery.waypoints.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/counter-up/jquery.counterup.min.js') }}">
-    </script>
-    <script src="{{ asset('assets/vendor/circle-progress/circle-progress.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/perfect-scrollbar/perfect-scrollbar.js') }}"></script>
-    <script src="{{ asset('assets/vendor/chartjs/Chart.bundle.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/select2/select2.min.js') }}">
-    </script>
-
-    <!-- Main JS-->
-    <script src="{{ asset('assets/js/main.js') }}"></script>
-
+    <script src="{{ asset('assets/js/tata.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.0.4/sweetalert2.all.min.js"
+        integrity="sha512-niNQgNQ4mHtOdt//YjERRRbsmlc9aH+1c+fIQ9bQWD5kByzpE10EBDOhyV/n+anhaLW9GN4Dalu/z9QrXBvDUQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    @yield('extrajs')
 </body>
 
 </html>
