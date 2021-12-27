@@ -30,7 +30,7 @@
       </button>
       <div class="collapse" id="resources-collapse">
         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-          <li><a href="../service-users/my-resources.php" class="link-dark rounded">My Resources</a></li>
+          <li><a href="{{route('user.resource')}}" class="link-dark rounded">My Resources</a></li>
         </ul>
       </div>
     </li>

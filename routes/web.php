@@ -61,7 +61,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('resource/{id}/edit', [App\Http\Controllers\Admin\ResourceController::class, 'ResourceEdit'])->name('resource.edit');
         Route::post('resources/update', [App\Http\Controllers\Admin\ResourceController::class, 'ResourceUpdate'])->name("resource.update");
         Route::get('resources/delete', [App\Http\Controllers\Admin\ResourceController::class, 'ResourceDelete'])->name('resource.delete');
-    
+        Route::get('resources/{id}/download', [App\Http\Controllers\Admin\ResourceController::class, 'ResourceDownload'])->name('resource.download');
     });
 });
 
@@ -104,6 +104,10 @@ Route::group(['prefix' => 'user'], function () {
 
         Route::get('account/details', [App\Http\Controllers\User\DashboardController::class, 'AccountDetails'])->name('serviceuser.accountdetails');
         Route::post('account/edit', [App\Http\Controllers\User\DashboardController::class, 'AccountEdit'])->name('serviceuser.accountedit');
+    
+    
+     // Resources
+     Route::get('resources', [App\Http\Controllers\User\DashboardController::class, 'Resource'])->name("user.resource");
     });
 });
 require __DIR__ . '/auth.php';

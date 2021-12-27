@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Practitioner;
 
 use App\Http\Controllers\Controller;
 use App\Models\Practitioner;
-use App\Models\User;
 use App\Models\Resource;
+use App\Models\User;
 use App\Notifications\WelcomeServiceUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -93,9 +93,15 @@ class DashboardController extends Controller
     }
     public function Resource()
     {
-        $resources = Resource::all();
-        $serviceusers = User::all();
-        $practitioner = Practitioner::find(Auth::user()->id);
-        return view('Practitioner.recources', compact('resources','serviceusers','practitioner'));
+
+        $serviceusers = User::where('practitioner_id', Auth::user()->id)->pluck('category')->toArray();
+
+        $resources_file = Resource::whereIn('resource_category', $serviceusers)->where('resource_type', 'file')->get();
+
+        $resources_url = Resource::whereIn('resource_category', $serviceusers)->where('resource_type', 'url')->get();
+
+        $resources_video = Resource::whereIn('resource_category', $serviceusers)->where('resource_type', 'link')->get();
+
+        return view('Practitioner.recources', compact('resources_file', 'resources_url', 'resources_video'));
     }
 }

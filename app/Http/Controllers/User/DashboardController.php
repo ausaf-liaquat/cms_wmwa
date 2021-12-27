@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Resource;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -35,5 +36,18 @@ class DashboardController extends Controller
             ]);
         }
         return response()->json(200);
+    }
+    public function Resource()
+    {
+
+        $serviceusers = User::where('id', Auth::user()->id)->pluck('category')->toArray();
+
+        $resources_file = Resource::whereIn('resource_category', $serviceusers)->where('resource_type', 'file')->get();
+
+        $resources_url = Resource::whereIn('resource_category', $serviceusers)->where('resource_type', 'url')->get();
+
+        $resources_video = Resource::whereIn('resource_category', $serviceusers)->where('resource_type', 'link')->get();
+
+        return view('User.resource', compact('resources_file', 'resources_url', 'resources_video'));
     }
 }

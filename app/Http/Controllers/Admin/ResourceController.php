@@ -75,4 +75,10 @@ class ResourceController extends Controller
         Resource::find($request->getresource_id)->delete();
         return redirect()->route('admin.resources');
     }
+    public function ResourceDownload($id)
+    {
+        $resource = Resource::where('id', $id)->firstOrFail();
+        $pathToFile = storage_path('app/public/resource/files/' . $resource->resource_file);
+        return response()->download($pathToFile);
+    }
 }

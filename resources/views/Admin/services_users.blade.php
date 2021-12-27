@@ -31,7 +31,7 @@
                             <td>{{ $item->category }}</td>
                             <td>{{ $item->practitioner->name }}</td>
                             <td><a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#accounts">View</a> <a
-                                    class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#accounts">Send</a></td>
+                                    class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#send">Send</a></td>
                             <td><a class="btn btn-secondary mr-1" data-bs-toggle="modal" data-id="{{ $item->id }}"
                                     onclick='editServiceUserDetail(event.target)' data-bs-target="#edit">Edit</a><a
                                     class="btn btn-danger" data-bs-toggle="modal"
@@ -234,6 +234,35 @@
         </div>
     </div>
 
+    <!-- Send MODAL -->
+    <div class="modal fade" id="send" tabindex="-1" aria-labelledby="sendLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="sendLabel">Send Workbook</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="" method="get">
+                    <div class="modal-body">
+                        <input type="hidden" name="getserviceuser_id" id="getserviceuser_id">
+                        <div class="form-floating mb-3">
+                            <select class="form-select" id="send_workbook" aria-label="Workbook">                                
+                                <option value="1" selected>Youth Workbook</option>
+                            </select>
+                            <label for="send_workbook">Workbook</label>
+                        </div>
+                        <p><mark>Do you want an email notification sent to the serivce user if they get removed? If so we
+                                need
+                                content for this.</mark></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Go Back</button>
+                        <button type="submit" class="btn btn-danger">Send Workbook</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
 @endsection
 @section('extrajs')
@@ -349,7 +378,6 @@
             });
         }
     </script>
-
     <script>
         // Duplicate Email Checker
         function duplicateServiceUserEmail(element) {

@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Practitioner;
 
 use App\Http\Controllers\Controller;
 use App\Models\Practitioner;
-use Auth,DB;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 class LoginController extends Controller
 {

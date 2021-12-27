@@ -38,10 +38,21 @@
                             <td>{{ $item->resource_title }}</td>
                             <td>{{ $item->resource_type }}</td>
                             <td>{{ $item->resource_category }}</td>
-                            <td><a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#accounts">View</a></td>
+                            <td>
+                                @if ($item->resource_type == 'file')
+                                <a class="btn btn-primary" href="{{route('resource.download',['id'=>$item->id])}}">View</a>
+                                @elseif ($item->resource_type == 'url')
+                                <a class="btn btn-primary" href="{{$item->resource_link}}" target="_blank">View</a>
+                                @else
+                                <a class="btn btn-primary" href="{{$item->resource_video}}" target="_blank">View</a>
+                                    
+                                @endif
+                               
+                            </td>
                             <td><a class="btn btn-secondary mr-1" data-bs-toggle="modal" data-id="{{ $item->id }}"
                                     onclick='editResourceDetail(event.target)' data-bs-target="#edit">Edit</a><a
-                                    class="btn btn-danger" data-bs-toggle="modal" onclick='getResourceDetail(event.target)'  data-delid="{{ $item->id }}" data-bs-target="#delete">Delete</a></td>
+                                    class="btn btn-danger" data-bs-toggle="modal" onclick='getResourceDetail(event.target)'
+                                    data-delid="{{ $item->id }}" data-bs-target="#delete">Delete</a></td>
                         </tr>
                     @empty
                         <tr>
@@ -232,7 +243,7 @@
                                 <select class="form-select" id="getserviceuser_category"
                                     aria-label="Service User Category">
                                     <option value="">Select Resource Category</option>
-                                    <option value="Woman" >Woman</option>
+                                    <option value="Woman">Woman</option>
                                     <option value="Man">Man</option>
                                     <option value="Youth/Child">Youth/Child</option>
                                     <option value="Survivor/Ambassador">Survivor/Ambassador</option>
@@ -587,7 +598,7 @@
 
                 $('#getserviceuser_category').val(data.resource_category);
 
-               
+
                 $('#delete').modal('show');
                 $('#delete').on('hidden.bs.modal', function() {
                     location.reload();
