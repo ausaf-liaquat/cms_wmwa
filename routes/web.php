@@ -72,7 +72,6 @@ Route::group(['prefix' => 'practitioner'], function () {
         Route::get('login', [App\Http\Controllers\Practitioner\LoginController::class, 'LoginIndex'])->name('practitioner.authenticate');
         Route::post('/login/redirect', [App\Http\Controllers\Practitioner\LoginController::class, 'LoginPost'])->name('practitioner.login');
         Route::get('/reset-password/{token}', [App\Http\Controllers\Practitioner\LoginController::class, 'practitionerResetPasswod'])->name('practitioner.password.reset');
-
         Route::post('/reset-password', [App\Http\Controllers\Practitioner\LoginController::class, 'practitionerResetPasswodstore'])->name('practitioner.password.update');
     });
 
@@ -92,6 +91,8 @@ Route::group(['prefix' => 'practitioner'], function () {
         Route::post('serviceuser/{id}/details/updated', [App\Http\Controllers\Practitioner\DashboardController::class, 'ServiceUserUpdate'])->name('practitioner.serviceuser.update');
         Route::get('serviceuser/delete', [App\Http\Controllers\Practitioner\DashboardController::class, 'ServiceUserDelete'])->name('practitioner.serviceuser.delete');
 
+        // Resources
+        Route::get('resources', [App\Http\Controllers\Practitioner\DashboardController::class, 'Resource'])->name("practitioner.resource");
     });
 });
 

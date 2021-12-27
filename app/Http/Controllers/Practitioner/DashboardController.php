@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Practitioner;
 use App\Http\Controllers\Controller;
 use App\Models\Practitioner;
 use App\Models\User;
+use App\Models\Resource;
 use App\Notifications\WelcomeServiceUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -89,5 +90,12 @@ class DashboardController extends Controller
     {
         User::find($request->getserviceuser_id)->delete();
         return redirect()->route('practitioner.serviceuser');
+    }
+    public function Resource()
+    {
+        $resources = Resource::all();
+        $serviceusers = User::all();
+        $practitioner = Practitioner::find(Auth::user()->id);
+        return view('Practitioner.recources', compact('resources','serviceusers','practitioner'));
     }
 }

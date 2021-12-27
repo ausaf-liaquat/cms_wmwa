@@ -25,13 +25,13 @@
       </div>
     </li>
     <li class="mb-4 mt-1">
-      <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#resources-collapse" aria-expanded="false">
+      <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#resources-collapse" aria-expanded="{{request()->routeIs('practitioner.resource') ? 'true' : 'false' }}">
         Resources
       </button>
-      <div class="collapse" id="resources-collapse">
+      <div class="collapse {{request()->routeIs('practitioner.resource') ? 'show' : '' }}" id="resources-collapse">
         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
           <li><a href="../practitioners/workbook-guidance.php" class="link-dark rounded text-nowrap">Workbooks (Guidance)</a></li>
-          <li><a href="../practitioners/my-resources.php" class="link-dark rounded">My Resources</a></li>
+          <li><a href="{{route('practitioner.resource')}}" class="link-dark rounded {{request()->routeIs('practitioner.resource') ? 'active' : '' }}">My Resources</a></li>
         </ul>
       </div>
     </li>
