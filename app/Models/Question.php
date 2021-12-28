@@ -13,7 +13,7 @@ class Question extends Model
      *
      * @var array
      */
-    protected $fillable = ['workbook_id','topic_id','user_id','question_type','option_name'];
+    protected $fillable = ['workbook_id','topic_id','user_id','title','option_type','status'];
 
      /**
      * The workbook the question belongs to.
@@ -48,10 +48,15 @@ class Question extends Model
     {
         return $this->belongsTo(User::class,'user_id');
     }
-    // public function multisurveys()
-    // {
-    //     return $this->belongsToMany(Survey::class, 'question_survey');
-    // }
-
+   
+ /**
+     * The answers that belong to the question.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function WorkbookQuestionniare()
+    {
+        return $this->hasMany(Detailquest::class);
+    }
 
 }

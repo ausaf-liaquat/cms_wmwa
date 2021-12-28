@@ -17,11 +17,12 @@ class CreateQuestionsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('workbook_id')->nullable();
             $table->unsignedBigInteger('topic_id')->nullable();
-            $table->string('question','3000')->nullable();
+            $table->string('title','3000')->nullable();
             $table->string('option_type')->nullable();
             $table->foreign('workbook_id')->references('id')->on('workbooks')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('topic_id')->references('id')->on('topics')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
+            $table->string('status')->nullable();
         });
     }
 
