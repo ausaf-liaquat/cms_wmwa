@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Resource;
+use App\Models\ShareWorkbook;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -49,5 +50,11 @@ class DashboardController extends Controller
         $resources_video = Resource::whereIn('resource_category', $serviceusers)->where('resource_type', 'link')->get();
 
         return view('User.resource', compact('resources_file', 'resources_url', 'resources_video'));
+    }
+
+    public function Myworkbook()
+    {
+        $shareworkbook = ShareWorkbook::where('user_id', Auth::user()->id)->get();
+        return view('User.workbook', compact('shareworkbook'));
     }
 }

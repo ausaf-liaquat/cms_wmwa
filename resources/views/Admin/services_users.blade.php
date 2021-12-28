@@ -31,7 +31,8 @@
                             <td>{{ $item->category }}</td>
                             <td>{{ $item->practitioner->name }}</td>
                             <td><a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#accounts">View</a> <a
-                                    class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#send">Send</a></td>
+                                    class="btn btn-primary" onclick='sendworkbook(event.target)' data-bs-toggle="modal"
+                                    data-sendid="{{ $item->id }}" data-bs-target="#send">Send</a></td>
                             <td><a class="btn btn-secondary mr-1" data-bs-toggle="modal" data-id="{{ $item->id }}"
                                     onclick='editServiceUserDetail(event.target)' data-bs-target="#edit">Edit</a><a
                                     class="btn btn-danger" data-bs-toggle="modal"
@@ -242,24 +243,37 @@
                     <h4 class="modal-title" id="sendLabel">Send Workbook</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="" method="get">
-                    <div class="modal-body">
-                        <input type="hidden" name="getserviceuser_id" id="getserviceuser_id">
+
+                <div class="modal-body">
+                    <form id="sendform" action="" method="get">
+                        <div class="alert alert-danger print-error-msg" style="display:none">
+                            <ul></ul>
+                        </div>
+                        <div class="spinner">
+                            <div class="bounce1"></div>
+                            <div class="bounce2"></div>
+                            <div class="bounce3"></div>
+                        </div>
+                        <input type="hidden" name="sendserviceuser_id" id="sendserviceuser_id">
                         <div class="form-floating mb-3">
-                            <select class="form-select" id="send_workbook" aria-label="Workbook">                                
+                            <select class="form-select" id="send_workbook" aria-label="Workbook">
                                 <option value="1" selected>Youth Workbook</option>
                             </select>
                             <label for="send_workbook">Workbook</label>
                         </div>
-                        <p><mark>Do you want an email notification sent to the serivce user if they get removed? If so we
-                                need
-                                content for this.</mark></p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Go Back</button>
-                        <button type="submit" class="btn btn-danger">Send Workbook</button>
-                    </div>
-                </form>
+                        <div class="form-floating mb-3">
+                            <select class="form-select" id="workbook_topic" aria-label="workbook_topic">
+                                <option value="1" selected> Introduction</option>
+                            </select>
+                            <label for="workbook_topic">Topic</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Go Back</button>
+                    <button type="button" class="btn btn-danger" onclick="shareWorkbook()">Send Workbook</button>
+                </div>
+
             </div>
         </div>
     </div>
@@ -509,6 +523,65 @@
             $("#getserviceuser_id").val(id);
 
             $('#delete').modal('show');
+        }
+    </script>
+    <script>
+        function sendworkbook(e) {
+            var id = $(e).data("sendid");
+            var url = '{{ route('serviceuser.edit', ':id') }}';
+            url = url.replace(':id', id);
+
+            $("#sendserviceuser_id").val(id);
+
+            $('#send').modal('show');
+        }
+    </script>
+    <script>
+        function shareWorkbook() {
+            // var form = $("#sendform");
+            // $("#sendform").validate();
+            // if (form.valid() == true) {
+            var serviceuser_id = $('#sendserviceuser_id').val();
+            var send_workbook = $('#send_workbook').val();
+            var workbook_topic = $('#workbook_topic').val();
+            var url = '{{ route('serviceuser.workbook') }}';
+            let _token = $('meta[name="csrf-token"]').attr('content');
+            $.ajax({
+                url: url,
+                type: "post",
+                data: {
+                    serviceuser_id: serviceuser_id,
+                    send_workbook: send_workbook,
+                    workbook_topic: workbook_topic,
+
+                    _token: _token
+                },
+                beforeSend: function() {
+                    $('.spinner').show()
+                },
+                success: function(data) {
+                    if ($.isEmptyObject(data.error)) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Workbook sent.',
+                            showConfirmButton: false,
+                            timer: 2500
+                        }).then((result) => {
+                            // Reload the Page
+                            location.reload();
+                        });;
+                        $('#send').modal('hide');
+                        // location.reload();
+                    }
+                },
+                complete: function() {
+                    $('.spinner').hide();
+                },
+                error: function(response) {
+                    $('#statusError').text(response.responseJSON.errors);
+                }
+            });
+            // }
         }
     </script>
 @endsection

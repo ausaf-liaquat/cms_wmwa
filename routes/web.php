@@ -54,6 +54,9 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('serviceuser/{id}/edit', [App\Http\Controllers\Admin\DashboardController::class, 'ServiceUserEdit'])->name('serviceuser.edit');
         Route::post('serviceuser/{id}/details/updated', [App\Http\Controllers\Admin\DashboardController::class, 'ServiceUserUpdate'])->name('serviceuser.update');
         Route::get('serviceuser/delete', [App\Http\Controllers\Admin\DashboardController::class, 'ServiceUserDelete'])->name('serviceuser.delete');
+        // send work
+        Route::post('send/workbook', [App\Http\Controllers\Admin\DashboardController::class, 'SendWorkbook'])->name('serviceuser.workbook');
+
 
         // Resource
         Route::get('resources', [App\Http\Controllers\Admin\ResourceController::class, 'Resources'])->name("admin.resources");
@@ -105,8 +108,10 @@ Route::group(['prefix' => 'user'], function () {
         Route::get('account/details', [App\Http\Controllers\User\DashboardController::class, 'AccountDetails'])->name('serviceuser.accountdetails');
         Route::post('account/edit', [App\Http\Controllers\User\DashboardController::class, 'AccountEdit'])->name('serviceuser.accountedit');
     
-    
-     // Resources
+        Route::get('my/workbook', [App\Http\Controllers\User\DashboardController::class, 'Myworkbook'])->name('serviceuser.myworkbook');
+        Route::get('open/workbook', [App\Http\Controllers\Workbook\WorkbookController::class, 'openWorkbook'])->name('serviceuser.workbookopen');
+
+        // Resources
      Route::get('resources', [App\Http\Controllers\User\DashboardController::class, 'Resource'])->name("user.resource");
     });
 });

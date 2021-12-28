@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Practitioner;
+use App\Models\ShareWorkbook;
 use App\Models\User;
 use App\Notifications\WelcomePractitioner;
 use App\Notifications\WelcomeServiceUser;
@@ -22,7 +23,7 @@ class DashboardController extends Controller
         $practitionercount = Practitioner::count();
         return view('Admin.practitioners', compact('practitioners', 'practitionercount'));
     }
-    
+
     public function Resources()
     {
         return view('Admin.resources');
@@ -75,9 +76,9 @@ class DashboardController extends Controller
     }
     public function PractitionerViewAccounts($id)
     {
-       $practitioner_viewaccounts= Practitioner::where('id',$id)->with('users')->first();
+        $practitioner_viewaccounts = Practitioner::where('id', $id)->with('users')->first();
 
-       return response()->json(['practitioner_viewaccounts' => $practitioner_viewaccounts], 200);
+        return response()->json(['practitioner_viewaccounts' => $practitioner_viewaccounts], 200);
 
     }
     // Service User
@@ -128,5 +129,25 @@ class DashboardController extends Controller
     {
         User::find($request->getserviceuser_id)->delete();
         return redirect()->route('admin.serviceuser');
+    }
+
+    public function SendWorkbook(Request $request)
+    {
+
+        $workbook = ShareWorkbook::where('user_id', $request->serviceuser_id)->first();
+
+        if (empty($workbook)) {
+            $shareworkbook = ShareWorkbook::create([
+                'workbook_id' => $request->send_workbook,
+                'topic_id' => $request->workbook_topic,
+                'user_id' => $request->serviceuser_id,
+                'status' => 'inprocess',
+            ]);
+            $shareworkbook->sent_date = now();
+            $shareworkbook->save();
+        }
+
+        return response()->json(200);
+
     }
 }

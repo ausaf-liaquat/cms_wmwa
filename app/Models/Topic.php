@@ -13,4 +13,13 @@ class Topic extends Model
     {
         return $this->belongsTo(Workbook::class, 'workbook_id');
     }
+    /**
+     * The survey questions.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function questions()
+    {
+        return $this->hasMany(Question::class);
+    }
 }

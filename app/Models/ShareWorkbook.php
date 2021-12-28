@@ -9,6 +9,26 @@ class ShareWorkbook extends Model
 {
     use HasFactory;
 
+     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'workbook_id',
+        'topic_id',
+        'user_id',
+        'status',
+        'sent_date',
+        'complete_date'
+    ];
+    protected $dates = [
+        'sent_date',
+        'complete_date',
+        'updated_at',
+        'created_at',
+    ];
+
     public function workbook()
     {
         return $this->belongsTo(Workbook::class, 'workbook_id');

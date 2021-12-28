@@ -22,7 +22,12 @@
         integrity="sha512-iuMkf48pM/TdH5DQkNPLWPLIUsVCncQEpuxgcMq/oDmJepdFcu48Wy4MwXggN9WFb4L6rpXQf5YJE/+OXkM1Lw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    </script><link rel="icon" href="https://www.westmerciawomensaid.org/wp-content/uploads/2019/12/WMWA-150x150.png" sizes="32x32" />
     <style>
+         #workbook_form fieldset:not(:first-of-type) {
+            display: none;
+        }
+
         .swal2-container {
             z-index: {
                 X

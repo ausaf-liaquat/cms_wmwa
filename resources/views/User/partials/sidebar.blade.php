@@ -20,7 +20,7 @@
       </button>
       <div class="collapse" id="accounts-collapse">
         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-          <li><a href="../service-users/my-workbooks.php" class="link-dark rounded text-nowrap">My Workbooks</a></li>
+          <li><a href="{{route('serviceuser.myworkbook')}}" class="link-dark rounded text-nowrap">My Workbooks</a></li>
         </ul>
       </div>
     </li>
