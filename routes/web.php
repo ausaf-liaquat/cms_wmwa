@@ -110,6 +110,8 @@ Route::group(['prefix' => 'user'], function () {
     
         Route::get('my/workbook', [App\Http\Controllers\User\DashboardController::class, 'Myworkbook'])->name('serviceuser.myworkbook');
         Route::get('open/workbook', [App\Http\Controllers\Workbook\WorkbookController::class, 'openWorkbook'])->name('serviceuser.workbookopen');
+        Route::post('store/workbook', [App\Http\Controllers\Workbook\WorkbookController::class, 'storeWorkbook'])->name('workbookopen.store');
+
 
         // Resources
      Route::get('resources', [App\Http\Controllers\User\DashboardController::class, 'Resource'])->name("user.resource");

@@ -58,5 +58,9 @@ class Question extends Model
     {
         return $this->hasMany(Detailquest::class);
     }
+    public function workbookresponses()
+    {
+        return $this->hasMany(WorkbookResponse::class);
+    }
 
 }

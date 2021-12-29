@@ -13,7 +13,7 @@ class Answer extends Model
      *
      * @var array
      */
-    protected $fillable = ['user_id','question_id','workbook_id','answer'];
+    protected $fillable = ['user_id','question_id','workbook_id','answer','detailquest_id'];
     
     public function workbook() {
         return $this->belongsTo(Workbook::class, 'workbook_id');
