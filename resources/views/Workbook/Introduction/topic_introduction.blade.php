@@ -405,7 +405,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="question mb-3">
-                                                    <input type="hidden" name="question" id="dtquestio34" value="34">
+                                                    <input type="hidden" name="question" id="dtquestion34" value="34">
                                                     <span class="question text-right">Anything else?</span>
                                                     <div class="form-floating mb-3">
                                                         <input type="text" class="form-control" id="character2_notes"
@@ -416,8 +416,6 @@
                                             </div>
                                         </div>
                                     </div>
-
-
                                     <a href="#" class="btn btn-save mt-3 float-start">Save/Exit</a>
 
                                     <input type="button"
@@ -654,13 +652,47 @@
             var question7 = $("#question7").val();
             var workbook_id = 1;
             console.log(question7);
+           
 
-            $.ajax({
+                    $.ajax({
                 type: "POST",
                 url: "{{ route('workbookopen.store') }}",
                 data: {
                     question7: question7,
                     workbook_id: workbook_id,
+
+                    detailqs21: $("#dtquestion21").val(),
+                    detailqs22: $("#dtquestion22").val(),
+                    detailqs23: $("#dtquestion23").val(),
+                    detailqs24: $("#dtquestion24").val(),
+                    detailqs25: $("#dtquestion25").val(),
+                    detailqs26: $("#dtquestion26").val(),
+                    detailqs27: $("#dtquestion27").val(),
+
+                    detailqs28: $("#dtquestion28").val(),
+                    detailqs29: $("#dtquestion29").val(),
+                    detailqs30: $("#dtquestion30").val(),
+                    detailqs31: $("#dtquestion31").val(),
+                    detailqs32: $("#dtquestion32").val(),
+                    detailqs33: $("#dtquestion33").val(),
+                    detailqs34: $("#dtquestion34").val(),
+
+                    character1_name: $("#character1_name").val(),
+                    character1_age: $("#character1_age").val(),
+                    character1_name: $("#character1_occupation").val(),
+                    character1_home: $("#character1_home").val(),
+                    character1_personality: $("#character1_personality").val(),
+                    character1_role: $("#character1_role").val(),
+                    character1_notes: $("#character1_notes").val(),
+
+                    character2_name: $("#character2_name").val(),
+                    character2_age: $("#character2_age").val(),
+                    character2_name: $("#character2_occupation").val(),
+                    character2_home: $("#character2_home").val(),
+                    character2_personality: $("#character2_personality").val(),
+                    character2_role: $("#character2_role").val(),
+                    character2_notes: $("#character2_notes").val(),
+
                 },
                 cache: false,
                 success: function(data) {
@@ -670,6 +702,7 @@
                     console.log(data)
                 }
             });
+            
         })
     </script>
 
