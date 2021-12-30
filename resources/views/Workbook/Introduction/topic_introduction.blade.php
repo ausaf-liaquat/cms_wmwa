@@ -424,6 +424,404 @@
 
                                     <input type="button" class="btn btn-primary btn-sm mt-3 mr-2 float-end previous "
                                         style="    margin-right: 5px;" value="Previous" />
+
+
+                                @elseif ($item->option_type == 'topic1_abusetype')
+                                    <h1 class="blue handwritten">Topic 01: What is Abuse?<br><small>Types of Abuse</small>
+                                    </h1>
+
+                                    <div class="content-container m-5">
+                                        <input type="hidden" name="quest" id="question{{ $item->id }}"
+                                            value="{{ $item->id }}">
+
+                                        <div class="row">
+                                            <div class="col-md-4 box-container box-1">
+                                                <h2 class="text-center handwritten blue">Physical</h2>
+                                                <img src="{{ asset('assets/img/physical.png') }}"
+                                                    class="mx-auto d-block mb-3" width="200px">
+                                            </div>
+                                            <div class="col-md-4 box-container box-2">
+                                                <h2 class="text-center handwritten blue">Emotional</h2>>
+                                                <img src="{{ asset('assets/img/emotional.png') }}"
+                                                    class="mx-auto d-block mb-3" width="200px">
+                                            </div>
+                                            <div class="col-md-4 box-container box-1">
+                                                <h2 class="text-center handwritten blue">Sexual</h2>
+                                                <img src="{{ asset('assets/img/sexual.png') }}"
+                                                    class="mx-auto d-block mb-3" width="200px">
+                                            </div>
+                                            <div class="col-md-4 box-container box-2">
+                                                <h2 class="text-center handwritten blue">Financial</h2>
+                                                <img src="{{ asset('assets/img/financial.png') }}"
+                                                    class="mx-auto d-block mb-3" width="200px">
+                                            </div>
+                                            <div class="col-md-4 box-container box-1">
+                                                <h2 class="text-center handwritten blue">Digital</h2>
+                                                <img src="{{ asset('assets/img/digital.png') }}"
+                                                    class="mx-auto d-block mb-3" width="200px">
+                                            </div>
+                                            <div class="col-md-4 box-container box-2 text-center">
+                                                <h2 class="text-center handwritten blue">Remember</h2>
+                                                <div class="p-4">
+                                                    <p><strong>Abuse is NEVER the victim’s fault.</p>
+                                                    <p>Domestic abuse is about POWER and CONTROL.</p>
+                                                    <p>Abuse is NEVER okay</strong></p>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+
+                                    </div>
+
+                                    <a href="#" class="btn btn-save mt-3 float-start">Save/Exit</a>
+
+                                    <input type="button"
+                                        class="btn btn-primary btn-sm mt-3 mr-2 float-end next state{{ $item->id }}"
+                                        value="Next" />
+
+                                    <input type="button" class="btn btn-primary btn-sm mt-3 mr-2 float-end previous "
+                                        style="    margin-right: 5px;" value="Previous" />
+                                @elseif ($item->option_type == 'topic1_circleabuse')
+                                    <h1 class="blue handwritten">Topic 01: What is Abuse?<br><small>Circle of Abuse</small>
+                                    </h1>
+
+                                    <div class="content-container m-5">
+                                        <input type="hidden" name="quest" id="question{{ $item->id }}"
+                                            value="{{ $item->id }}">
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <img src="{{ asset('assets/img/CycleOfAbuse.jpg') }}"
+                                                    class="img-fluid">
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <a href="#" class="btn btn-save mt-3 float-start">Save/Exit</a>
+
+                                    <input type="button"
+                                        class="btn btn-primary btn-sm mt-3 mr-2 float-end next state{{ $item->id }}"
+                                        value="Next" />
+
+                                    <input type="button" class="btn btn-primary btn-sm mt-3 mr-2 float-end previous "
+                                        style="    margin-right: 5px;" value="Previous" />
+                                @elseif ($item->option_type == 'topic1_prepatratortype')
+
+                                    <input type="hidden" name="quest" id="question{{ $item->id }}"
+                                        value="{{ $item->id }}">
+
+                                    <h1 class="blue handwritten">Topic 01: What is Abuse?<br><small>Types of
+                                            Perpetrator</small></h1>
+
+                                    <div class="content-container m-5">
+
+
+                                        <div class="row mb-5">
+                                            <div class="col-md-4 my-5">
+                                                <p class="mb-5">The Power and Control wheel below shows different
+                                                    types of perpetrators of abuse. One perpetrator might fit into one,
+                                                    several, or all of the categories in the wheel.</p>
+                                                <h2 class="mt-5 blue handwritten">Read the statements below, and decide
+                                                    where they fit in the Power and Control circle. What type of perpetrator
+                                                    is it describing? It might fit into more than one section.</h2>
+                                            </div>
+                                            <div class="col-md-7 offset-md-1">
+                                                <img src="{{ asset('assets/img/PowerAndControlWheel.jpg') }}"
+                                                    class="img-fluid">
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-12 mt-5">
+                                                @foreach ($item->WorkbookQuestionniare as $list)
+                                                    <div class="section">
+                                                        <input type="hidden" name="quest"
+                                                            id="dtquestion{{ $list->id }}"
+                                                            value="{{ $list->id }}">
+                                                        <h4 class="blue handwritten">{{ $list->quest_title }}</h4>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                name="checkbox{{ $list->id }}"
+                                                                id="emotional{{ $list->id }}" value="Emotional Abuse">
+                                                            <label class="form-check-label"
+                                                                for="emotional{{ $list->id }}">Emotional
+                                                                Abuse</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input"
+                                                                name="checkbox{{ $list->id }}" type="checkbox"
+                                                                id="usingpower{{ $list->id }}" value="Using Power">
+                                                            <label class="form-check-label"
+                                                                for="usingpower{{ $list->id }}">Using
+                                                                Power</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                name="checkbox{{ $list->id }}"
+                                                                id="bullying{{ $list->id }}" value="Bullying">
+                                                            <label class="form-check-label"
+                                                                for="bullying{{ $list->id }}">Bullying</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                name="checkbox{{ $list->id }}"
+                                                                id="treats{{ $list->id }}" value="Treats">
+                                                            <label class="form-check-label"
+                                                                for="treats{{ $list->id }}">Treats</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                name="checkbox{{ $list->id }}"
+                                                                id="isolation{{ $list->id }}" value="Isolation">
+                                                            <label class="form-check-label"
+                                                                for="isolation{{ $list->id }}">Isolation</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                name="checkbox{{ $list->id }}"
+                                                                id="minimise{{ $list->id }}" value="Minimise">
+                                                            <label class="form-check-label"
+                                                                for="minimise{{ $list->id }}">Minimise</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                name="checkbox{{ $list->id }}"
+                                                                id="sexualabuse{{ $list->id }}" value="Sexual Abuse">
+                                                            <label class="form-check-label"
+                                                                for="sexualabuse{{ $list->id }}">Sexual
+                                                                Abuse</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                name="checkbox{{ $list->id }}"
+                                                                id="peerpressure{{ $list->id }}" value="Peer Pressure">
+                                                            <label class="form-check-label"
+                                                                for="peerpressure{{ $list->id }}">Peer
+                                                                Pressure</label>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+
+                                            </div>
+                                        </div>
+                                        <a href="#" class="btn btn-save mt-3 float-start">Save/Exit</a>
+
+                                        <input type="button"
+                                            class="btn btn-primary btn-sm mt-3 mr-2 float-end next state{{ $item->id }}"
+                                            value="Next" />
+
+                                        <input type="button" class="btn btn-primary btn-sm mt-3 mr-2 float-end previous "
+                                            style="    margin-right: 5px;" value="Previous" />
+                                    </div>
+                                @elseif ($item->option_type == 'topic2_healthyrelationship')
+                                    <div class="content-container m-5 ">
+
+                                        <h1 class="blue handwritten topic-title text-center"><small>Topic
+                                                Two...</small><br>Healthy Relationships</h1>
+
+                                    </div>
+                                    <input type="hidden" name="quest" id="question{{ $item->id }}"
+                                        value="{{ $item->id }}">
+
+                                    <a href="#" class="btn btn-save mt-3 float-start">Save/Exit</a>
+
+                                    <input type="button"
+                                        class="btn btn-primary btn-sm mt-3 mr-2 float-end next state{{ $item->id }}"
+                                        value="Next" />
+
+                                    <input type="button" class="btn btn-primary btn-sm mt-3 mr-2 float-end previous "
+                                        style="    margin-right: 5px;" value="Previous" />
+                                @elseif ($item->option_type == 'topic2_healthyrelationshipquiz')
+                                    <h1 class="blue handwritten">Topic 02: Healthy Relationships<br><small>Quiz</small>
+                                    </h1>
+                                    <input type="hidden" name="quest" id="question{{ $item->id }}"
+                                        value="{{ $item->id }}">
+                                    <div class="content-container m-5">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <h2 class="blue handwritten">Read these statements and decide on if they
+                                                    are true or false.</h2>
+                                            </div>
+                                            <div class="col-md-7 offset-md-1">
+                                                @foreach ($item->WorkbookQuestionniare as $list)
+                                                    <div class="section">
+                                                        <div class="row">
+                                                            <input type="hidden" name="quest"
+                                                                id="dtquestion{{ $list->id }}"
+                                                                value="{{ $list->id }}">
+                                                            <div class="col-md-8">
+                                                                <h4 class="blue handwritten">{{ $list->quest_title }}
+                                                                </h4>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <select class="form-select"
+                                                                    aria-label="Default select example"
+                                                                    id="quiz{{ $list->id }}">
+                                                                    <option value="">True or false?</option>
+                                                                    <option value="True">True</option>
+                                                                    <option value="False">False</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <a href="#" class="btn btn-save mt-3 float-start">Save/Exit</a>
+
+                                    <input type="button"
+                                        class="btn btn-primary btn-sm mt-3 mr-2 float-end next state{{ $item->id }}"
+                                        value="Next" />
+
+                                    <input type="button" class="btn btn-primary btn-sm mt-3 mr-2 float-end previous "
+                                        style="    margin-right: 5px;" value="Previous" />
+                                @elseif ($item->option_type == 'topic2_whathealthyrelationship')
+                                    <h1 class="blue handwritten">Topic 02: Healthy Relationships<br><small>What is a
+                                            healthy relationship?</small></h1>
+
+                                    <div class="content-container m-5">
+                                        <input type="hidden" name="quest" id="question{{ $item->id }}"
+                                            value="{{ $item->id }}">
+
+                                        <div class="row">
+                                            <div class="col-md-4 box-container-1 box-1 text-center">
+                                                <h2 class="blue handwritten">Respect</h2>
+                                            </div>
+                                            <div class="col-md-8 box-container-1 box-1">
+                                                <p class="m-0">Respect each person as an individual. Learn about
+                                                    the other person and value what’s important to them.</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4 box-container-1 box-2 text-center">
+                                                <h2 class="blue handwritten">Trust</h2>
+                                            </div>
+                                            <div class="col-md-8 box-container-1 box-2">
+                                                <p class="m-0">Feel that you can count on, and be there, for
+                                                    each other. Trust is earned over time, and can be lost with a broken
+                                                    promise.</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4 box-container-1 box-1 text-center">
+                                                <h2 class="blue handwritten">Honesty</h2>
+                                            </div>
+                                            <div class="col-md-8 box-container-1 box-1">
+                                                <p class="m-0">Be truthful about thoughts and feelings – your
+                                                    partner wants to know the real you.</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4 box-container-1 box-2 text-center">
+                                                <h2 class="blue handwritten">Communication</h2>
+                                            </div>
+                                            <div class="col-md-8 box-container-1 box-2">
+                                                <p class="m-0">Communicate to show respect, trust, and honesty.
+                                                    It requires listening and sharing thoughts and feelings.</p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <a href="#" class="btn btn-save mt-3 float-start">Save/Exit</a>
+
+                                    <input type="button"
+                                        class="btn btn-primary btn-sm mt-3 mr-2 float-end next state{{ $item->id }}"
+                                        value="Next" />
+
+                                    <input type="button" class="btn btn-primary btn-sm mt-3 mr-2 float-end previous "
+                                        style="    margin-right: 5px;" value="Previous" />
+                                @elseif ($item->option_type == 'topic2_noviolence')
+                                    <h1 class="blue handwritten">Topic 02: Healthy Relationships<br><small>No Violence.
+                                            Everoyne is Equal</small></h1>
+                                    <input type="hidden" name="quest" id="question{{ $item->id }}"
+                                        value="{{ $item->id }}">
+                                    <div class="content-container m-5">
+
+                                        <div class="row">
+                                            <div class="col-md-8 offset-md-2">
+                                                <img src="{{ asset('assets/img/EqualHealthyRelationships.jpg') }}"
+                                                    class="img-fluid">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <a href="#" class="btn btn-save mt-3 float-start">Save/Exit</a>
+
+                                    <input type="button"
+                                        class="btn btn-primary btn-sm mt-3 mr-2 float-end next state{{ $item->id }}"
+                                        value="Next" />
+
+                                    <input type="button" class="btn btn-primary btn-sm mt-3 mr-2 float-end previous "
+                                        style="    margin-right: 5px;" value="Previous" />
+                                @elseif ( $item->option_type == 'topic2_relationshipbehaviour')
+                                    <h1 class="blue handwritten">Topic 02: Healthy Relationships<br><small>Relationshop
+                                            Behaviours - Am I A Warning?</small></h1>
+
+                                    <div class="content-container m-5">
+
+                                        <input type="hidden" name="quest" id="question{{ $item->id }}"
+                                            value="{{ $item->id }}">
+                                        <div class="row mb-5">
+                                            <div class="col-md-4 my-5">
+                                                <p class="mb-5">The statements below describe different
+                                                    relationship behaviours. Decide whether you think they are GREEN
+                                                    (healthy), YELLOW (depends), or RED (a warning sign of unhealthy
+                                                    behaviour or abuse).</p>
+                                            </div>
+                                            <div class="col-md-7 offset-md-1">
+                                                <img src="{{ asset('assets/img/TrafficLights.jpg') }}"
+                                                    class="img-fluid">
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-12 mt-5">
+                                                @foreach ($item->WorkbookQuestionniare as $list)
+                                                    <input type="hidden" name="quest" id="dtquestion{{ $list->id }}"
+                                                        value="{{ $list->id }}">
+                                                    <div id="group1">
+                                                        <div class="section">
+                                                            <h4 class="blue handwritten">{{ $list->quest_title }}</h4>
+                                                            <div class="d-flex">
+                                                                <input type="radio" class="btn-check"
+                                                                    name="radio{{ $list->id }}"
+                                                                    id="option1_1{{ $list->id }}" value="healthy"
+                                                                    autocomplete="off">
+                                                                <label class="btn btn-primary btn-healthy"
+                                                                    for="option1_1{{ $list->id }}">Healthy</label>
+                                                                <input type="radio" class="btn-check"
+                                                                    name="radio{{ $list->id }}"
+                                                                    id="option2_1{{ $list->id }}" value="depends"
+                                                                    autocomplete="off">
+                                                                <label class="btn btn-primary btn-depends"
+                                                                    for="option2_1{{ $list->id }}">Depends</label>
+                                                                <input type="radio" class="btn-check"
+                                                                    name="radio{{ $list->id }}"
+                                                                    id="option3_1{{ $list->id }}" value="warning"
+                                                                    autocomplete="off">
+                                                                <label class="btn btn-primary btn-warn"
+                                                                    for="option3_1{{ $list->id }}">Warning</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <a href="#" class="btn btn-save mt-3 float-start">Save/Exit</a>
+
+                                    <input type="button"
+                                        class="btn btn-primary btn-sm mt-3 mr-2 float-end next state{{ $item->id }}"
+                                        value="Next" />
+
+                                    <input type="button" class="btn btn-primary btn-sm mt-3 mr-2 float-end previous "
+                                        style="    margin-right: 5px;" value="Previous" />
                                 @endif
                             </fieldset>
                         @endforeach
@@ -446,20 +844,20 @@
             var workbook_id = 1;
             console.log(question1);
 
-            // $.ajax({
-            //     type: "POST",
-            //     url: "{{ route('workbookopen.store') }}",
-            //     data: "&question1=" + question1 + "&workbook_id=" +
-            //         workbook_id,
-            //     cache: false,
-            //     success: function(data) {
-            //         console.log(data)
+            $.ajax({
+                type: "POST",
+                url: "{{ route('workbookopen.store') }}",
+                data: "&question1=" + question1 + "&workbook_id=" +
+                    workbook_id,
+                cache: false,
+                success: function(data) {
+                    console.log(data)
 
-            //     },
-            //     error: function(data) {
-            //         console.log(data)
-            //     }
-            // });
+                },
+                error: function(data) {
+                    console.log(data)
+                }
+            });
 
 
         });
@@ -470,20 +868,20 @@
             var workbook_id = 1;
             console.log(question2);
 
-            // $.ajax({
-            //     type: "POST",
-            //     url: "{{ route('workbookopen.store') }}",
-            //     data: "&question2=" + question2 + "&workbook_id=" +
-            //         workbook_id,
-            //     cache: false,
-            //     success: function(data) {
-            //         console.log(data)
+            $.ajax({
+                type: "POST",
+                url: "{{ route('workbookopen.store') }}",
+                data: "&question2=" + question2 + "&workbook_id=" +
+                    workbook_id,
+                cache: false,
+                success: function(data) {
+                    console.log(data)
 
-            //     },
-            //     error: function(data) {
-            //         console.log(data)
-            //     }
-            // });
+                },
+                error: function(data) {
+                    console.log(data)
+                }
+            });
         })
         $('.state3').on('click', function(e) {
 
@@ -652,9 +1050,9 @@
             var question7 = $("#question7").val();
             var workbook_id = 1;
             console.log(question7);
-           
 
-                    $.ajax({
+
+            $.ajax({
                 type: "POST",
                 url: "{{ route('workbookopen.store') }}",
                 data: {
@@ -702,7 +1100,565 @@
                     console.log(data)
                 }
             });
+
+        })
+        $('.state8').on('click', function(e) {
+
+            var question8 = $("#question8").val();
+            var workbook_id = 1;
+            console.log(question8);
+
+
+            $.ajax({
+                type: "POST",
+                url: "{{ route('workbookopen.store') }}",
+                data: {
+                    question8: question8,
+                    workbook_id: workbook_id,
+                },
+                cache: false,
+                success: function(data) {
+                    console.log(data)
+                },
+                error: function(data) {
+                    console.log(data)
+                }
+            });
+
+        })
+        $('.state9').on('click', function(e) {
+
+            var question9 = $("#question9").val();
+            var workbook_id = 1;
+            console.log(question9);
+
+
+            $.ajax({
+                type: "POST",
+                url: "{{ route('workbookopen.store') }}",
+                data: {
+                    question9: question9,
+                    workbook_id: workbook_id,
+                },
+                cache: false,
+                success: function(data) {
+                    console.log(data)
+                },
+                error: function(data) {
+                    console.log(data)
+                }
+            });
+
+        })
+        $('.state10').on('click', function(e) {
+
+            var question10 = $("#question10").val();
+            var workbook_id = 1;
+            console.log(question10);
+            detailqs35 = $("#dtquestion35").val();
+            var checkbox35 = [];
+            var checkbox36 = [];
+            var checkbox37 = [];
+            var checkbox38 = [];
+            var checkbox39 = [];
+            var checkbox40 = [];
+            var checkbox41 = [];
+            var checkbox42 = [];
+            var checkbox43 = [];
+            var checkbox44 = [];
+            var checkbox45 = [];
+            var checkbox46 = [];
+            var checkbox47 = [];
+            var checkbox48 = [];
+            var checkbox49 = [];
+            var checkbox50 = [];
+            var checkbox51 = [];
+            var checkbox52 = [];
+            var checkbox53 = [];
+            var checkbox54 = [];
+            var checkbox55 = [];
+            var checkbox56 = [];
+            var checkbox57 = [];
+            var checkbox58 = [];
+            var checkbox59 = [];
+            $.each($("input[name='checkbox35']:checked"), function() {
+                checkbox35.push($(this).val());
+            });
+            $.each($("input[name='checkbox36']:checked"), function() {
+                checkbox36.push($(this).val());
+            });
+            $.each($("input[name='checkbox37']:checked"), function() {
+                checkbox37.push($(this).val());
+            });
+            $.each($("input[name='checkbox38']:checked"), function() {
+                checkbox38.push($(this).val());
+            });
+            $.each($("input[name='checkbox39']:checked"), function() {
+                checkbox39.push($(this).val());
+            });
+            $.each($("input[name='checkbox40']:checked"), function() {
+                checkbox40.push($(this).val());
+            });
+            $.each($("input[name='checkbox41']:checked"), function() {
+                checkbox41.push($(this).val());
+            });
+            $.each($("input[name='checkbox42']:checked"), function() {
+                checkbox42.push($(this).val());
+            });
+            $.each($("input[name='checkbox43']:checked"), function() {
+                checkbox43.push($(this).val());
+            });
+            $.each($("input[name='checkbox44']:checked"), function() {
+                checkbox44.push($(this).val());
+            });
+            $.each($("input[name='checkbox45']:checked"), function() {
+                checkbox45.push($(this).val());
+            });
+            $.each($("input[name='checkbox46']:checked"), function() {
+                checkbox46.push($(this).val());
+            });
+            $.each($("input[name='checkbox47']:checked"), function() {
+                checkbox47.push($(this).val());
+            });
+            $.each($("input[name='checkbox48']:checked"), function() {
+                checkbox48.push($(this).val());
+            });
+            $.each($("input[name='checkbox49']:checked"), function() {
+                checkbox49.push($(this).val());
+            });
+            $.each($("input[name='checkbox50']:checked"), function() {
+                checkbox50.push($(this).val());
+            });
+            $.each($("input[name='checkbox51']:checked"), function() {
+                checkbox51.push($(this).val());
+            });
+            $.each($("input[name='checkbox52']:checked"), function() {
+                checkbox52.push($(this).val());
+            });
+            $.each($("input[name='checkbox53']:checked"), function() {
+                checkbox53.push($(this).val());
+            });
+            $.each($("input[name='checkbox54']:checked"), function() {
+                checkbox54.push($(this).val());
+            });
+            $.each($("input[name='checkbox55']:checked"), function() {
+                checkbox55.push($(this).val());
+            });
+            $.each($("input[name='checkbox56']:checked"), function() {
+                checkbox56.push($(this).val());
+            });
+            $.each($("input[name='checkbox57']:checked"), function() {
+                checkbox57.push($(this).val());
+            });
+            $.each($("input[name='checkbox58']:checked"), function() {
+                checkbox58.push($(this).val());
+            });
+            $.each($("input[name='checkbox59']:checked"), function() {
+                checkbox59.push($(this).val());
+            });
+
+            $.ajax({
+                type: "POST",
+                url: "{{ route('workbookopen.store') }}",
+                data: {
+                    question10: question10,
+                    workbook_id: workbook_id,
+
+                    detailqs35: $("#dtquestion35").val(),
+                    detailqs36: $("#dtquestion36").val(),
+                    detailqs37: $("#dtquestion37").val(),
+                    detailqs38: $("#dtquestion38").val(),
+                    detailqs39: $("#dtquestion39").val(),
+                    detailqs40: $("#dtquestion40").val(),
+                    detailqs41: $("#dtquestion41").val(),
+                    detailqs42: $("#dtquestion42").val(),
+                    detailqs43: $("#dtquestion43").val(),
+                    detailqs44: $("#dtquestion44").val(),
+                    detailqs45: $("#dtquestion45").val(),
+                    detailqs46: $("#dtquestion46").val(),
+                    detailqs47: $("#dtquestion47").val(),
+                    detailqs48: $("#dtquestion48").val(),
+                    detailqs49: $("#dtquestion49").val(),
+                    detailqs50: $("#dtquestion50").val(),
+                    detailqs51: $("#dtquestion51").val(),
+                    detailqs52: $("#dtquestion52").val(),
+                    detailqs53: $("#dtquestion53").val(),
+                    detailqs54: $("#dtquestion54").val(),
+                    detailqs55: $("#dtquestion55").val(),
+                    detailqs56: $("#dtquestion56").val(),
+                    detailqs57: $("#dtquestion57").val(),
+                    detailqs58: $("#dtquestion58").val(),
+                    detailqs59: $("#dtquestion59").val(),
+
+                    checkbox35: checkbox35,
+                    checkbox36: checkbox36,
+                    checkbox37: checkbox37,
+                    checkbox38: checkbox38,
+                    checkbox39: checkbox39,
+                    checkbox40: checkbox40,
+                    checkbox41: checkbox41,
+                    checkbox42: checkbox42,
+                    checkbox43: checkbox43,
+                    checkbox44: checkbox44,
+                    checkbox45: checkbox45,
+                    checkbox46: checkbox46,
+                    checkbox47: checkbox47,
+                    checkbox48: checkbox48,
+                    checkbox49: checkbox49,
+                    checkbox50: checkbox50,
+                    checkbox51: checkbox51,
+                    checkbox52: checkbox52,
+                    checkbox53: checkbox53,
+                    checkbox54: checkbox54,
+                    checkbox55: checkbox55,
+                    checkbox56: checkbox56,
+                    checkbox57: checkbox57,
+                    checkbox58: checkbox58,
+                    checkbox59: checkbox59,
+                },
+                cache: false,
+                success: function(data) {
+                    console.log(data)
+                },
+                error: function(data) {
+                    console.log(data)
+                }
+            });
+
+        })
+        $('.state11').on('click', function(e) {
+
+            var question11 = $("#question11").val();
+            var workbook_id = 1;
+            console.log(question11);
+
+
+            $.ajax({
+                type: "POST",
+                url: "{{ route('workbookopen.store') }}",
+                data: {
+                    question11: question11,
+                    workbook_id: workbook_id,
+                },
+                cache: false,
+                success: function(data) {
+                    console.log(data)
+                },
+                error: function(data) {
+                    console.log(data)
+                }
+            });
+
+        })
+        $('.state12').on('click', function(e) {
+
+            var question12 = $("#question12").val();
+            var workbook_id = 1;
+            console.log(question12);
+
+            $.ajax({
+                type: "POST",
+                url: "{{ route('workbookopen.store') }}",
+                data: {
+                    question12: question12,
+                    workbook_id: workbook_id,
+
+                    detailqs60: $("#dtquestion60").val(),
+                    detailqs61: $("#dtquestion61").val(),
+                    detailqs62: $("#dtquestion62").val(),
+                    detailqs63: $("#dtquestion63").val(),
+                    detailqs64: $("#dtquestion64").val(),
+                    detailqs65: $("#dtquestion65").val(),
+                    detailqs66: $("#dtquestion66").val(),
+                    detailqs67: $("#dtquestion67").val(),
+                    detailqs68: $("#dtquestion68").val(),
+                    detailqs69: $("#dtquestion69").val(),
+
+                    quiz60: $("#quiz60").val(),
+                    quiz61: $("#quiz61").val(),
+                    quiz62: $("#quiz62").val(),
+                    quiz63: $("#quiz63").val(),
+                    quiz64: $("#quiz64").val(),
+                    quiz65: $("#quiz65").val(),
+                    quiz66: $("#quiz66").val(),
+                    quiz67: $("#quiz67").val(),
+                    quiz68: $("#quiz68").val(),
+                    quiz69: $("#quiz69").val(),
+
+
+
+                },
+                cache: false,
+                success: function(data) {
+                    console.log(data)
+                },
+                error: function(data) {
+                    console.log(data)
+                }
+            });
+        })
+        $('.state13').on('click', function(e) {
+
+            var question13 = $("#question13").val();
+            var workbook_id = 1;
+            console.log(question13);
+
+
+            $.ajax({
+                type: "POST",
+                url: "{{ route('workbookopen.store') }}",
+                data: {
+                    question13: question13,
+                    workbook_id: workbook_id,
+                },
+                cache: false,
+                success: function(data) {
+                    console.log(data)
+                },
+                error: function(data) {
+                    console.log(data)
+                }
+            });
+
+        })
+        $('.state14').on('click', function(e) {
+
+            var question14 = $("#question14").val();
+            var workbook_id = 1;
+            console.log(question14);
+
+
+            $.ajax({
+                type: "POST",
+                url: "{{ route('workbookopen.store') }}",
+                data: {
+                    question14: question14,
+                    workbook_id: workbook_id,
+                },
+                cache: false,
+                success: function(data) {
+                    console.log(data)
+                },
+                error: function(data) {
+                    console.log(data)
+                }
+            });
+
+        })
+        $('.state23').on('click', function(e) {
+
+            var question23 = $("#question23").val();
+            var workbook_id = 1;
+            console.log(question23);
+
+            var cbChecked = document.querySelector('[name="radio70"]:checked')
+
+            if (cbChecked != null) {
+                aa.push(cbChecked.value)
+            }
+            console.log(aa);
+            detailqs70 = $("#dtquestion70").val();
+            var radio70 = [];
+            var radio71 = [];
+            var radio72 = [];
+            var radio73 = [];
+            var radio74 = [];
+            var radio75 = [];
+            var radio76 = [];
+            var radio77 = [];
+            var radio78 = [];
+            var radio79 = [];
+            var radio80 = [];
+            var radio81 = [];
+            var radio82 = [];
+            var radio83 = [];
+            var radio84 = [];
+            var radio85 = [];
+            var radio87 = [];
+            var radio88 = [];
+            var radio99 = [];
+            var radio90 = [];
+            var radio91 = [];
+            var radio92 = [];
+            var radio93 = [];
+            var radio94 = [];
+            var radio95 = [];
+            var radio96 = [];
+            var radio97 = [];
+
+            var cbChecked = document.querySelector('[name="radio70"]:checked')
+            if (cbChecked != null) {
+                radio70.push(cbChecked.value)
+            }
+            var cbChecked1 = document.querySelector('[name="radio71"]:checked')
+            if (cbChecked1 != null) {
+                radio71.push(cbChecked1.value)
+            }
+            var cbChecked2 = document.querySelector('[name="radio72"]:checked')
+            if (cbChecked2 != null) {
+                radio72.push(cbChecked2.value)
+            }
+            var cbChecked3 = document.querySelector('[name="radio73"]:checked')
+            if (cbChecked3 != null) {
+                radio73.push(cbChecked3.value)
+            }
+            var cbChecked4 = document.querySelector('[name="radio74"]:checked')
+            if (cbChecked4 != null) {
+                radio74.push(cbChecked4.value)
+            }
+
+            var cbChecked5 = document.querySelector('[name="radio75"]:checked')
+            if (cbChecked5 != null) {
+                radio75.push(cbChecked5.value)
+            }
+            var cbChecked6 = document.querySelector('[name="radio76"]:checked')
+            if (cbChecked6 != null) {
+                radio76.push(cbChecked6.value)
+            }
+            var cbChecked7 = document.querySelector('[name="radio77"]:checked')
+            if (cbChecked7 != null) {
+                radio77.push(cbChecked7.value)
+            }
+            var cbChecked8 = document.querySelector('[name="radio78"]:checked')
+            if (cbChecked8 != null) {
+                radio78.push(cbChecked8.value)
+            }
+            var cbChecked9 = document.querySelector('[name="radio79"]:checked')
+            if (cbChecked9 != null) {
+                radio79.push(cbChecked9.value)
+            }
+            var cbChecked10 = document.querySelector('[name="radio80"]:checked')
+            if (cbChecked10 != null) {
+                radio80.push(cbChecked10.value)
+            }
+            var cbChecked11 = document.querySelector('[name="radio81"]:checked')
+            if (cbChecked11 != null) {
+                radio81.push(cbChecked11.value)
+            }
+            var cbChecked12 = document.querySelector('[name="radio82"]:checked')
+            if (cbChecked12 != null) {
+                radio82.push(cbChecked12.value)
+            }
+            var cbChecked13 = document.querySelector('[name="radio83"]:checked')
+            if (cbChecked13 != null) {
+                radio83.push(cbChecked13.value)
+            }
+            var cbChecked14 = document.querySelector('[name="radio84"]:checked')
+            if (cbChecked14 != null) {
+                radio84.push(cbChecked14.value)
+            }var cbChecked15 = document.querySelector('[name="radio85"]:checked')
+            if (cbChecked15 != null) {
+                radio85.push(cbChecked15.value)
+            }var cbChecked16 = document.querySelector('[name="radio86"]:checked')
+            if (cbChecked16 != null) {
+                radio86.push(cbChecked16.value)
+            }var cbChecked17 = document.querySelector('[name="radio87"]:checked')
+            if (cbChecked17 != null) {
+                radio87.push(cbChecked17.value)
+            }var cbChecked18 = document.querySelector('[name="radio88"]:checked')
+            if (cbChecked18 != null) {
+                radio88.push(cbChecked18.value)
+            }var cbChecked19 = document.querySelector('[name="radio89"]:checked')
+            if (cbChecked19 != null) {
+                radio89.push(cbChecked19.value)
+            }var cbChecked20 = document.querySelector('[name="radio90"]:checked')
+            if (cbChecked20 != null) {
+                radio90.push(cbChecked20.value)
+            }var cbChecked21 = document.querySelector('[name="radio91"]:checked')
+            if (cbChecked21 != null) {
+                radio91.push(cbChecked21.value)
+            }var cbChecked22 = document.querySelector('[name="radio92"]:checked')
+            if (cbChecked22 != null) {
+                radio92.push(cbChecked22.value)
+            }var cbChecked23 = document.querySelector('[name="radio93"]:checked')
+            if (cbChecked23 != null) {
+                radio93.push(cbChecked23.value)
+            }var cbChecked24 = document.querySelector('[name="radio94"]:checked')
+            if (cbChecked24 != null) {
+                radio94.push(cbChecked24.value)
+            }var cbChecked25 = document.querySelector('[name="radio95"]:checked')
+            if (cbChecked25 != null) {
+                radio95.push(cbChecked25.value)
+            }var cbChecked26 = document.querySelector('[name="radio96"]:checked')
+            if (cbChecked26 != null) {
+                radio96.push(cbChecked26.value)
+            }var cbChecked27 = document.querySelector('[name="radio97"]:checked')
+            if (cbChecked27 != null) {
+                radio97.push(cbChecked27.value)
+            }
+
             
+            // $.ajax({
+            //     type: "POST",
+            //     url: "{{ route('workbookopen.store') }}",
+            //     data: {
+            //         question10: question10,
+            //         workbook_id: workbook_id,
+
+            //         detailqs70: $("#dtquestion70").val(),
+            //         detailqs71: $("#dtquestion71").val(),
+            //         detailqs72: $("#dtquestion72").val(),
+            //         detailqs73: $("#dtquestion73").val(),
+            //         detailqs74: $("#dtquestion74").val(),
+            //         detailqs75: $("#dtquestion75").val(),
+            //         detailqs76: $("#dtquestion76").val(),
+            //         detailqs77: $("#dtquestion77").val(),
+            //         detailqs78: $("#dtquestion78").val(),
+            //         detailqs79: $("#dtquestion79").val(),
+            //         detailqs80: $("#dtquestion80").val(),
+            //         detailqs81: $("#dtquestion81").val(),
+            //         detailqs82: $("#dtquestion82").val(),
+            //         detailqs83: $("#dtquestion83").val(),
+            //         detailqs84: $("#dtquestion84").val(),
+            //         detailqs85: $("#dtquestion85").val(),
+            //         detailqs86: $("#dtquestion86").val(),
+            //         detailqs87: $("#dtquestion87").val(),
+            //         detailqs88: $("#dtquestion88").val(),
+            //         detailqs89: $("#dtquestion89").val(),
+            //         detailqs90: $("#dtquestion90").val(),
+            //         detailqs91: $("#dtquestion91").val(),
+            //         detailqs92: $("#dtquestion92").val(),
+            //         detailqs93: $("#dtquestion93").val(),
+            //         detailqs94: $("#dtquestion94").val(),
+            //         detailqs95: $("#dtquestion95").val(),
+            //         detailqs96: $("#dtquestion96").val(),
+            //         detailqs97: $("#dtquestion97").val(),
+
+            //         checkbox35: checkbox35,
+            //         checkbox36: checkbox36,
+            //         checkbox37: checkbox37,
+            //         checkbox38: checkbox38,
+            //         checkbox39: checkbox39,
+            //         checkbox40: checkbox40,
+            //         checkbox41: checkbox41,
+            //         checkbox42: checkbox42,
+            //         checkbox43: checkbox43,
+            //         checkbox44: checkbox44,
+            //         checkbox45: checkbox45,
+            //         checkbox46: checkbox46,
+            //         checkbox47: checkbox47,
+            //         checkbox48: checkbox48,
+            //         checkbox49: checkbox49,
+            //         checkbox50: checkbox50,
+            //         checkbox51: checkbox51,
+            //         checkbox52: checkbox52,
+            //         checkbox53: checkbox53,
+            //         checkbox54: checkbox54,
+            //         checkbox55: checkbox55,
+            //         checkbox56: checkbox56,
+            //         checkbox57: checkbox57,
+            //         checkbox58: checkbox58,
+            //         checkbox59: checkbox59,
+            //     },
+            //     cache: false,
+            //     success: function(data) {
+            //         console.log(data)
+            //     },
+            //     error: function(data) {
+            //         console.log(data)
+            //     }
+            // });
+
         })
     </script>
 
