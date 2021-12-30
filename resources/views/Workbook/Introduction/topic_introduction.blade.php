@@ -822,6 +822,294 @@
 
                                     <input type="button" class="btn btn-primary btn-sm mt-3 mr-2 float-end previous "
                                         style="    margin-right: 5px;" value="Previous" />
+                                @elseif ($item->option_type == 'topic2_healthyunhealthy')
+                                    <h1 class="blue handwritten">Topic 02: Healthy
+                                        Relationships<br><small>Healthy/Unhealthy</small></h1>
+                                    <input type="hidden" name="quest" id="question{{ $item->id }}"
+                                        value="{{ $item->id }}">
+                                    <div class="content-container m-5">
+
+
+                                        <div class="row mb-5">
+                                            <div class="col-md-12 text-center">
+                                                <p class="mb-5">Below are some examples of healthy and unhealthy
+                                                    behaviours in relationships.</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-8 offset-md-2">
+
+                                                <table class="table workbook">
+                                                    <thead>
+                                                        <tr class="text-center">
+                                                            <th scope="col">
+                                                                <h2 class="m-0 p-0 blue handwritten">Healthy</h2>
+                                                            </th>
+                                                            <th scope="col">
+                                                                <h2 class="m-0 p-0 blue handwritten">Unhealthy</h2>
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                <p>Have privacy – emails, diary, phone calls, texts and
+                                                                    social media are respected as your own</p>
+                                                            </td>
+                                                            <td>
+                                                                <p>Uses alcohol or drugs as an excuse for hurtful behaviour
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>Encourage each other’s interests like sports and hobbies
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <p>Acts controlling or possessive, like they own you</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>Have equal decision-making about what you do in your
+                                                                    relationship</p>
+                                                            </td>
+                                                            <td>
+                                                                <p>Goes back on promises</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>Both people are able to accept when they are wrong and
+                                                                    apologise</p>
+                                                            </td>
+                                                            <td>
+                                                                <p>Makes you feel like you’re going mad, or plays mind games
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>Both people accept responsibility for their actions</p>
+                                                            </td>
+                                                            <td>
+                                                                <p>Makes all the decisions about what the two of you do</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>Solve conflicts without putting each other down, swearing
+                                                                    at each other or making threats</p>
+                                                            </td>
+                                                            <td>
+                                                                <p>Tries to keep you from having a job or doing well in
+                                                                    education</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>Respect each other’s opinions even when they are
+                                                                    different</p>
+                                                            </td>
+                                                            <td>
+                                                                <p>Smashes, throws or destroys things</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>Support each other’s individual life goals, like getting
+                                                                    a job or going to university</p>
+                                                            </td>
+                                                            <td>
+                                                                <p>Embarrasses or humiliates you, or calls you names</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>Trust each other</p>
+                                                            </td>
+                                                            <td>
+                                                                <p>Threatens to hurt you or themselves, or to commit suicide
+                                                                    if you break up with them</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>Communicates about sex if your relationship is sexual</p>
+                                                            </td>
+                                                            <td>
+                                                                <p>Pressures you for sex, or makes sex hurt or feel
+                                                                    humiliating</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>Never feel like you’re being pressured for sex</p>
+                                                            </td>
+                                                            <td>
+                                                                <p>Frequently criticises your friends or family</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>Close friends and family like your partner, and feel
+                                                                    happy about your relationship</p>
+                                                            </td>
+                                                            <td>
+                                                                <p>Yells and shouts at you</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>Always feel safe with each other</p>
+                                                            </td>
+                                                            <td>
+                                                                <p>Makes you feel bad about yourself</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>Enjoy spending time separately with your own friends, and
+                                                                    with each other’s friends</p>
+                                                            </td>
+                                                            <td>
+                                                                <p>Gets extremely jealous or accuses the other of cheating
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>Have fun together more often than not</p>
+                                                            </td>
+                                                            <td>
+                                                                <p>Grabbed, pushed, hit or physical hurt you</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>Always treat each other with respect</p>
+                                                            </td>
+                                                            <td>
+                                                                <p>Tells you how to dress and what to wear</p>
+                                                            </td>
+                                                        </tr>
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="btn btn-save mt-3 float-start">Save/Exit</a>
+
+                                    <input type="button"
+                                        class="btn btn-primary btn-sm mt-3 mr-2 float-end next state{{ $item->id }}"
+                                        value="Next" />
+
+                                    <input type="button" class="btn btn-primary btn-sm mt-3 mr-2 float-end previous "
+                                        style="    margin-right: 5px;" value="Previous" />
+                                @elseif ($item->option_type =='topic2_whyrelationship')
+                                    <h1 class="blue handwritten">Topic 02: Healthy Relationships<br><small>Why have
+                                            relationships?</small></h1>
+                                    <div class="content-container m-5">
+
+
+                                        <div class="row mb-5">
+                                            <div class="col-md-12 text-center">
+                                                <p class="mb-5">Read through the reasons that people might want
+                                                    relationships. Do you agree with any? is it a healthy or unhealthy
+                                                    reason?</p>
+                                            </div>
+                                        </div>
+                                        <input type="hidden" name="quest" id="question{{ $item->id }}"
+                                            value="{{ $item->id }}">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                @foreach ($item->WorkbookQuestionniare as $list)
+                                                    <div class="section">
+                                                        <input type="hidden" name="quest"
+                                                            id="dtquestion{{ $list->id }}"
+                                                            value="{{ $list->id }}">
+                                                        <h2 class="m-0 blue handwritten">{{ $list->quest_title }}</h2>
+                                                        <div class="row">
+                                                            <div class="col-md-3">
+                                                                <p>Do you agree?</p>
+                                                                <div class="form-floating">
+                                                                    <select class="form-select" aria-label=""
+                                                                        id="agree{{ $list->id }}">
+                                                                        <option value="">Yes or No?</option>
+                                                                        <option value="Yes">Yes</option>
+                                                                        <option value="No">No</option>
+                                                                    </select>
+                                                                    <label for="agree">Do you agree?</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-9">
+                                                                <label for="healthy_unhealthy" class="form-label">Is
+                                                                    this healthy of unhealthy?</label>
+                                                                <input type="range" class="form-range"
+                                                                    id="healthy_unhealthy{{ $list->id }}">
+                                                                <div class="d-flex justify-content-between mb-3">
+                                                                    <span class="slider-label">Healthy</span>
+                                                                    <span class="slider-label">Unhealthy</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="btn btn-save mt-3 float-start">Save/Exit</a>
+
+                                    <input type="button"
+                                        class="btn btn-primary btn-sm mt-3 mr-2 float-end next state{{ $item->id }}"
+                                        value="Next" />
+
+                                    <input type="button" class="btn btn-primary btn-sm mt-3 mr-2 float-end previous "
+                                        style="    margin-right: 5px;" value="Previous" />
+                                @elseif ($item->option_type =='topic2_idealrelationship')
+                                    <h1 class="blue handwritten">Topic 02: Healthy Relationships<br><small>My ideal
+                                            relationship</small></h1>
+
+                                    <div class="content-container m-5">
+
+                                        <input type="hidden" name="quest" id="question{{ $item->id }}"
+                                            value="{{ $item->id }}">
+                                        <div class="row mb-5">
+                                            <div class="col-md-12">
+                                                <p class="mb-5">Read through the reasons that people might want
+                                                    relationships. Do you agree with any? is it a healthy or unhealthy
+                                                    reason?</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            @foreach ($item->WorkbookQuestionniare as $list)
+
+                                                <input type="hidden" name="quest" id="dtquestion{{ $list->id }}"
+                                                    value="{{ $list->id }}">
+                                                <div class="col-md-6">
+                                                    <p>{{ $list->quest_title }}</p>
+                                                    <div class="form-floating">
+                                                        <textarea class="form-control" placeholder="Leave a comment here"
+                                                            class="text-center" id="heart{{ $list->id }}"
+                                                            style="height: 500px; background-position: center; background-image: url('https://www.westmerciawomensaid.org/crm/img/heart1.jpg'); background-repeat: no-repeat; background-size: 500px auto;"></textarea>
+                                                        <label for="heart1">Comments</label>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                    <a href="#" class="btn btn-save mt-3 float-start">Save/Exit</a>
+
+                                    <input type="button"
+                                        class="btn btn-primary btn-sm mt-3 mr-2 float-end next state{{ $item->id }}"
+                                        value="Next" />
+
+                                    <input type="button" class="btn btn-primary btn-sm mt-3 mr-2 float-end previous "
+                                        style="    margin-right: 5px;" value="Previous" />
                                 @endif
                             </fieldset>
                         @endforeach
@@ -1451,13 +1739,6 @@
             var workbook_id = 1;
             console.log(question23);
 
-            var cbChecked = document.querySelector('[name="radio70"]:checked')
-
-            if (cbChecked != null) {
-                aa.push(cbChecked.value)
-            }
-            console.log(aa);
-            detailqs70 = $("#dtquestion70").val();
             var radio70 = [];
             var radio71 = [];
             var radio72 = [];
@@ -1474,9 +1755,10 @@
             var radio83 = [];
             var radio84 = [];
             var radio85 = [];
+            var radio86 = [];
             var radio87 = [];
             var radio88 = [];
-            var radio99 = [];
+            var radio89 = [];
             var radio90 = [];
             var radio91 = [];
             var radio92 = [];
@@ -1546,118 +1828,274 @@
             var cbChecked14 = document.querySelector('[name="radio84"]:checked')
             if (cbChecked14 != null) {
                 radio84.push(cbChecked14.value)
-            }var cbChecked15 = document.querySelector('[name="radio85"]:checked')
+            }
+            var cbChecked15 = document.querySelector('[name="radio85"]:checked')
             if (cbChecked15 != null) {
                 radio85.push(cbChecked15.value)
-            }var cbChecked16 = document.querySelector('[name="radio86"]:checked')
+            }
+            var cbChecked16 = document.querySelector('[name="radio86"]:checked')
             if (cbChecked16 != null) {
                 radio86.push(cbChecked16.value)
-            }var cbChecked17 = document.querySelector('[name="radio87"]:checked')
+            }
+            var cbChecked17 = document.querySelector('[name="radio87"]:checked')
             if (cbChecked17 != null) {
                 radio87.push(cbChecked17.value)
-            }var cbChecked18 = document.querySelector('[name="radio88"]:checked')
+            }
+            var cbChecked18 = document.querySelector('[name="radio88"]:checked')
             if (cbChecked18 != null) {
                 radio88.push(cbChecked18.value)
-            }var cbChecked19 = document.querySelector('[name="radio89"]:checked')
+            }
+            var cbChecked19 = document.querySelector('[name="radio89"]:checked')
             if (cbChecked19 != null) {
                 radio89.push(cbChecked19.value)
-            }var cbChecked20 = document.querySelector('[name="radio90"]:checked')
+            }
+            var cbChecked20 = document.querySelector('[name="radio90"]:checked')
             if (cbChecked20 != null) {
                 radio90.push(cbChecked20.value)
-            }var cbChecked21 = document.querySelector('[name="radio91"]:checked')
+            }
+            var cbChecked21 = document.querySelector('[name="radio91"]:checked')
             if (cbChecked21 != null) {
                 radio91.push(cbChecked21.value)
-            }var cbChecked22 = document.querySelector('[name="radio92"]:checked')
+            }
+            var cbChecked22 = document.querySelector('[name="radio92"]:checked')
             if (cbChecked22 != null) {
                 radio92.push(cbChecked22.value)
-            }var cbChecked23 = document.querySelector('[name="radio93"]:checked')
+            }
+            var cbChecked23 = document.querySelector('[name="radio93"]:checked')
             if (cbChecked23 != null) {
                 radio93.push(cbChecked23.value)
-            }var cbChecked24 = document.querySelector('[name="radio94"]:checked')
+            }
+            var cbChecked24 = document.querySelector('[name="radio94"]:checked')
             if (cbChecked24 != null) {
                 radio94.push(cbChecked24.value)
-            }var cbChecked25 = document.querySelector('[name="radio95"]:checked')
+            }
+            var cbChecked25 = document.querySelector('[name="radio95"]:checked')
             if (cbChecked25 != null) {
                 radio95.push(cbChecked25.value)
-            }var cbChecked26 = document.querySelector('[name="radio96"]:checked')
+            }
+            var cbChecked26 = document.querySelector('[name="radio96"]:checked')
             if (cbChecked26 != null) {
                 radio96.push(cbChecked26.value)
-            }var cbChecked27 = document.querySelector('[name="radio97"]:checked')
+            }
+            var cbChecked27 = document.querySelector('[name="radio97"]:checked')
             if (cbChecked27 != null) {
                 radio97.push(cbChecked27.value)
             }
 
-            
-            // $.ajax({
-            //     type: "POST",
-            //     url: "{{ route('workbookopen.store') }}",
-            //     data: {
-            //         question10: question10,
-            //         workbook_id: workbook_id,
 
-            //         detailqs70: $("#dtquestion70").val(),
-            //         detailqs71: $("#dtquestion71").val(),
-            //         detailqs72: $("#dtquestion72").val(),
-            //         detailqs73: $("#dtquestion73").val(),
-            //         detailqs74: $("#dtquestion74").val(),
-            //         detailqs75: $("#dtquestion75").val(),
-            //         detailqs76: $("#dtquestion76").val(),
-            //         detailqs77: $("#dtquestion77").val(),
-            //         detailqs78: $("#dtquestion78").val(),
-            //         detailqs79: $("#dtquestion79").val(),
-            //         detailqs80: $("#dtquestion80").val(),
-            //         detailqs81: $("#dtquestion81").val(),
-            //         detailqs82: $("#dtquestion82").val(),
-            //         detailqs83: $("#dtquestion83").val(),
-            //         detailqs84: $("#dtquestion84").val(),
-            //         detailqs85: $("#dtquestion85").val(),
-            //         detailqs86: $("#dtquestion86").val(),
-            //         detailqs87: $("#dtquestion87").val(),
-            //         detailqs88: $("#dtquestion88").val(),
-            //         detailqs89: $("#dtquestion89").val(),
-            //         detailqs90: $("#dtquestion90").val(),
-            //         detailqs91: $("#dtquestion91").val(),
-            //         detailqs92: $("#dtquestion92").val(),
-            //         detailqs93: $("#dtquestion93").val(),
-            //         detailqs94: $("#dtquestion94").val(),
-            //         detailqs95: $("#dtquestion95").val(),
-            //         detailqs96: $("#dtquestion96").val(),
-            //         detailqs97: $("#dtquestion97").val(),
+            $.ajax({
+                type: "POST",
+                url: "{{ route('workbookopen.store') }}",
+                data: {
+                    question23: question23,
+                    workbook_id: workbook_id,
 
-            //         checkbox35: checkbox35,
-            //         checkbox36: checkbox36,
-            //         checkbox37: checkbox37,
-            //         checkbox38: checkbox38,
-            //         checkbox39: checkbox39,
-            //         checkbox40: checkbox40,
-            //         checkbox41: checkbox41,
-            //         checkbox42: checkbox42,
-            //         checkbox43: checkbox43,
-            //         checkbox44: checkbox44,
-            //         checkbox45: checkbox45,
-            //         checkbox46: checkbox46,
-            //         checkbox47: checkbox47,
-            //         checkbox48: checkbox48,
-            //         checkbox49: checkbox49,
-            //         checkbox50: checkbox50,
-            //         checkbox51: checkbox51,
-            //         checkbox52: checkbox52,
-            //         checkbox53: checkbox53,
-            //         checkbox54: checkbox54,
-            //         checkbox55: checkbox55,
-            //         checkbox56: checkbox56,
-            //         checkbox57: checkbox57,
-            //         checkbox58: checkbox58,
-            //         checkbox59: checkbox59,
-            //     },
-            //     cache: false,
-            //     success: function(data) {
-            //         console.log(data)
-            //     },
-            //     error: function(data) {
-            //         console.log(data)
-            //     }
-            // });
+                    detailqs70: $("#dtquestion70").val(),
+                    detailqs71: $("#dtquestion71").val(),
+                    detailqs72: $("#dtquestion72").val(),
+                    detailqs73: $("#dtquestion73").val(),
+                    detailqs74: $("#dtquestion74").val(),
+                    detailqs75: $("#dtquestion75").val(),
+                    detailqs76: $("#dtquestion76").val(),
+                    detailqs77: $("#dtquestion77").val(),
+                    detailqs78: $("#dtquestion78").val(),
+                    detailqs79: $("#dtquestion79").val(),
+                    detailqs80: $("#dtquestion80").val(),
+                    detailqs81: $("#dtquestion81").val(),
+                    detailqs82: $("#dtquestion82").val(),
+                    detailqs83: $("#dtquestion83").val(),
+                    detailqs84: $("#dtquestion84").val(),
+                    detailqs85: $("#dtquestion85").val(),
+                    detailqs86: $("#dtquestion86").val(),
+                    detailqs87: $("#dtquestion87").val(),
+                    detailqs88: $("#dtquestion88").val(),
+                    detailqs89: $("#dtquestion89").val(),
+                    detailqs90: $("#dtquestion90").val(),
+                    detailqs91: $("#dtquestion91").val(),
+                    detailqs92: $("#dtquestion92").val(),
+                    detailqs93: $("#dtquestion93").val(),
+                    detailqs94: $("#dtquestion94").val(),
+                    detailqs95: $("#dtquestion95").val(),
+                    detailqs96: $("#dtquestion96").val(),
+                    detailqs97: $("#dtquestion97").val(),
+
+                    radio70: radio70,
+                    radio71: radio71,
+                    radio72: radio72,
+                    radio73: radio73,
+                    radio74: radio74,
+                    radio75: radio75,
+                    radio76: radio76,
+                    radio77: radio77,
+                    radio78: radio78,
+                    radio79: radio79,
+                    radio80: radio80,
+                    radio81: radio81,
+                    radio82: radio82,
+                    radio83: radio83,
+                    radio84: radio84,
+                    radio85: radio85,
+                    radio86: radio86,
+                    radio87: radio87,
+                    radio88: radio88,
+                    radio89: radio89,
+                    radio90: radio90,
+                    radio91: radio91,
+                    radio92: radio92,
+                    radio93: radio93,
+                    radio94: radio94,
+                    radio95: radio95,
+                    radio96: radio96,
+                    radio97: radio97,
+                },
+                cache: false,
+                success: function(data) {
+                    console.log(data)
+                },
+                error: function(data) {
+                    console.log(data)
+                }
+            });
+
+        })
+        $('.state24').on('click', function(e) {
+
+            var question24 = $("#question24").val();
+            var workbook_id = 1;
+            console.log(question24);
+
+
+            $.ajax({
+                type: "POST",
+                url: "{{ route('workbookopen.store') }}",
+                data: {
+                    question24: question24,
+                    workbook_id: workbook_id,
+                },
+                cache: false,
+                success: function(data) {
+                    console.log(data)
+                },
+                error: function(data) {
+                    console.log(data)
+                }
+            });
+
+        })
+        $('.state25').on('click', function(e) {
+
+            var question25 = $("#question25").val();
+            var workbook_id = 1;
+            console.log(question25);
+
+            $.ajax({
+                type: "POST",
+                url: "{{ route('workbookopen.store') }}",
+                data: {
+                    question25: question25,
+                    workbook_id: workbook_id,
+
+                    detailqs98: $("#dtquestion98").val(),
+                    detailqs99: $("#dtquestion99").val(),
+                    detailqs100: $("#dtquestion100").val(),
+                    detailqs101: $("#dtquestion101").val(),
+                    detailqs102: $("#dtquestion102").val(),
+                    detailqs103: $("#dtquestion103").val(),
+                    detailqs104: $("#dtquestion104").val(),
+                    detailqs105: $("#dtquestion105").val(),
+                    detailqs106: $("#dtquestion106").val(),
+                    detailqs107: $("#dtquestion107").val(),
+                    detailqs108: $("#dtquestion108").val(),
+                    detailqs109: $("#dtquestion109").val(),
+                    detailqs110: $("#dtquestion110").val(),
+                    detailqs111: $("#dtquestion111").val(),
+                    detailqs112: $("#dtquestion112").val(),
+                    detailqs113: $("#dtquestion113").val(),
+                    detailqs114: $("#dtquestion114").val(),
+                    detailqs115: $("#dtquestion115").val(),
+                    detailqs116: $("#dtquestion116").val(),
+                    detailqs117: $("#dtquestion117").val(),
+                    detailqs118: $("#dtquestion118").val(),
+                    detailqs119: $("#dtquestion119").val(),
+
+                    agree98: $("#agree98").val(),
+                    agree99: $("#agree99").val(),
+                    agree100: $("#agree100").val(),
+                    agree101: $("#agree101").val(),
+                    agree102: $("#agree102").val(),
+                    agree103: $("#agree103").val(),
+                    agree104: $("#agree104").val(),
+                    agree105: $("#agree105").val(),
+                    agree106: $("#agree106").val(),
+                    agree107: $("#agree107").val(),
+                    agree108: $("#agree108").val(),
+                    agree109: $("#agree109").val(),
+                    agree110: $("#agree110").val(),
+                    agree111: $("#agree111").val(),
+                    agree112: $("#agree112").val(),
+                    agree113: $("#agree113").val(),
+                    agree114: $("#agree114").val(),
+                    agree115: $("#agree115").val(),
+                    agree116: $("#agree116").val(),
+                    agree117: $("#agree117").val(),
+                    agree118: $("#agree118").val(),
+                    agree119: $("#agree119").val(),
+
+                    healthy_unhealthy98: $("#healthy_unhealthy98").val(),
+                    healthy_unhealthy99: $("#healthy_unhealthy99").val(),
+                    healthy_unhealthy100: $("#healthy_unhealthy100").val(),
+                    healthy_unhealthy101: $("#healthy_unhealthy101").val(),
+                    healthy_unhealthy102: $("#healthy_unhealthy102").val(),
+                    healthy_unhealthy103: $("#healthy_unhealthy103").val(),
+                    healthy_unhealthy104: $("#healthy_unhealthy104").val(),
+                    healthy_unhealthy105: $("#healthy_unhealthy105").val(),
+                    healthy_unhealthy106: $("#healthy_unhealthy106").val(),
+                    healthy_unhealthy107: $("#healthy_unhealthy107").val(),
+                    healthy_unhealthy108: $("#healthy_unhealthy108").val(),
+                    healthy_unhealthy109: $("#healthy_unhealthy109").val(),
+                    healthy_unhealthy110: $("#healthy_unhealthy110").val(),
+                    healthy_unhealthy111: $("#healthy_unhealthy111").val(),
+                    healthy_unhealthy112: $("#healthy_unhealthy112").val(),
+                    healthy_unhealthy113: $("#healthy_unhealthy113").val(),
+                    healthy_unhealthy114: $("#healthy_unhealthy114").val(),
+                    healthy_unhealthy115: $("#healthy_unhealthy115").val(),
+                    healthy_unhealthy116: $("#healthy_unhealthy116").val(),
+                    healthy_unhealthy117: $("#healthy_unhealthy117").val(),
+                    healthy_unhealthy118: $("#healthy_unhealthy118").val(),
+                    healthy_unhealthy119: $("#healthy_unhealthy119").val(),
+
+                },
+                cache: false,
+                success: function(data) {
+                    console.log(data)
+                },
+                error: function(data) {
+                    console.log(data)
+                }
+            });
+        })
+        $('.state26').on('click', function(e) {
+
+            var question26 = $("#question26").val();
+            var workbook_id = 1;
+            console.log(question26);
+
+
+            $.ajax({
+                type: "POST",
+                url: "{{ route('workbookopen.store') }}",
+                data: {
+                    question26: question26,
+                    workbook_id: workbook_id,
+                },
+                cache: false,
+                success: function(data) {
+                    console.log(data)
+                },
+                error: function(data) {
+                    console.log(data)
+                }
+            });
 
         })
     </script>
