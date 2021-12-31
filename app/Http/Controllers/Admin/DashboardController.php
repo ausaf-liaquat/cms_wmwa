@@ -6,11 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Models\Practitioner;
 use App\Models\ShareWorkbook;
 use App\Models\User;
+use App\Models\WorkbookResponse;
 use App\Notifications\WelcomePractitioner;
 use App\Notifications\WelcomeServiceUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
-
+use Auth;
 class DashboardController extends Controller
 {
     public function index()
@@ -139,7 +140,7 @@ class DashboardController extends Controller
         if (empty($workbook)) {
             $shareworkbook = ShareWorkbook::create([
                 'workbook_id' => $request->send_workbook,
-                'topic_id' => $request->workbook_topic,
+                'topic_id' => 1,
                 'user_id' => $request->serviceuser_id,
                 'status' => 'inprocess',
             ]);
@@ -149,5 +150,10 @@ class DashboardController extends Controller
 
         return response()->json(200);
 
+    }
+    public function viewWorkbook($id)
+    {
+        $workbookresponse = WorkbookResponse::where('user_id', $id)->where('workbook_id', 1)->latest()->first();
+       dd($workbookresponse);
     }
 }

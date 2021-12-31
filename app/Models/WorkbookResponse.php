@@ -24,4 +24,8 @@ class WorkbookResponse extends Model
     {
         return $this->belongsTo(Question::class, 'question_id');
     }
+    public function answers()
+    {
+        return $this->belongsTo(Answer::class,'answer_id');
+    }
 }

@@ -1,6 +1,6 @@
 @extends('User.layouts.master')
 @section('title')
-    Introduction - Workbook
+    Youth Workbook
 @endsection
 @section('content')
     <div class="row">
@@ -10,10 +10,7 @@
                     <h2>Youth Workbook</h2>
                 </div>
                 <div class="col-md-3">
-                    <div class="text-end">01% Completed | Section 1 of 6</div>
-                    {{-- <div class="progress mt-2" style="height: 10px;">
-                              <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
-                          </div> --}}
+                    <div class="text-end"><span class="percent"></span> Completed | Topic 1 to 3 <span id="topic_no"></span></div>
                     <div class="progress my-2" style="height: 10px;">
                         <div class="progress-bar" role="progressbar" style="" aria-valuenow="01" aria-valuemin="0"
                             aria-valuemax="100"></div>
@@ -22,22 +19,16 @@
             </div>
 
             <div class="card float-none workbook">
-
-
                 <div class="card-body">
                     <form id="workbook_form" name="workbook_form" method="post">
                         @foreach ($workbook->questions as $item)
-
-
-                            <fieldset>
-
+                            <fieldset id="{{$item->id}}">
                                 @if ($item->option_type == 'introduction_1')
                                     <input type="hidden" name="question[{{ $item->id }}]"
                                         id="question{{ $item->id }}" value="{{ $item->id }}">
                                     <div class="content-container m-5">
                                         <h1 class="blue handwritten topic-title text-center"><small>Fermentum
                                                 Tellus...</small><br>Youth Workbook</h1>
-
                                     </div>
                                     <a href="#" class="btn btn-save mt-3 float-start">Save/Exit</a>
 
@@ -46,7 +37,7 @@
                                         value="Next" />
 
                                     <input type="button" class="btn btn-primary btn-sm mt-3 mr-2 float-end previous "
-                                        style="    margin-right: 5px;" value="Previous" />
+                                        style="    margin-right: 5px;" value="Back" />
                                 @elseif ($item->option_type=='introduction_groundrules')
 
                                     <input type="hidden" name="question[{{ $item->id }}]"
@@ -84,7 +75,7 @@
                                         value="Next" />
 
                                     <input type="button" class="btn btn-primary btn-sm mt-3 mr-2 float-end previous "
-                                        style="    margin-right: 5px;" value="Previous" />
+                                        style="    margin-right: 5px;" value="Back" />
                                 @elseif ($item->option_type=='introduction_workingagreement')
                                     <input type="hidden" name="question[{{ $item->id }}]"
                                         id="question{{ $item->id }}" value="{{ $item->id }}">
@@ -98,7 +89,7 @@
                                                     id="dtquestion{{ $list->id }}" value="{{ $list->id }}">
                                                 <span class="question text-right">{{ $list->quest_title }}</span>
                                                 <div class="form-floating mb-3">
-                                                    <input type="text" class="form-control"
+                                                    <input type="text" name="sessiondays" class="form-control"
                                                         id="session_days{{ $list->id }}" placeholder="" required>
                                                     <label for="session-days">Your Answer</label>
                                                 </div>
@@ -115,7 +106,7 @@
                                         value="Next" />
 
                                     <input type="button" class="btn btn-primary btn-sm mt-3 mr-2 float-end previous "
-                                        style="    margin-right: 5px;" value="Previous" />
+                                        style="    margin-right: 5px;" value="Back" />
                                 @elseif ($item->option_type == 'introduction_outcomes')
                                     <h1 class="blue handwritten">Outcomes</h1>
 
@@ -286,7 +277,7 @@
                                                     <div class="form-floating mb-3">
                                                         <input type="hidden" name="question" id="dtquestion21" value="21">
                                                         <input type="text" class="form-control" id="character1_name"
-                                                            placeholder="" name="character1_name">
+                                                            placeholder="" name="character1_name" required>
                                                         <label for="character1_name">Name</label>
                                                     </div>
                                                 </div>
@@ -295,7 +286,7 @@
                                                     <span class="question text-right">Age</span>
                                                     <div class="form-floating mb-3">
                                                         <input type="text" class="form-control" id="character1_age"
-                                                            placeholder="" name="character1_age">
+                                                            placeholder="" name="character1_age" required>
                                                         <label for="character1_age">Age</label>
                                                     </div>
                                                 </div>
@@ -304,7 +295,7 @@
                                                     <span class="question text-right">Occupation</span>
                                                     <div class="form-floating mb-3">
                                                         <input type="text" class="form-control"
-                                                            id="character1_occupation" placeholder="">
+                                                            id="character1_occupation" placeholder="" name="occupation" required>
                                                         <label for="character1_occupation">Occupation</label>
                                                     </div>
                                                 </div>
@@ -313,7 +304,7 @@
                                                     <span class="question text-right">Home</span>
                                                     <div class="form-floating mb-3">
                                                         <input type="text" class="form-control" id="character1_home"
-                                                            placeholder="">
+                                                            placeholder="" name="c1home" required>
                                                         <label for="character1_home">Home</label>
                                                     </div>
                                                 </div>
@@ -322,7 +313,7 @@
                                                     <span class="question text-right">Personality</span>
                                                     <div class="form-floating mb-3">
                                                         <input type="text" class="form-control"
-                                                            id="character1_personality" placeholder="">
+                                                            id="character1_personality" name="c1personality" placeholder="" required>
                                                         <label for="character1_personality">Personality</label>
                                                     </div>
                                                 </div>
@@ -330,8 +321,8 @@
                                                     <input type="hidden" name="question" id="dtquestion26" value="26">
                                                     <span class="question text-right">Victim or perpetrator?</span>
                                                     <div class="form-floating mb-3">
-                                                        <input type="text" class="form-control" id="character1_role"
-                                                            placeholder="">
+                                                        <input type="text" class="form-control" name="c1role" id="character1_role"
+                                                            placeholder="" required>
                                                         <label for="character1_role">Role</label>
                                                     </div>
                                                 </div>
@@ -339,8 +330,8 @@
                                                     <input type="hidden" name="question" id="dtquestion27" value="27">
                                                     <span class="question text-right">Anything else?</span>
                                                     <div class="form-floating mb-3">
-                                                        <input type="text" class="form-control" id="character1_notes"
-                                                            placeholder="">
+                                                        <input type="text" name="c1notes" class="form-control" id="character1_notes"
+                                                            placeholder="" required>
                                                         <label for="character1_notes">Additional notes</label>
                                                     </div>
                                                 </div>
@@ -355,7 +346,7 @@
                                                     <div class="form-floating mb-3">
                                                         <input type="hidden" name="question" id="dtquestion28" value="28">
                                                         <input type="text" class="form-control" id="character2_name"
-                                                            placeholder="" name="character2_name">
+                                                            placeholder="" name="character2_name" required>
                                                         <label for="character2_name">Name</label>
                                                     </div>
                                                 </div>
@@ -364,7 +355,7 @@
                                                     <span class="question text-right">Age</span>
                                                     <div class="form-floating mb-3">
                                                         <input type="text" class="form-control" id="character2_age"
-                                                            placeholder="" name="character2_age">
+                                                            placeholder="" name="character2_age" required>
                                                         <label for="character2_age">Age</label>
                                                     </div>
                                                 </div>
@@ -373,7 +364,7 @@
                                                     <span class="question text-right">Occupation</span>
                                                     <div class="form-floating mb-3">
                                                         <input type="text" class="form-control"
-                                                            id="character2_occupation" placeholder="">
+                                                            id="character2_occupation" placeholder="" name="c2occu" required>
                                                         <label for="character2_occupation">Occupation</label>
                                                     </div>
                                                 </div>
@@ -382,7 +373,7 @@
                                                     <span class="question text-right">Home</span>
                                                     <div class="form-floating mb-3">
                                                         <input type="text" class="form-control" id="character2_home"
-                                                            placeholder="">
+                                                            placeholder="" name="c2home" required>
                                                         <label for="character2_home">Home</label>
                                                     </div>
                                                 </div>
@@ -391,7 +382,7 @@
                                                     <span class="question text-right">Personality</span>
                                                     <div class="form-floating mb-3">
                                                         <input type="text" class="form-control"
-                                                            id="character2_personality" placeholder="">
+                                                            id="character2_personality" placeholder="" name="c2personality" required>
                                                         <label for="character2_personality">Personality</label>
                                                     </div>
                                                 </div>
@@ -400,7 +391,7 @@
                                                     <span class="question text-right">Victim or perpetrator?</span>
                                                     <div class="form-floating mb-3">
                                                         <input type="text" class="form-control" id="character2_role"
-                                                            placeholder="">
+                                                            placeholder="" name="c2role" required>
                                                         <label for="character2_role">Role</label>
                                                     </div>
                                                 </div>
@@ -409,7 +400,7 @@
                                                     <span class="question text-right">Anything else?</span>
                                                     <div class="form-floating mb-3">
                                                         <input type="text" class="form-control" id="character2_notes"
-                                                            placeholder="">
+                                                            placeholder="" name="c2notes" required>
                                                         <label for="character2_notes">Additional notes</label>
                                                     </div>
                                                 </div>
@@ -610,7 +601,7 @@
 
                                         <input type="button"
                                             class="btn btn-primary btn-sm mt-3 mr-2 float-end next state{{ $item->id }}"
-                                            value="Next" />
+                                            value="Topic 2" />
 
                                         <input type="button" class="btn btn-primary btn-sm mt-3 mr-2 float-end previous "
                                             style="    margin-right: 5px;" value="Previous" />
@@ -757,7 +748,7 @@
 
                                     <input type="button" class="btn btn-primary btn-sm mt-3 mr-2 float-end previous "
                                         style="    margin-right: 5px;" value="Previous" />
-                                @elseif ( $item->option_type == 'topic2_relationshipbehaviour')
+                                @elseif ($item->option_type == 'topic2_relationshipbehaviour')
                                     <h1 class="blue handwritten">Topic 02: Healthy Relationships<br><small>Relationshop
                                             Behaviours - Am I A Warning?</small></h1>
 
@@ -1110,9 +1101,191 @@
 
                                     <input type="button" class="btn btn-primary btn-sm mt-3 mr-2 float-end previous "
                                         style="    margin-right: 5px;" value="Previous" />
+                                
+
+
+                                    
+                                @elseif ($item->option_type =='topic2_gettinghelp')
+                                    <h1 class="blue handwritten">Topic 02: Healthy Relationships<br><small>Getting Help</small></h1>
+                            
+                                    <div class="content-container m-5">
+                                        <input type="hidden" name="quest" id="question{{ $item->id }}"
+                                            value="{{ $item->id }}">
+                                    
+                                        <div class="row mb-5">
+                                            <div class="col-md-12">
+                                                <div class="help">
+                                                    <p>If you think you may have been, or are currently, in an unhealthy relationship, you are not alone.</p>
+                                                    <p>It’s important to remember that you have done nothing wrong, and it is not your fault.</p>
+                                                    <p>It is also important to get the right support and help, to make sure that you are okay, safe and that the abuse does not continue. </p>
+                                                    <p>Who could you talk to for help and support? It could be a trusted friend, family member, teacher or youth worker. If you are in immediate danger, you should call the police on 999.</p>
+                                                    <p>There are also organisations that can help and offer support if you are worried about your own relationship, or the relationship of someone you know:</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="row text-center">
+                                            <div class="col-md-3">
+                                                <img src="{{asset('assets/img/childline.png')}}" class="img-fluid img-logo">
+                                                <h4 class="blue handwritten mb-4">Childline</h4>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <img src="{{asset('assets/img/nspcc.jpg')}}" class="img-fluid img-logo">
+                                                <h4 class="blue handwritten mb-4">NSPCC</h4>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <img src="{{asset('assets/img/thehideout.jpeg')}}" class="img-fluid img-logo">
+                                                <h4 class="blue handwritten mb-4">The Hideout</h4>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <img src="{{asset('assets/img/loveisrespect.jpeg')}}" class="img-fluid img-logo">
+                                                <h4 class="blue handwritten mb-4">Love is Respect</h4>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <img src="{{asset('assets/img/thinkyouknow.png')}}" class="img-fluid img-logo">
+                                                <h4 class="blue handwritten mb-4">Think U Know</h4>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <img src="{{asset('assets/img/zipit.png')}}" class="img-fluid img-logo">
+                                                <h4 class="blue handwritten mb-4">Zipit</h4>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <img src="{{asset('assets/img/themix.png')}}" class="img-fluid img-logo">
+                                                <h4 class="blue handwritten mb-4">The Mix</h4>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <img src="{{asset('assets/img/galop.jpeg')}}" class="img-fluid img-logo">
+                                                <h4 class="blue handwritten mb-4">Galop (LGBT+)</h4>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <img src="{{asset('assets/img/hollieguard.jpeg')}}" class="img-fluid img-logo">
+                                                <h4 class="blue handwritten mb-4">Hollieguard</h4>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <img src="{{asset('assets/img/loverespect.jpg')}}" class="img-fluid img-logo">
+                                                <h4 class="blue handwritten mb-4">Love Respoect</h4>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <img src="{{asset('assets/img/disrespectnobody.png')}}" class="img-fluid img-logo">
+                                                <h4 class="blue handwritten mb-4">Disrespect Nobody</h4>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <img src="{{asset('assets/img/shout.png')}}" class="img-fluid img-logo">
+                                                <h4 class="blue handwritten mb-4">Shout</h4>
+                                            </div>
+                                        </div> 
+                                    </div> 
+                                    
+                                    <a href="#" class="btn btn-save mt-3 float-start">Save/Exit</a>
+
+                                    <input type="button"
+                                        class="btn btn-primary btn-sm mt-3 mr-2 float-end next state{{ $item->id }}"
+                                        value="Topic 3" />
+
+                                    <input type="button" class="btn btn-primary btn-sm mt-3 mr-2 float-end previous "
+                                        style="    margin-right: 5px;" value="Previous" />
+                                
+
+                                @elseif ($item->option_type == 'topic3_influences')
+                                    <div class="content-container m-5 ">
+                                        <input type="hidden" name="quest" id="question{{ $item->id }}"
+                                        value="{{ $item->id }}">
+                                        <h1 class="blue handwritten topic-title text-center"><small>Topic Three...</small><br>Influences</h1>  
+                                    
+                                    </div>
+                                    <a href="#" class="btn btn-save mt-3 float-start">Save/Exit</a>
+
+                                    <input type="button"
+                                        class="btn btn-primary btn-sm mt-3 mr-2 float-end next state{{ $item->id }}"
+                                        value="Next" />
+
+                                    <input type="button" class="btn btn-primary btn-sm mt-3 mr-2 float-end previous "
+                                        style="    margin-right: 5px;" value="Previous" /> 
+                                @elseif ($item->option_type=='topic3_rolemodels')
+                                    <h1 class="blue handwritten">Topic 03: Influences<br><small>Relationship Role Models</small></h1>
+                                    <input type="hidden" name="quest" id="question{{ $item->id }}"
+                                    value="{{ $item->id }}">
+                                    <div class="content-container m-5">
+                                        
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <h2 class="blue handwritten">We are influenced by the world around us; our beliefs, thoughts and ideas are shaped by our upbringing, our culture, and our experiences – including our ideas about relationships.</h2>
+                                            </div>
+                                            <div class="col-md-7 offset-md-1">
+                                                @foreach ($item->WorkbookQuestionniare as $list)
+                                                     <p>{{$list->quest_title}}</p>
+
+                                                     <input type="hidden" name="quest" id="dtquestion{{ $list->id }}"
+                                                     value="{{ $list->id }}">
+                                                <div class="form-floating">
+                                                    <textarea class="form-control" placeholder="Leave a comment here" id="comment{{$list->id}}" style="height: 500px;"></textarea>
+                                                    <label for="comment{{$list->id}}">Comments</label>
+                                                </div>
+                                                @endforeach
+                                               
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <a href="#" class="btn btn-save mt-3 float-start">Save/Exit</a>
+
+                                    <input type="button"
+                                        class="btn btn-primary btn-sm mt-3 mr-2 float-end next state{{ $item->id }}"
+                                        value="Next" />
+                                        @elseif ($item->option_type=='topic3_positiverolemodels')
+                                        <h1 class="blue handwritten">Topic 03: Influences<br><small>Positive Role Models</small></h1>
+                                        <input type="hidden" name="quest" id="question{{ $item->id }}"
+                                        value="{{ $item->id }}">
+                                        <div class="content-container m-5">
+                                            
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <h2 class="blue handwritten">Positive role models are people we look up to, who have values and qualities that are important to us. For example, a friend with a positive attitude, or a family member who treats everyone with kindness.</h2>
+                                                </div>
+                                                <div class="col-md-7 offset-md-1">
+                                                    @foreach ($item->WorkbookQuestionniare as $list)
+                                                         <p>{{$list->quest_title}}</p>
+    
+                                                         <input type="hidden" name="quest" id="dtquestion{{ $list->id }}"
+                                                         value="{{ $list->id }}">
+                                                    <div class="form-floating">
+                                                        <textarea class="form-control" placeholder="Leave a comment here" id="comment{{$list->id}}" style="height: 500px;"></textarea>
+                                                        <label for="comment{{$list->id}}">Comments</label>
+                                                    </div>
+                                                    @endforeach
+                                                   
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                        <a href="#" class="btn btn-save mt-3 float-start">Save/Exit</a>
+    
+                                        <input type="button"
+                                            class="btn btn-primary btn-sm mt-3 mr-2 float-end next state{{ $item->id }}"
+                                            value="Next" />
                                 @endif
                             </fieldset>
                         @endforeach
+                                <fieldset>
+                                    <div class="form-group">
+                                        <div class="spinner">
+                                            <div class="bounce1"></div>
+                                            <div class="bounce2"></div>
+                                            <div class="bounce3"></div>
+                                        </div>
+                                        <p>
+                                            All finished!
+                                            <br>
+                                            Please press Submit/Continue to ensure your responses are submitted
+                                        </p>
+                                        <h4 style="text-align: center">Thank You</h4>
+                                        <img src="{{ asset('assets/img/imeasure.png') }}" alt=""
+                                            style="display: block; margin-left: auto;margin-right: auto;" width="200">
+                                        <p style="text-align: center">Thank you for completing this workbook!</p>
+            
+                                    </div>
+                                    <input type="button" class="btn btn-primary btn-sm finish{{$item->id}}" name="submit" value="Submit" />
+                                </fieldset>
                     </form>
                 </div>
             </div>
@@ -1121,7 +1294,7 @@
 @endsection
 @section('extrajs')
 
-    <script>
+    {{-- <script>
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -2087,6 +2260,12 @@
                 data: {
                     question26: question26,
                     workbook_id: workbook_id,
+
+                    detailqs120: $("#dtquestion120").val(),
+                    detailqs121: $("#dtquestion121").val(),
+
+                    heart120: $("#heart120").val(),
+                    heart121: $("#heart121").val(),
                 },
                 cache: false,
                 success: function(data) {
@@ -2098,27 +2277,137 @@
             });
 
         })
-    </script>
+        $('.state27').on('click', function(e) {
+
+            var question27 = $("#question27").val();
+            var workbook_id = 1;
+            console.log(question27);
+
+
+            $.ajax({
+                type: "POST",
+                url: "{{ route('workbookopen.store') }}",
+                data: {
+                    question27: question27,
+                    workbook_id: workbook_id,
+
+                    detailqs120: $("#dtquestion120").val(),
+                    detailqs121: $("#dtquestion121").val(),
+
+                    heart120: $("#heart120").val(),
+                    heart121: $("#heart121").val(),
+                },
+                cache: false,
+                success: function(data) {
+                    console.log(data)
+                },
+                error: function(data) {
+                    console.log(data)
+                }
+            });
+
+        })
+        $('.state28').on('click', function(e) {
+
+            var question28 = $("#question28").val();
+            var workbook_id = 1;
+            console.log(question28);
+
+
+            $.ajax({
+                type: "POST",
+                url: "{{ route('workbookopen.store') }}",
+                data: {
+                    question28: question28,
+                    workbook_id: workbook_id,
+
+                    detailqs120: $("#dtquestion120").val(),
+                    detailqs121: $("#dtquestion121").val(),
+
+                    heart120: $("#heart120").val(),
+                    heart121: $("#heart121").val(),
+                },
+                cache: false,
+                success: function(data) {
+                    console.log(data)
+                },
+                error: function(data) {
+                    console.log(data)
+                }
+            });
+
+        })
+        $('.state29').on('click', function(e) {
+
+            var question29 = $("#question29").val();
+            var workbook_id = 1;
+            console.log(question29);
+
+
+            $.ajax({
+                type: "POST",
+                url: "{{ route('workbookopen.store') }}",
+                data: {
+                    question29: question29,
+                    workbook_id: workbook_id,
+
+                    detailqs122: $("#dtquestion122").val(),
+                    
+                    comment122: $("#comment122").val(),
+                   
+                },
+                cache: false,
+                success: function(data) {
+                    console.log(data)
+                },
+                error: function(data) {
+                    console.log(data)
+                }
+            });
+
+        })
+        $('.state30').on('click', function(e) {
+
+            var question30 = $("#question30").val();
+            var workbook_id = 1;
+            console.log(question30);
+
+
+            $.ajax({
+                type: "POST",
+                url: "{{ route('workbookopen.store') }}",
+                data: {
+                    question30: question30,
+                    workbook_id: workbook_id,
+
+                    detailqs123: $("#dtquestion123").val(),
+                    
+                    comment123: $("#comment123").val(),
+                
+                },
+                cache: false,
+                success: function(data) {
+                    console.log(data)
+                },
+                error: function(data) {
+                    console.log(data)
+                }
+            });
+
+        })
+    </script> --}}
 
     <script>
+       
+      
         $(document).ready(function() {
             var current = 1,
-                current_step, next_step, steps;
-
-
+           
             steps = $("fieldset").length;
             $(".next").click(function() {
 
                 var form = $("#workbook_form");
-                form.validate({
-
-                    errorPlacement: function(error, element) {
-                        // if (element.is(":radio")) {
-                        error.appendTo('.err');
-
-                        // }
-                    }
-                });
+                form.validate();
                 if (form.valid() == true) {
                     // $('.timer').countimer('start');
                     current_step = $(this).parent();
@@ -2129,12 +2418,13 @@
                 }
             });
 
-
+           
             $(".previous").click(function() {
                 current_step = $(this).parent();
                 next_step = $(this).parent().prev();
                 next_step.show();
                 current_step.hide();
+                
                 setProgressBar(--current);
             })
             setProgressBar(current);
@@ -2145,6 +2435,7 @@
                 $(".progress-bar")
                     .css("width", percent + "%");
                 $(".percent").html(percent + "%");
+                
             }
 
         });

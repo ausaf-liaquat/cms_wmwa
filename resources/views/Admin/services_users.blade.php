@@ -30,7 +30,7 @@
                             <td>{{ $item->email }}</td>
                             <td>{{ $item->category }}</td>
                             <td>{{ $item->practitioner->name }}</td>
-                            <td><a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#accounts">View</a> <a
+                            <td><a class="btn btn-primary" href="{{route('view.workbook',['id'=>$item->id])}}">View</a> <a
                                     class="btn btn-primary" onclick='sendworkbook(event.target)' data-bs-toggle="modal"
                                     data-sendid="{{ $item->id }}" data-bs-target="#send">Send</a></td>
                             <td><a class="btn btn-secondary mr-1" data-bs-toggle="modal" data-id="{{ $item->id }}"
@@ -261,12 +261,12 @@
                             </select>
                             <label for="send_workbook">Workbook</label>
                         </div>
-                        <div class="form-floating mb-3">
+                        {{-- <div class="form-floating mb-3">
                             <select class="form-select" id="workbook_topic" aria-label="workbook_topic">
                                 <option value="1" selected> Introduction</option>
                             </select>
                             <label for="workbook_topic">Topic</label>
-                        </div>
+                        </div> --}}
                     </form>
                 </div>
                 <div class="modal-footer">

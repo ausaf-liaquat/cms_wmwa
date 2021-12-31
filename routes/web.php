@@ -65,6 +65,9 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('resources/update', [App\Http\Controllers\Admin\ResourceController::class, 'ResourceUpdate'])->name("resource.update");
         Route::get('resources/delete', [App\Http\Controllers\Admin\ResourceController::class, 'ResourceDelete'])->name('resource.delete');
         Route::get('resources/{id}/download', [App\Http\Controllers\Admin\ResourceController::class, 'ResourceDownload'])->name('resource.download');
+    
+        // Workbook
+        Route::get('view/workbook/{id}', [App\Http\Controllers\Admin\DashboardController::class, 'ViewWorkbook'])->name('view.workbook');
     });
 });
 
@@ -115,6 +118,7 @@ Route::group(['prefix' => 'user'], function () {
 
         // Resources
      Route::get('resources', [App\Http\Controllers\User\DashboardController::class, 'Resource'])->name("user.resource");
+     
     });
 });
 require __DIR__ . '/auth.php';
