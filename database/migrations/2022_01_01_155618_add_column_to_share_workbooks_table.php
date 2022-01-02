@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddColumnToAnswersTable extends Migration
+class AddColumnToShareWorkbooksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class AddColumnToAnswersTable extends Migration
      */
     public function up()
     {
-        Schema::table('answers', function (Blueprint $table) {
-            $table->unsignedBigInteger('detailquest_id')->nullable();
-            $table->foreign('detailquest_id')->references('id')->on('detailquests')->onUpdate('cascade')->onDelete('cascade');
+        Schema::table('share_workbooks', function (Blueprint $table) {
+            $table->string('practitioner_notes')->nullable();
         });
     }
 
@@ -26,7 +25,7 @@ class AddColumnToAnswersTable extends Migration
      */
     public function down()
     {
-        Schema::table('answers', function (Blueprint $table) {
+        Schema::table('share_workbooks', function (Blueprint $table) {
             //
         });
     }

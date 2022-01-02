@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Workbook;
 
 use App\Http\Controllers\Controller;
 use App\Models\Answer;
+use App\Models\Topic;
 use App\Models\Workbook;
 use App\Models\WorkbookResponse;
 use Illuminate\Http\Request;
@@ -11,21 +12,33 @@ use Illuminate\Support\Facades\Auth;
 
 class WorkbookController extends Controller
 {
-    public function openWorkbook()
+    public function openWorkbook($id)
     {
 
         $workbookresponse = WorkbookResponse::where('user_id', Auth::user()->id)->where('workbook_id', 1)->latest()->first();
         
-        if (empty($workbookresponse)) {
-            $workbook = Workbook::where('id', 1)->with('questions')->first();
-            return view('Workbook.Introduction.topic_introduction', compact('workbook'));
-        } else {
-            $workbook = Workbook::where('id', 1)->with('questions', function ($q) use ($workbookresponse) {
-                $q->where('id', '>', $workbookresponse->question_id);
-            })->first();
+        // if (empty($workbookresponse)) {
 
-            return view('Workbook.Introduction.topic_introduction', compact('workbook'));
-        }
+            if ($id==1) {
+            $topics = Topic::where('id', $id)->with('questions')->first();
+
+            return view('Workbook.topic_introduction', compact('topics'));
+            } elseif ($id==2) {
+                $topics = Topic::where('id', $id)->with('questions')->first();
+
+                return view('Workbook.topic_introduction', compact('topics'));
+            } {
+                # code...
+            }
+            
+            
+        // } else {
+        //     $workbook = Workbook::where('id', 1)->with('questions', function ($q) use ($workbookresponse) {
+        //         $q->where('id', '>', $workbookresponse->question_id);
+        //     })->first();
+
+        //     return view('Workbook.Introduction.topic_introduction', compact('workbook'));
+        // }
 
     }
     public function storeWorkbook(Request $request)
@@ -56,192 +69,192 @@ class WorkbookController extends Controller
 
             $d = array();
 
-            foreach ($detailqs as $value) {
-                if ($value == 1) {
+            // foreach ($detailqs as $value) {
+            //     if ($value == 1) {
 
-                    $answers = Answer::create([
-                        'question_id' => $request->question3,
-                        'detailquest_id' => $value,
-                        'answer' => $request->dtanswer1,
-                        'workbook_id' => $request->workbook_id,
-                    ]);
+            //         $answers = Answer::create([
+            //             'question_id' => $request->question3,
+            //             'detailquest_id' => $value,
+            //             'answer' => $request->dtanswer1,
+            //             'workbook_id' => $request->workbook_id,
+            //         ]);
 
-                    $WorkbookResponse = WorkbookResponse::create([
-                        'workbook_id' => $request->workbook_id,
-                        'user_id' => Auth::user()->id,
-                        'question_id' => $request->question3,
-                        'detailquest_id' => $value,
-                        'answer_id' => $answers->id,
-                        'status' => 'completed',
-                        'complete_date' => now(),
-                    ]);
+            //         $WorkbookResponse = WorkbookResponse::create([
+            //             'workbook_id' => $request->workbook_id,
+            //             'user_id' => Auth::user()->id,
+            //             'question_id' => $request->question3,
+            //             'detailquest_id' => $value,
+            //             'answer_id' => $answers->id,
+            //             'status' => 'completed',
+            //             'complete_date' => now(),
+            //         ]);
 
-                } elseif ($value == 2) {
-                    $answers = Answer::create([
-                        'question_id' => $request->question3,
-                        'detailquest_id' => $value,
-                        'answer' => $request->dtanswer2,
-                        'workbook_id' => $request->workbook_id,
-                    ]);
-                    $WorkbookResponse = WorkbookResponse::create([
-                        'workbook_id' => $request->workbook_id,
-                        'user_id' => Auth::user()->id,
-                        'question_id' => $request->question3,
-                        'detailquest_id' => $value,
-                        'answer_id' => $answers->id,
-                        'status' => 'completed',
-                        'complete_date' => now(),
-                    ]);
+            //     } elseif ($value == 2) {
+            //         $answers = Answer::create([
+            //             'question_id' => $request->question3,
+            //             'detailquest_id' => $value,
+            //             'answer' => $request->dtanswer2,
+            //             'workbook_id' => $request->workbook_id,
+            //         ]);
+            //         $WorkbookResponse = WorkbookResponse::create([
+            //             'workbook_id' => $request->workbook_id,
+            //             'user_id' => Auth::user()->id,
+            //             'question_id' => $request->question3,
+            //             'detailquest_id' => $value,
+            //             'answer_id' => $answers->id,
+            //             'status' => 'completed',
+            //             'complete_date' => now(),
+            //         ]);
 
-                } elseif ($value == 3) {
-                    $answers = Answer::create([
-                        'question_id' => $request->question3,
-                        'detailquest_id' => $value,
-                        'answer' => $request->dtanswer3,
-                        'workbook_id' => $request->workbook_id,
-                    ]);
-                    $WorkbookResponse = WorkbookResponse::create([
-                        'workbook_id' => $request->workbook_id,
-                        'user_id' => Auth::user()->id,
-                        'question_id' => $request->question3,
-                        'detailquest_id' => $value,
-                        'answer_id' => $answers->id,
-                        'status' => 'completed',
-                        'complete_date' => now(),
-                    ]);
+            //     } elseif ($value == 3) {
+            //         $answers = Answer::create([
+            //             'question_id' => $request->question3,
+            //             'detailquest_id' => $value,
+            //             'answer' => $request->dtanswer3,
+            //             'workbook_id' => $request->workbook_id,
+            //         ]);
+            //         $WorkbookResponse = WorkbookResponse::create([
+            //             'workbook_id' => $request->workbook_id,
+            //             'user_id' => Auth::user()->id,
+            //             'question_id' => $request->question3,
+            //             'detailquest_id' => $value,
+            //             'answer_id' => $answers->id,
+            //             'status' => 'completed',
+            //             'complete_date' => now(),
+            //         ]);
 
-                } elseif ($value == 4) {
-                    $answers = Answer::create([
-                        'question_id' => $request->question3,
-                        'detailquest_id' => $value,
-                        'answer' => $request->dtanswer4,
-                        'workbook_id' => $request->workbook_id,
-                    ]);
-                    $WorkbookResponse = WorkbookResponse::create([
-                        'workbook_id' => $request->workbook_id,
-                        'user_id' => Auth::user()->id,
-                        'question_id' => $request->question3,
-                        'detailquest_id' => $value,
-                        'answer_id' => $answers->id,
-                        'status' => 'completed',
-                        'complete_date' => now(),
-                    ]);
-                } elseif ($value == 5) {
-                    $answers = Answer::create([
-                        'question_id' => $request->question3,
-                        'detailquest_id' => $value,
-                        'answer' => $request->dtanswer5,
-                        'workbook_id' => $request->workbook_id,
-                    ]);
-                    $WorkbookResponse = WorkbookResponse::create([
-                        'workbook_id' => $request->workbook_id,
-                        'user_id' => Auth::user()->id,
-                        'question_id' => $request->question3,
-                        'detailquest_id' => $value,
-                        'answer_id' => $answers->id,
-                        'status' => 'completed',
-                        'complete_date' => now(),
-                    ]);
-                } elseif ($value == 6) {
-                    $answers = Answer::create([
-                        'question_id' => $request->question3,
-                        'detailquest_id' => $value,
-                        'answer' => $request->dtanswer6,
-                        'workbook_id' => $request->workbook_id,
-                    ]);
-                    $WorkbookResponse = WorkbookResponse::create([
-                        'workbook_id' => $request->workbook_id,
-                        'user_id' => Auth::user()->id,
-                        'question_id' => $request->question3,
-                        'detailquest_id' => $value,
-                        'answer_id' => $answers->id,
-                        'status' => 'completed',
-                        'complete_date' => now(),
-                    ]);
-                } elseif ($value == 7) {
-                    $answers = Answer::create([
-                        'question_id' => $request->question3,
-                        'detailquest_id' => $value,
-                        'answer' => $request->dtanswer7,
-                        'workbook_id' => $request->workbook_id,
-                    ]);
-                    $WorkbookResponse = WorkbookResponse::create([
-                        'workbook_id' => $request->workbook_id,
-                        'user_id' => Auth::user()->id,
-                        'question_id' => $request->question3,
-                        'detailquest_id' => $value,
-                        'answer_id' => $answers->id,
-                        'status' => 'completed',
-                        'complete_date' => now(),
-                    ]);
-                } elseif ($value == 8) {
-                    $answers = Answer::create([
-                        'question_id' => $request->question3,
-                        'detailquest_id' => $value,
-                        'answer' => $request->dtanswer8,
-                        'workbook_id' => $request->workbook_id,
-                    ]);
-                    $WorkbookResponse = WorkbookResponse::create([
-                        'workbook_id' => $request->workbook_id,
-                        'user_id' => Auth::user()->id,
-                        'question_id' => $request->question3,
-                        'detailquest_id' => $value,
-                        'answer_id' => $answers->id,
-                        'status' => 'completed',
-                        'complete_date' => now(),
-                    ]);
-                } elseif ($value == 9) {
-                    $answers = Answer::create([
-                        'question_id' => $request->question3,
-                        'detailquest_id' => $value,
-                        'answer' => $request->dtanswer9,
-                        'workbook_id' => $request->workbook_id,
-                    ]);
-                    $WorkbookResponse = WorkbookResponse::create([
-                        'workbook_id' => $request->workbook_id,
-                        'user_id' => Auth::user()->id,
-                        'question_id' => $request->question3,
-                        'detailquest_id' => $value,
-                        'answer_id' => $answers->id,
-                        'status' => 'completed',
-                        'complete_date' => now(),
-                    ]);
-                } elseif ($value == 10) {
-                    $answers = Answer::create([
-                        'question_id' => $request->question3,
-                        'detailquest_id' => $value,
-                        'answer' => $request->dtanswer10,
-                        'workbook_id' => $request->workbook_id,
-                    ]);
-                    $WorkbookResponse = WorkbookResponse::create([
-                        'workbook_id' => $request->workbook_id,
-                        'user_id' => Auth::user()->id,
-                        'question_id' => $request->question3,
-                        'detailquest_id' => $value,
-                        'answer_id' => $answers->id,
-                        'status' => 'completed',
-                        'complete_date' => now(),
-                    ]);
-                } elseif ($value == 11) {
-                    $answers = Answer::create([
-                        'question_id' => $request->question3,
-                        'detailquest_id' => $value,
-                        'answer' => $request->dtanswer11,
-                        'workbook_id' => $request->workbook_id,
-                    ]);
-                    $WorkbookResponse = WorkbookResponse::create([
-                        'workbook_id' => $request->workbook_id,
-                        'user_id' => Auth::user()->id,
-                        'question_id' => $request->question3,
-                        'detailquest_id' => $value,
-                        'answer_id' => $answers->id,
-                        'status' => 'completed',
-                        'complete_date' => now(),
-                    ]);
-                }
-            }
+            //     } elseif ($value == 4) {
+            //         $answers = Answer::create([
+            //             'question_id' => $request->question3,
+            //             'detailquest_id' => $value,
+            //             'answer' => $request->dtanswer4,
+            //             'workbook_id' => $request->workbook_id,
+            //         ]);
+            //         $WorkbookResponse = WorkbookResponse::create([
+            //             'workbook_id' => $request->workbook_id,
+            //             'user_id' => Auth::user()->id,
+            //             'question_id' => $request->question3,
+            //             'detailquest_id' => $value,
+            //             'answer_id' => $answers->id,
+            //             'status' => 'completed',
+            //             'complete_date' => now(),
+            //         ]);
+            //     } elseif ($value == 5) {
+            //         $answers = Answer::create([
+            //             'question_id' => $request->question3,
+            //             'detailquest_id' => $value,
+            //             'answer' => $request->dtanswer5,
+            //             'workbook_id' => $request->workbook_id,
+            //         ]);
+            //         $WorkbookResponse = WorkbookResponse::create([
+            //             'workbook_id' => $request->workbook_id,
+            //             'user_id' => Auth::user()->id,
+            //             'question_id' => $request->question3,
+            //             'detailquest_id' => $value,
+            //             'answer_id' => $answers->id,
+            //             'status' => 'completed',
+            //             'complete_date' => now(),
+            //         ]);
+            //     } elseif ($value == 6) {
+            //         $answers = Answer::create([
+            //             'question_id' => $request->question3,
+            //             'detailquest_id' => $value,
+            //             'answer' => $request->dtanswer6,
+            //             'workbook_id' => $request->workbook_id,
+            //         ]);
+            //         $WorkbookResponse = WorkbookResponse::create([
+            //             'workbook_id' => $request->workbook_id,
+            //             'user_id' => Auth::user()->id,
+            //             'question_id' => $request->question3,
+            //             'detailquest_id' => $value,
+            //             'answer_id' => $answers->id,
+            //             'status' => 'completed',
+            //             'complete_date' => now(),
+            //         ]);
+            //     } elseif ($value == 7) {
+            //         $answers = Answer::create([
+            //             'question_id' => $request->question3,
+            //             'detailquest_id' => $value,
+            //             'answer' => $request->dtanswer7,
+            //             'workbook_id' => $request->workbook_id,
+            //         ]);
+            //         $WorkbookResponse = WorkbookResponse::create([
+            //             'workbook_id' => $request->workbook_id,
+            //             'user_id' => Auth::user()->id,
+            //             'question_id' => $request->question3,
+            //             'detailquest_id' => $value,
+            //             'answer_id' => $answers->id,
+            //             'status' => 'completed',
+            //             'complete_date' => now(),
+            //         ]);
+            //     } elseif ($value == 8) {
+            //         $answers = Answer::create([
+            //             'question_id' => $request->question3,
+            //             'detailquest_id' => $value,
+            //             'answer' => $request->dtanswer8,
+            //             'workbook_id' => $request->workbook_id,
+            //         ]);
+            //         $WorkbookResponse = WorkbookResponse::create([
+            //             'workbook_id' => $request->workbook_id,
+            //             'user_id' => Auth::user()->id,
+            //             'question_id' => $request->question3,
+            //             'detailquest_id' => $value,
+            //             'answer_id' => $answers->id,
+            //             'status' => 'completed',
+            //             'complete_date' => now(),
+            //         ]);
+            //     } elseif ($value == 9) {
+            //         $answers = Answer::create([
+            //             'question_id' => $request->question3,
+            //             'detailquest_id' => $value,
+            //             'answer' => $request->dtanswer9,
+            //             'workbook_id' => $request->workbook_id,
+            //         ]);
+            //         $WorkbookResponse = WorkbookResponse::create([
+            //             'workbook_id' => $request->workbook_id,
+            //             'user_id' => Auth::user()->id,
+            //             'question_id' => $request->question3,
+            //             'detailquest_id' => $value,
+            //             'answer_id' => $answers->id,
+            //             'status' => 'completed',
+            //             'complete_date' => now(),
+            //         ]);
+            //     } elseif ($value == 10) {
+            //         $answers = Answer::create([
+            //             'question_id' => $request->question3,
+            //             'detailquest_id' => $value,
+            //             'answer' => $request->dtanswer10,
+            //             'workbook_id' => $request->workbook_id,
+            //         ]);
+            //         $WorkbookResponse = WorkbookResponse::create([
+            //             'workbook_id' => $request->workbook_id,
+            //             'user_id' => Auth::user()->id,
+            //             'question_id' => $request->question3,
+            //             'detailquest_id' => $value,
+            //             'answer_id' => $answers->id,
+            //             'status' => 'completed',
+            //             'complete_date' => now(),
+            //         ]);
+            //     } elseif ($value == 11) {
+            //         $answers = Answer::create([
+            //             'question_id' => $request->question3,
+            //             'detailquest_id' => $value,
+            //             'answer' => $request->dtanswer11,
+            //             'workbook_id' => $request->workbook_id,
+            //         ]);
+            //         $WorkbookResponse = WorkbookResponse::create([
+            //             'workbook_id' => $request->workbook_id,
+            //             'user_id' => Auth::user()->id,
+            //             'question_id' => $request->question3,
+            //             'detailquest_id' => $value,
+            //             'answer_id' => $answers->id,
+            //             'status' => 'completed',
+            //             'complete_date' => now(),
+            //         ]);
+            //     }
+            // }
 
-            return response()->json(['status' => 'Success', 'message' => 'response save Qs 3', 'question' => $detailqs], 200);
+            return response()->json(['status' => 'Success', 'message' => 'response save Qs 3', 'question' => $detailqs, $request->all()], 200);
         } elseif ($request->question4) {
             $detailqs = array('id13' => $request->detailqs13, 'id14' => $request->detailqs14, 'id15' => $request->detailqs15, 'id16' => $request->detailqs16, 'id17' => $request->detailqs17, 'id18' => $request->detailqs18, 'id19' => $request->detailqs19, 'id20' => $request->detailqs20);
 

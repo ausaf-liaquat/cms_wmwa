@@ -38,7 +38,8 @@
                             <td><a class="btn btn-secondary mr-1" data-bs-toggle="modal" data-id="{{ $item->id }}"
                                     onclick='editPractitionerDetail(event.target)' data-bs-target="#editpract">Edit</a><a
                                     class="btn btn-danger" data-bs-toggle="modal"
-                                    onclick="getPractitionerDetail(event.target)" data-practid="{{ $item->id }}"
+                                    onclick="getPractitionerDetail(event.target)"
+                                    data-attachuser="{{ $item->users->count() }}" data-practid="{{ $item->id }}"
                                     data-bs-target="#deletepract">Delete</a></td>
                         </tr>
                     @empty
@@ -79,7 +80,7 @@
                             <label for="practitioner_name">Enter Practitioner Name</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="email" class="form-control" onblur="duplicateEmail(this)"
+                            <input type="email" class="form-control" onkeyup="duplicateEmail(this)"
                                 name="practitioner_email" id="practitioner_email" placeholder="name@example.com" required>
                             <label for="practitioner_email">Enter Email Address</label>
                             <span class="text-danger mb-4 email-error" id="email-error" style="font-size: small;"></span>
@@ -169,11 +170,12 @@
                     <h4 class="modal-title" id="deleteLabel">Delete practitioner</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ route('practitioner.delete') }}" method="get">
+                <form method="get">
                     <div class="modal-body">
                         <p>WARNING you are about to delete this practioner.</p>
 
                         <input type="hidden" name="getpractitioner_id" id="getpractitioner_id">
+                        <input type="hidden" name="serviceuserscount" id="serviceuserscount">
                         <fieldset disabled>
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" id="getpractitioner_name"
@@ -204,7 +206,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Go Back</button>
-                        <button type="submit" class="btn btn-danger">Delete practitioner</button>
+                        <button type="submit" class="btn btn-danger delete">Delete practitioner</button>
                     </div>
                 </form>
             </div>
@@ -386,11 +388,13 @@
                         $('#email-error')
                             .css('color', 'red')
                             .html("This Email already exists!");
+                            $('#email-error')
+                            .prop('hidden', false);
                         $('#addpract').prop('disabled', true);
 
                     } else {
-                        // $('#email-error')
-                        //     .css('display', 'none')
+                        $('#email-error')
+                            .prop('hidden', true);
                         $('#addpract').prop('disabled', false);;
 
                     }
@@ -508,6 +512,7 @@
         // Delete Practitioner Details
         function getPractitionerDetail(e) {
             var id = $(e).data("practid");
+            var count = $(e).data("attachuser");
             var url = '{{ route('practitioner.edit', ':id') }}';
             url = url.replace(':id', id);
             $.get(url, function(data) {
@@ -519,12 +524,10 @@
                 $('#getpractitioner_role').val(data.category);
 
                 $('#deletepract').modal('show');
-                $('#deletepract').on('hidden.bs.modal', function() {
-                    location.reload();
-                });
+
             })
             $("#getpractitioner_id").val(id);
-
+            $("#serviceuserscount").val(count);
             $('#deletepract').modal('show');
         }
 
@@ -560,5 +563,53 @@
             })
 
         }
+
+        $(".delete").click(function(e) {
+            e.preventDefault();
+
+            var id = $("#getpractitioner_id").val();
+            var count = $("#serviceuserscount").val();
+
+          
+
+            $("#deletepract").modal("hide");
+            Swal.fire({
+                title: "Are you sure?",
+                text: (count >= 1) ? "This Practitioner is attached to " + count + " Service User." :
+                    "Once deleted, you will not be able to recover",
+                icon: "warning",
+                showCancelButton: true,
+
+
+
+                confirmButtonText: "Yes, delete it!",
+            }).then((result) => {
+                if (result.value) {
+                    $.ajax({
+                        type: "GET",
+                        url: '{{ route('practitioner.delete') }}',
+                        data: {
+                            id: id
+                        },
+                        success: function(data) {
+                            if ($.isEmptyObject(data.error)) {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Practitioner Deleted successfully',
+                                    showConfirmButton: true,
+                                    timer: 2500
+                                }).then((result) => {
+                                    // Reload the Page
+                                    location.reload();
+                                });
+                            }
+                        }
+                    });
+
+                }
+            });
+
+
+        });
     </script>
 @endsection

@@ -19,11 +19,13 @@ class CreateWorkbookResponsesTable extends Migration
             $table->unsignedBigInteger('workbook_id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('question_id');
+            $table->unsignedBigInteger('detailquest_id')->nullable();
             $table->unsignedBigInteger('answer_id')->nullable();
             $table->string('status')->nullable()->nullable();
             $table->datetime('complete_date')->nullable();
             $table->timestamps();
 
+            $table->foreign('detailquest_id')->references('id')->on('detailquests')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('workbook_id')->references('id')->on('workbooks')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('question_id')->references('id')->on('questions')->onUpdate('cascade')->onDelete('cascade');

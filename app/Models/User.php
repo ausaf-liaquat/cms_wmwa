@@ -48,5 +48,11 @@ class User extends Authenticatable
     public function practitioner()
     {
         return $this->belongsTo(Practitioner::class,'practitioner_id');
+
+    }
+
+    public function shareworkbook()
+    {
+        return $this->hasMany(ShareWorkbook::class);
     }
 }

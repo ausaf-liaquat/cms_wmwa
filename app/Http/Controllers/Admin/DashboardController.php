@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin;
 use App\Models\Practitioner;
 use App\Models\ShareWorkbook;
+use App\Models\Topic;
 use App\Models\User;
 use App\Models\WorkbookResponse;
 use App\Notifications\WelcomePractitioner;
@@ -46,8 +48,10 @@ class DashboardController extends Controller
     public function checkEmail(Request $request)
     {
         $email = $request->input('email');
-        $isExists = Practitioner::where('email', $email)->first();
-        if ($isExists) {
+        $isServiceUserExists = User::where('email', $email)->first();
+        $isAdminExixts=Admin::where('email', $email)->first();
+        $isPractitionerExixts=Practitioner::where('email', $email)->first();
+        if ($isServiceUserExists || $isAdminExixts || $isPractitionerExixts) {
             return response()->json(array("exists" => true));
         } else {
             return response()->json(array("exists" => false));
@@ -68,8 +72,8 @@ class DashboardController extends Controller
     }
     public function PractitionerDelete(Request $request)
     {
-        Practitioner::find($request->getpractitioner_id)->delete();
-        return redirect()->route('admin.practitioner');
+        Practitioner::find($request->id)->delete();
+        return response()->json(200);
     }
     public function PractitionerStatus()
     {
@@ -89,7 +93,8 @@ class DashboardController extends Controller
         $serviceusers = User::all();
         $practitioners = Practitioner::all();
         $serviceuserscount = User::count();
-        return view('Admin.services_users', compact('serviceusers', 'practitioners', 'serviceuserscount'));
+        $topic = Topic::all();
+        return view('Admin.services_users', compact('serviceusers', 'practitioners', 'serviceuserscount','topic'));
     }
     public function ServiceUsercheckEmail(Request $request)
     {
@@ -138,22 +143,27 @@ class DashboardController extends Controller
         $workbook = ShareWorkbook::where('user_id', $request->serviceuser_id)->first();
 
         if (empty($workbook)) {
-            $shareworkbook = ShareWorkbook::create([
+            foreach ($request->check as $key => $value) {
+               $shareworkbook = ShareWorkbook::create([
                 'workbook_id' => $request->send_workbook,
-                'topic_id' => 1,
-                'user_id' => $request->serviceuser_id,
+                'topic_id' => $value,
+                'user_id' => $request->sendserviceuser_id,
                 'status' => 'inprocess',
+                'practitioner_notes'=>$request->practitionernotes
             ]);
             $shareworkbook->sent_date = now();
             $shareworkbook->save();
+                
+            }
+            
         }
 
-        return response()->json(200);
+       return redirect()->back();
 
     }
     public function viewWorkbook($id)
     {
         $workbookresponse = WorkbookResponse::where('user_id', $id)->where('workbook_id', 1)->latest()->first();
-       dd($workbookresponse);
+    //    dd($workbookresponse);
     }
 }

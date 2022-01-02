@@ -15,7 +15,7 @@ class AddColumnsToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->unsignedBigInteger('practitioner_id')->before('name');
-            $table->foreign('practitioner_id')->references('id')->on('practitioners')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('practitioner_id')->references('id')->on('practitioners')->onUpdate('cascade')->onDelete('setnull');
         });
     }
 

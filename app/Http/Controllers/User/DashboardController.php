@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin;
+use App\Models\Practitioner;
 use App\Models\Resource;
 use App\Models\ShareWorkbook;
 use App\Models\User;
@@ -22,7 +24,7 @@ class DashboardController extends Controller
 
         return view('User.account', compact('serviceuser'));
     }
-    public function AccountEdit(Request $request)
+    public function ProfileEdit(Request $request)
     {
         if ($request->serviceuser_name != null && $request->serviceuser_role != null && $request->serviceuser_email != null) {
             User::find(Auth::user()->id)->update([
@@ -51,10 +53,29 @@ class DashboardController extends Controller
 
         return view('User.resource', compact('resources_file', 'resources_url', 'resources_video'));
     }
+    public function ResourceDownload($id)
+    {
+        $resource = Resource::where('id', $id)->firstOrFail();
+        $pathToFile = storage_path('app/public/resource/files/' . $resource->resource_file);
+        return response()->download($pathToFile);
+    }
 
     public function Myworkbook()
     {
         $shareworkbook = ShareWorkbook::where('user_id', Auth::user()->id)->get();
         return view('User.workbook', compact('shareworkbook'));
+    }
+
+    public function dupcheckEmail(Request $request)
+    {
+        $email = $request->input('email');
+        $isExists = User::where('email', $email)->first();
+        $isAdminExixts=Admin::where('email', $email)->first();
+        $isPractitionerExixts=Practitioner::where('email', $email)->first();
+        if ($isExists || $isAdminExixts || $isPractitionerExixts) {
+            return response()->json(array("exists" => true));
+        } else {
+            return response()->json(array("exists" => false));
+        }
     }
 }

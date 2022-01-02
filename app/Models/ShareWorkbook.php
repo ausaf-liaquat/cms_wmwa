@@ -20,7 +20,8 @@ class ShareWorkbook extends Model
         'user_id',
         'status',
         'sent_date',
-        'complete_date'
+        'complete_date',
+        'practitioner_notes'
     ];
     protected $dates = [
         'sent_date',

@@ -30,7 +30,9 @@
                             <td>{{ $item->email }}</td>
                             <td>{{ $item->category }}</td>
                             <td>{{ $practitioner->name }}</td>
-                            <td><a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#accounts">View</a> <a
+                            <td> @if ($item->shareworkbook->count()>0)
+                                <a class="btn btn-primary" href="{{route('view.workbook',['id'=>$item->id])}}">View</a>
+                           @endif <a
                                     class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#accounts">Send</a></td>
                             <td><a class="btn btn-secondary mr-1" data-bs-toggle="modal" data-id="{{ $item->id }}"
                                     onclick='editServiceUserDetail(event.target)' data-bs-target="#edit">Edit</a><a
