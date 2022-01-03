@@ -6,9 +6,9 @@
           onclick="event.preventDefault();document.getElementById('logout-form').submit();" style="color:#fff">
           Sign out
       </a>
-      {{-- <form id="logout-form" action="{{ route('logout') }}" method="post" style="display: none;">
+      <form id="logout-form" action="{{ route('logout') }}" method="post" style="display: none;">
           @csrf
-      </form> --}}
+      </form>
 
   
     <ul class="list-unstyled ps-0">

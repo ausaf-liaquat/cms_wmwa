@@ -85,7 +85,7 @@
 
 
         var id = $("#id").val();
-        var url = '{{ route('practitioner.edit', ':id') }}';
+        var url = '{{ route('catpractitioner.edit', ':id') }}';
         url = url.replace(':id', id);
         $.get(url, function(data) {
             $('#practitioner_role').val(data.category);
@@ -128,7 +128,7 @@
             var email = $(element).val();
             $.ajax({
                 type: "POST",
-                url: "{{ route('practitioner.checkEmail') }}",
+                url: "{{ route('duppractitioner.checkEmail') }}",
                 data: {
                     email: email
                 },

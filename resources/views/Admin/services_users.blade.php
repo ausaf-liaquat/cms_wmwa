@@ -32,10 +32,15 @@
                             <td>{{ !empty($item->practitioner) ? $item->practitioner->name : 'N/A' }}</td>
                             <td>
                                 @if ($item->shareworkbook->count() > 0)
-                                    <a class="btn btn-primary" href="{{ route('view.workbook', ['id' => $item->id]) }}">View</a>
+                                    <a class="btn btn-primary"
+                                        href="{{ route('view.workbook', ['id' => $item->id]) }}">View</a>
+
                                 @endif
                                 <a class="btn btn-primary" onclick='sendworkbook(event.target)' data-bs-toggle="modal"
-                                    data-sendid="{{ $item->id }}" data-sendemail="{{ $item->email }}" data-bs-target="#send">Send</a>
+                                    data-sendid="{{ $item->id }}" data-sendemail="{{ $item->email }}"
+                                    data-userid="{{ $item->id }}" data-bs-target="#send">Send
+                                </a>
+
                             </td>
                             <td><a class="btn btn-secondary mr-1" data-bs-toggle="modal" data-id="{{ $item->id }}"
                                     onclick='editServiceUserDetail(event.target)' data-bs-target="#edit">Edit</a><a
@@ -248,10 +253,10 @@
                     <h4 class="modal-title" id="sendLabel">Send Workbook Topic</h4><br>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form id="sendform" action="{{route('serviceuser.workbook')}}" method="post">
-                <div class="modal-body">
-                    <p>Sending workbook to: <strong> <span id="sendserviceuser_email"></span></strong></p>
-                    
+                <form id="sendform" action="{{ route('serviceuser.workbook') }}" method="post">
+                    <div class="modal-body">
+                        <p>Sending workbook to: <strong> <span id="sendserviceuser_email"></span></strong></p>
+
                         @csrf
                         <div class="alert alert-danger print-error-msg" style="display:none">
                             <ul></ul>
@@ -271,30 +276,31 @@
                         </div>
                         <div class="chapters mb-3">
                             @foreach ($topic as $item)
-                               <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="check[]" value="{{$item->id}}" id="check{{$item->id}}">
-                                <label class="form-check-label" for="check{{$item->id}}">
-                                    {{$item->topic_title}}
-                                </label>
-                            </div> 
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="check[]"
+                                        value="{{ $item->id }}" id="check{{ $item->id }}">
+                                    <label class="form-check-label" for="check{{ $item->id }}">
+                                        {{ $item->topic_title }}
+                                    </label>
+                                </div>
                             @endforeach
-                           
+
                         </div>
                         <p><mark>The chapters will automatically update based on the workbook selected.</mark></p>
                         <div class="form-floating mb-3">
-                            <textarea class="form-control" placeholder="Leave a comment here" name="practitionernotes" id="floatingTextarea2"
-                                style="height: 200px"></textarea>
+                            <textarea class="form-control" placeholder="Leave a comment here" name="practitionernotes"
+                                id="floatingTextarea2" style="height: 200px"></textarea>
                             <label for="floatingTextarea2">Your Message</label>
                         </div>
-                    
-                    <p><mark>Do you want an email notification sent to the service user? If so we need content for
-                            this.</mark></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-success">Send</button>
-                </div>
-            </form>
+
+                        <p><mark>Do you want an email notification sent to the service user? If so we need content for
+                                this.</mark></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-success">Send</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

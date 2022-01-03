@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Practitioner;
 use App\Models\Resource;
 use App\Models\User;
+use App\Models\Admin;
 use App\Notifications\WelcomeServiceUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -113,5 +114,23 @@ class DashboardController extends Controller
     public function WorkbookGuidance()
     {
         return view("Practitioner.workbookguidance");
+    }
+    public function checkEmail(Request $request)
+    {
+        $email = $request->input('email');
+        $isServiceUserExists = User::where('email', $email)->first();
+        $isAdminExixts=Admin::where('email', $email)->first();
+        $isPractitionerExixts=Practitioner::where('email', $email)->first();
+        if ($isServiceUserExists || $isAdminExixts || $isPractitionerExixts) {
+            return response()->json(array("exists" => true));
+        } else {
+            return response()->json(array("exists" => false));
+        }
+    }
+    public function PractitionerEdit($id)
+    {
+        $practitioner = Practitioner::find($id);
+        return response()->json($practitioner, 200);
+        return redirect()->back()->withErrors($validator)->withInput();
     }
 }
