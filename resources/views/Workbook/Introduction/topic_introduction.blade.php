@@ -2437,7 +2437,6 @@
                 $(".percent").html(percent + "%");
                 
             }
-
         });
     </script>
 @endsection

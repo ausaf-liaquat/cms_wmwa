@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Resource;
 use App\Models\ShareWorkbook;
 use App\Models\User;
+use App\Models\Practitioner;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -56,5 +57,23 @@ class DashboardController extends Controller
     {
         $shareworkbook = ShareWorkbook::where('user_id', Auth::user()->id)->get();
         return view('User.workbook', compact('shareworkbook'));
+    }
+    public function ServiceUsercheckEmail(Request $request)
+    {
+        $email = $request->input('email');
+        $userEmailexixts = User::where('email',$email)->first();
+        $isExists = Practitioner::where('email', $email)->first();
+        if ($isExists || $userEmailexixts) {
+            return response()->json(array("exists" => true));
+        } else {
+            return response()->json(array("exists" => false));
+        }
+    }
+    public function ServiceUserUpdate(Request $request, $id)
+    {
+        if ($request->editserviceuser_name != null && $request->editserviceuser_category != null && $request->editserviceuser_practitioner != null) {
+            User::find($id)->update(['name' => $request->editserviceuser_name, 'category' => $request->editserviceuser_category, 'practitioner_id' => $request->editserviceuser_practitioner]);
+        }
+        return response()->json(200);
     }
 }

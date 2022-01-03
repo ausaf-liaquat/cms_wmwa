@@ -33,13 +33,13 @@
                                 style="font-size: small;"></span>
                         </div>
                     </div>
-                    <input type="hidden" name="serviceuser_role" id="serviceuser_role" value="{{$serviceuser->category}}">
+                    <input type="hidden" name="serviceuser_role" id="serviceuser_role" value="{{Auth::user()->category}}">
                     {{-- <fieldset disabled> --}}
                     <div class="col-md-4">
                         <div class="form-floating mb-3">
                             <select class="form-select" id="serviceuser_role" aria-label="Floating label select example"
                                 disabled>
-                                <option value="{{ $serviceuser->category }}">{{ $serviceuser->category }}</option>
+                                <option value="{{ Auth::user()->category }}">{{ Auth::user()->category }}</option>
                                 <option value="School Nurse">School Nurse</option>
                                 <option value="Social Worker">Social Worker</option>
                                 <option value="WMWA Internal">WMWA Internal</option>
@@ -87,12 +87,12 @@
         });
 
 
-        var id = $("#id").val();
-        var url = '{{ route('serviceuser.edit', ':id') }}';
-        url = url.replace(':id', id);
-        $.get(url, function(data) {
-            $('#serviceuser_role').val(data.category);
-        });
+        // var id = $("#id").val();
+        // var url = '{{ route('serviceuser.edit', ':id') }}';
+        // url = url.replace(':id', id);
+        // $.get(url, function(data) {
+        //     $('#serviceuser_role').val(data.category);
+        // });
 
         function passwordcheck(element) {
             var confirm_password = $(element).val();
@@ -131,7 +131,7 @@
             var email = $(element).val();
             $.ajax({
                 type: "POST",
-                url: "{{ route('serviceuser.checkEmail') }}",
+                url: "{{ route('serviceuser.validEmail') }}",
                 data: {
                     email: email
                 },
