@@ -21,7 +21,7 @@
             </div>
         @endif
         @csrf
-        <h2>West Mercia Women's Aid Login</h2>
+        <h2>West Mercia Women's Aid User Login</h2>
         <p class="mb-3">Please enter your email address and password</p>
         <div class="form-floating mb-3">
             <input type="email" class="form-control " id="email" placeholder="name@example.com" name="email" value="{{old('email')}}" autofocus>

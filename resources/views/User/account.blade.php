@@ -33,7 +33,11 @@
                                 style="font-size: small;"></span>
                         </div>
                     </div>
+<<<<<<< HEAD
                     <input type="hidden" name="serviceuser_role" id="serviceuser_role" value="{{Auth::user()->category}}">
+=======
+                    <input type="hidden" name="serviceuser_role" id="serviceuser_category" value="{{$serviceuser->category}}">
+>>>>>>> 3221f8b025296bd9e15da30ce99cd9a632338a06
                     {{-- <fieldset disabled> --}}
                     <div class="col-md-4">
                         <div class="form-floating mb-3">
@@ -86,6 +90,7 @@
             $("#serviceuser_form").data("changed", true);
         });
 
+<<<<<<< HEAD
 
         // var id = $("#id").val();
         // var url = '{{ route('serviceuser.edit', ':id') }}';
@@ -94,6 +99,8 @@
         //     $('#serviceuser_role').val(data.category);
         // });
 
+=======
+>>>>>>> 3221f8b025296bd9e15da30ce99cd9a632338a06
         function passwordcheck(element) {
             var confirm_password = $(element).val();
             if ($('#serviceuser_password').val() == confirm_password) {
@@ -131,7 +138,11 @@
             var email = $(element).val();
             $.ajax({
                 type: "POST",
+<<<<<<< HEAD
                 url: "{{ route('serviceuser.validEmail') }}",
+=======
+                url: "{{ route('dupserviceuser.checkEmail') }}",
+>>>>>>> 3221f8b025296bd9e15da30ce99cd9a632338a06
                 data: {
                     email: email
                 },
@@ -165,7 +176,7 @@
             var serviceuser_role = $('#serviceuser_role').val();
             var serviceuser_email = $('#serviceuser_email').val();
             var serviceuser_password = $('#serviceuser_password').val();
-            var url = '{{ route('serviceuser.accountedit', ':id') }}';
+            var url = '{{ route('serviceuser.profileedit', ':id') }}';
             url = url.replace(':id', id);
             let _token = $('meta[name="csrf-token"]').attr('content');
 

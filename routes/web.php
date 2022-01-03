@@ -93,12 +93,16 @@ Route::group(['prefix' => 'practitioner'], function () {
         Route::get('service-users', [App\Http\Controllers\Practitioner\DashboardController::class, 'ServiceUser'])->name("practitioner.serviceuser");
         Route::post('serviceuser/checkemail', [App\Http\Controllers\Practitioner\DashboardController::class, 'ServiceUsercheckEmail'])->name('practitioner.serviceuser.checkEmail');
         Route::post('serviceuser/store', [App\Http\Controllers\Practitioner\DashboardController::class, 'ServiceUserStore'])->name('practitioner.serviceuser.store');
-        Route::get('serviceuser/{id}/edit', [App\Http\Controllers\Practitioner\DashboardController::class, 'ServiceUserEdit'])->name('practitioner.serviceuser.edit');
+        Route::get('profile/serviceuser/{id}/edit', [App\Http\Controllers\Practitioner\DashboardController::class, 'ServiceUserEdit'])->name('practitioner.serviceuser.edit');
         Route::post('serviceuser/{id}/details/updated', [App\Http\Controllers\Practitioner\DashboardController::class, 'ServiceUserUpdate'])->name('practitioner.serviceuser.update');
         Route::get('serviceuser/delete', [App\Http\Controllers\Practitioner\DashboardController::class, 'ServiceUserDelete'])->name('practitioner.serviceuser.delete');
 
         // Resources
         Route::get('resources', [App\Http\Controllers\Practitioner\DashboardController::class, 'Resource'])->name("practitioner.resource");
+        Route::get('resources/{id}/download/', [App\Http\Controllers\Practitioner\DashboardController::class, 'practitionerResourceDownload'])->name('practitionerresource.download');
+   
+        Route::get('workbook/guidance', [App\Http\Controllers\Practitioner\DashboardController::class, 'WorkbookGuidance'])->name("practitioner.workbookguidance");
+   
     });
 });
 
@@ -109,6 +113,7 @@ Route::group(['prefix' => 'user'], function () {
         Route::get('/dashboard', [App\Http\Controllers\User\DashboardController::class, 'index'])->name('user.dashboard');
 
         Route::get('account/details', [App\Http\Controllers\User\DashboardController::class, 'AccountDetails'])->name('serviceuser.accountdetails');
+<<<<<<< HEAD
         Route::post('account/edit', [App\Http\Controllers\User\DashboardController::class, 'AccountEdit'])->name('serviceuser.accountedit');
     
         Route::get('my/workbook', [App\Http\Controllers\User\DashboardController::class, 'Myworkbook'])->name('serviceuser.myworkbook');
@@ -116,10 +121,21 @@ Route::group(['prefix' => 'user'], function () {
         Route::post('store/workbook', [App\Http\Controllers\Workbook\WorkbookController::class, 'storeWorkbook'])->name('workbookopen.store');
         Route::post('serviceuser/{id}/details/updated', [App\Http\Controllers\User\DashboardController::class, 'ServiceUserUpdate'])->name('serviceuser.accountupdate');
         Route::post('serviceuser/checkemail', [App\Http\Controllers\User\DashboardController::class, 'ServiceUsercheckEmail'])->name('serviceuser.validEmail');
+=======
+        Route::post('profile/edit/', [App\Http\Controllers\User\DashboardController::class, 'ProfileEdit'])->name('serviceuser.profileedit');
+        Route::post('dup/serviceuser/checkemail', [App\Http\Controllers\User\DashboardController::class, 'dupcheckEmail'])->name('dupserviceuser.checkEmail');
 
+        Route::get('serviceuser/{id}/edit', [App\Http\Controllers\User\DashboardController::class, 'ServiceUserEdit'])->name('user.edit');
+>>>>>>> 3221f8b025296bd9e15da30ce99cd9a632338a06
+
+        Route::get('my/workbook', [App\Http\Controllers\User\DashboardController::class, 'Myworkbook'])->name('serviceuser.myworkbook');
+        Route::get('open/workbook/{id}', [App\Http\Controllers\Workbook\WorkbookController::class, 'openWorkbook'])->name('serviceuser.workbookopen');
+        Route::post('store/workbook', [App\Http\Controllers\Workbook\WorkbookController::class, 'storeWorkbook'])->name('workbookopen.store');
+        
+        
         // Resources
      Route::get('resources', [App\Http\Controllers\User\DashboardController::class, 'Resource'])->name("user.resource");
-     
+     Route::get('resources/{id}/download', [App\Http\Controllers\User\DashboardController::class, 'ResourceDownload'])->name('serviceuserresource.download');
     });
 });
 require __DIR__ . '/auth.php';

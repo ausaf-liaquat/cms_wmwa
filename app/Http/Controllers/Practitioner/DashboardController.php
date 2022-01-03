@@ -104,4 +104,14 @@ class DashboardController extends Controller
 
         return view('Practitioner.recources', compact('resources_file', 'resources_url', 'resources_video'));
     }
+    public function practitionerResourceDownload($id)
+    {
+        $resource = Resource::where('id', $id)->firstOrFail();
+        $pathToFile = storage_path('app/public/resource/files/' . $resource->resource_file);
+        return response()->download($pathToFile);
+    }
+    public function WorkbookGuidance()
+    {
+        return view("Practitioner.workbookguidance");
+    }
 }

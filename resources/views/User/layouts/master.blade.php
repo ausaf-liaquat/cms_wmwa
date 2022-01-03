@@ -22,7 +22,7 @@
         integrity="sha512-iuMkf48pM/TdH5DQkNPLWPLIUsVCncQEpuxgcMq/oDmJepdFcu48Wy4MwXggN9WFb4L6rpXQf5YJE/+OXkM1Lw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    </script>
+
     <link rel="icon" href="https://www.westmerciawomensaid.org/wp-content/uploads/2019/12/WMWA-150x150.png"
         sizes="32x32" />
     <style>
@@ -97,7 +97,9 @@
                 transform: scale(1.0);
             }
         }
-
+        .error{
+            color: red;
+        }
     </style>
 </head>
 
@@ -127,6 +129,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.0.4/sweetalert2.all.min.js"
         integrity="sha512-niNQgNQ4mHtOdt//YjERRRbsmlc9aH+1c+fIQ9bQWD5kByzpE10EBDOhyV/n+anhaLW9GN4Dalu/z9QrXBvDUQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="{{asset('assets/js/garlic.min.js')}}"></script>
     @yield('extrajs')
 </body>
 

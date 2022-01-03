@@ -15,7 +15,7 @@
                 <div class="list-group mb-4">
                     @forelse ($resources_file as $list)
 
-                        <a href="{{route('resource.download',['id'=>$list->id])}}" class="list-group-item list-group-item-action  justify-content-between align-items-start">
+                        <a href="{{route('serviceuserresource.download',['id'=>$list->id])}}" class="list-group-item list-group-item-action  justify-content-between align-items-start">
                             <i class="bi-download float-start"></i>
                             <div class="ms-5 me-auto">
                                 <div class="fw-bold">Category: {{ $list->resource_category }}</div>

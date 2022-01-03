@@ -13,45 +13,72 @@
             <div class="work-book mt-5">
                 <h3 class="pb-0">Downloads</h3>
                 <div class="list-group mb-4">
-                    @foreach ($resources_file as $list)
+                    @forelse ($resources_file as $list)
 
-                        <a data-bs-toggle="modal" data-bs-target="#send"
+                        <a href="{{route('practitionerresource.download',['id'=>$list->id])}}"  
                             class="list-group-item list-group-item-action  justify-content-between align-items-start">
                             <i class="bi-download float-start"></i>
                             <div class="ms-5 me-auto">
                                 <div class="fw-bold">Category: {{ $list->resource_category }}</div>
-                                Resource title tellus ac cursus commodo, tortor mauris condimentum nibh.
+                                {{ $list->resource_file }}
                             </div>
                         </a>
 
-                    @endforeach
+                    @empty
+                        <a data-bs-toggle="modal" data-bs-target="#send"
+                            class="list-group-item list-group-item-action  justify-content-between align-items-start">
+                            <i class="bi-download float-start"></i>
+                            <div class="ms-5 me-auto">
+                                <div class="fw-bold">No Data found.</div>
+
+                            </div>
+                        </a>
+
+                    @endforelse
                 </div>
                 <h3 class="pb-0">Useful Links</h3>
                 <div class="list-group mb-4">
-                    @foreach ($resources_url as $list)
-                        <a data-bs-toggle="modal" data-bs-target="#send"
+                    @forelse ($resources_url as $list)
+                    <a class="list-group-item list-group-item-action  justify-content-between align-items-start" href="{{$list->resource_link}}" target="_blank">
+                        <i class="bi-link-45deg float-start"></i>
+                        <div class="ms-5 me-auto">
+                            <div class="fw-bold">Category: {{ $list->resource_category }}</div>
+                            {{ $list->resource_link }}
+                        </div>
+                    </a>
+                    @empty
+                    <a 
                             class="list-group-item list-group-item-action  justify-content-between align-items-start">
                             <i class="bi-link-45deg float-start"></i>
                             <div class="ms-5 me-auto">
-                                <div class="fw-bold">Category: {{ $list->resource_category }}</div>
-                                http://www.google.com
+                                <div class="fw-bold">No Data found.</div>
+                                
                             </div>
                         </a>
-                    @endforeach
+                    @endforelse
 
                 </div>
                 <h3 class="pb-0">Videos</h3>
                 <div class="list-group mb-4">
-                    @foreach ($resources_video as $list)
-                        <a data-bs-toggle="modal" data-bs-target="#send"
-                            class="list-group-item list-group-item-action  justify-content-between align-items-start">
-                            <i class="bi-play-btn float-start"></i>
-                            <div class="ms-5 me-auto">
-                                <div class="fw-bold">Category: {{ $list->resource_category }}</div>
-                                Resource title tellus ac cursus commodo, tortor mauris condimentum nibh.
-                            </div>
-                        </a>
-                    @endforeach
+                    @forelse ($resources_video as $list)
+                    <a class="list-group-item list-group-item-action  justify-content-between align-items-start" href="{{$list->resource_video}}" target="_blank">
+                        <i class="bi-play-btn float-start"></i>
+                        <div class="ms-5 me-auto">
+                            <div class="fw-bold">Category: {{ $list->resource_category }}</div>
+                            {{ $list->resource_video }}
+                        </div>
+                    </a>
+                @empty
+                    <a data-bs-toggle="modal" data-bs-target="#send"
+                        class="list-group-item list-group-item-action  justify-content-between align-items-start">
+                        <i class="bi-play-btn float-start"></i>
+                        <div class="ms-5 me-auto">
+                            <div class="fw-bold"> No Data found.</div>
+                            
+                        </div>
+                    </a>
+
+                @endforelse
                 </div>
             </div>
         </div>

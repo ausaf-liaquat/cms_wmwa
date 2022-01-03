@@ -25,7 +25,7 @@
                             <th scope="row">{{ $item->workbook->workbook_title }}</th>
                             <td>{{ $item->topic->topic_title }}</td>
                             <td>{{ $item->sent_date->format('d/m/Y') }}</td>
-                            <td><a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#notes">View Note</a></td>
+                            <td><a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalnotes" onclick="getPractitionernotes(event.target)" data-notes="{{$item->practitioner_notes}}">View Note</a></td>
                             <td>
                                 @if ($item->status == 'inprocess')
                                     In Progress
@@ -33,7 +33,7 @@
                                     {{ $item->status }}
                                 @endif
                             </td>
-                            <td><a href="{{route('serviceuser.workbookopen')}}" target="_blank" class="btn btn-primary">Open
+                            <td><a href="{{route('serviceuser.workbookopen',['id'=>$item->topic->id])}}" target="_blank" class="btn btn-primary">Open
                                     Workbook</a></td>
                         </tr>
                     @empty
@@ -47,7 +47,7 @@
     </div>
 
     <!-- NOTES MODAL -->
-    <div class="modal fade" id="notes" tabindex="-1" aria-labelledby="notesLabel" aria-hidden="true">
+    <div class="modal fade" id="modalnotes" tabindex="-1" aria-labelledby="notesLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -55,10 +55,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p class="p-2">Sed posuere consectetur est at lobortis. Lorem ipsum dolor sit amet,
-                        consectetur adipiscing elit. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est
-                        non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Aenean lacinia
-                        bibendum nulla sed consectetur.</p>
+                    <p class="p-2" id="notes"></p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
@@ -66,4 +63,13 @@
             </div>
         </div>
     </div>
+@endsection
+@section('extrajs')
+    <script>
+       function getPractitionernotes(e) {
+        var notes = $(e).data("notes");
+        $("#notes").html(notes);
+        $('#modalnotes').modal('show');
+       } 
+    </script>
 @endsection
