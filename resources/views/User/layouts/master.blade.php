@@ -101,6 +101,7 @@
             color: red;
         }
     </style>
+    @livewireStyles()
 </head>
 
 <body>
@@ -130,6 +131,7 @@
         integrity="sha512-niNQgNQ4mHtOdt//YjERRRbsmlc9aH+1c+fIQ9bQWD5kByzpE10EBDOhyV/n+anhaLW9GN4Dalu/z9QrXBvDUQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="{{asset('assets/js/garlic.min.js')}}"></script>
+        @livewireScripts()
     @yield('extrajs')
 </body>
 

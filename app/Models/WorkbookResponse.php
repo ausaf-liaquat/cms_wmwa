@@ -13,7 +13,7 @@ class WorkbookResponse extends Model
      *
      * @var array
      */
-    protected $fillable = ['title', 'workbook_id', 'user_id', 'question_id', 'answer_id', 'status', 'complete_date','detailquest_id'];
+    protected $fillable = ['title', 'workbook_id', 'user_id', 'question_id', 'answer_id', 'status', 'complete_date','detailquest_id','answer'];
     protected $dates = [
 
         'complete_date',
