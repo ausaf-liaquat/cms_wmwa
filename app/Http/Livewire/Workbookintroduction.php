@@ -5,7 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\WorkbookResponse;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
-
+use Illuminate\Support\Str;
 class Workbookintroduction extends Component
 {
 
@@ -82,8 +82,10 @@ class Workbookintroduction extends Component
     public $agreed20;
     public $by_who20;
 
+    
+
     public $totalSteps = 5;
-    public $currentstep = 1;
+    public $currentstep;
 
     public $workbookanswer;
 
@@ -104,7 +106,7 @@ class Workbookintroduction extends Component
 
     public function mount()
     {
-        $this->currentstep = 1;
+        $this->currentstep = 0;
 
     }
 
@@ -129,71 +131,7 @@ class Workbookintroduction extends Component
         // setProgressBar($this->currentstep--);
     }
 
-    public function validateData()
-    {
-
-        if ($this->currentstep == 3) {
-            $this->validate([
-                'session_days1' => 'required',
-                'session_days2' => 'required',
-                'session_days3' => 'required',
-                'session_days4' => 'required',
-                'session_days5' => 'required',
-                'session_days6' => 'required',
-                'session_days7' => 'required',
-                'session_days8' => 'required',
-                'session_days9' => 'required',
-                'session_days10' => 'required',
-                'session_days11' => 'required',
-
-            ]);
-        } elseif ($this->currentstep == 4) {
-            $this->validate([
-                'safety' => 'required',
-                'details13' => 'required',
-                'agreed13' => 'required',
-                'by_who13' => 'required',
-
-                'behaviour' => 'required',
-                'details14' => 'required',
-                'agreed14' => 'required',
-                'by_who14' => 'required',
-
-                'help_intervention' => 'required',
-                'details15' => 'required',
-                'agreed15' => 'required',
-                'by_who15' => 'required',
-
-                'domestic_abuse' => 'required',
-                'details16' => 'required',
-                'agreed16' => 'required',
-                'by_who16' => 'required',
-
-                'healthy_relationship' => 'required',
-                'details17' => 'required',
-                'agreed17' => 'required',
-                'by_who17' => 'required',
-
-                'coping' => 'required',
-                'details18' => 'required',
-                'agreed18' => 'required',
-                'by_who18' => 'required',
-
-                'confidence' => 'required',
-                'details19' => 'required',
-                'agreed19' => 'required',
-                'by_who19' => 'required',
-
-                'education' => 'required',
-                'details20' => 'required',
-                'agreed20' => 'required',
-                'by_who20' => 'required',
-
-            ]);
-        }
-
-    }
-
+  
     public function submit1()
     {
 
@@ -246,8 +184,7 @@ class Workbookintroduction extends Component
             'session_days11' => 'required',
 
         ]);
-
-        $WorkbookResponse = WorkbookResponse::upsert([
+        $data=[
             ['workbook_id' => 1,'user_id' => Auth::user()->id, 'question_id' => 3, 'detailquest_id' => $this->dtquestion1, 'answer' => $this->session_days1, 'status' => 'completed', 'complete_date' => now()],
             ['workbook_id' => 1,'user_id' => Auth::user()->id, 'question_id' => 3, 'detailquest_id' => $this->dtquestion2, 'answer' => $this->session_days2, 'status' => 'completed', 'complete_date' => now()],
             ['workbook_id' => 1,'user_id' => Auth::user()->id, 'question_id' => 3, 'detailquest_id' => $this->dtquestion3, 'answer' => $this->session_days3, 'status' => 'completed', 'complete_date' => now()],
@@ -259,7 +196,14 @@ class Workbookintroduction extends Component
             ['workbook_id' => 1,'user_id' => Auth::user()->id, 'question_id' => 3, 'detailquest_id' => $this->dtquestion9, 'answer' => $this->session_days9, 'status' => 'completed', 'complete_date' => now()],
             ['workbook_id' => 1,'user_id' => Auth::user()->id, 'question_id' => 3, 'detailquest_id' => $this->dtquestion10, 'answer' => $this->session_days10, 'status' => 'completed', 'complete_date' => now()],
             ['workbook_id' => 1,'user_id' => Auth::user()->id, 'question_id' => 3, 'detailquest_id' => $this->dtquestion11, 'answer' => $this->session_days11, 'status' => 'completed', 'complete_date' => now()],
-        ], ['detailquest_id'], ['answer']);
+        ];
+        $find = WorkbookResponse::where('workbook_id', 1)->where('question_id', 3)->where('user_id', Auth::user()->id)->first();
+        foreach ($data as $key => $value) {
+            $id[] = WorkbookResponse::insertGetId(
+                ['workbook_id' => $value['workbook_id'],'user_id' => $value['user_id'], 'question_id' => $value['question_id'], 'detailquest_id' => $value['detailquest_id'], 'answer' => $value['answer'], 'status' => $value['status'], 'complete_date' => $value['complete_date']]
+            );
+        }
+        
 
         $this->currentstep++;
     }

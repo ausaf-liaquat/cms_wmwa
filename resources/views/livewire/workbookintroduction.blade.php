@@ -16,7 +16,7 @@
         <div class="card-body">
     <form wire:submit.prevent="submit">
 
-        @if ($currentstep == 1)
+        @if ($currentstep == 0)
             <div class="step-one">
                 <input type="hidden" name="quest" id="question1" wire:model="question1" value="1">
                 <div class="content-container m-5">
@@ -26,7 +26,7 @@
             </div>
         @endif
 
-        @if ($currentstep == 2)
+        @if ($currentstep == 1)
             <div class="step-two">
                 <input type="hidden" name="quest" id="question2" wire:model="question2" value="2">
                 <h1 class="blue handwritten">Ground Rules </h1>
@@ -57,7 +57,7 @@
             </div>
         @endif
 
-        @if ($currentstep == 3)
+        @if ($currentstep == 2)
             <div class="step-three">
                 <h1 class="blue handwritten">Working Agreement </h1>
                 <input type="hidden" name="quest" id="question3" wire:model="question3" value="3">
@@ -186,7 +186,7 @@
             </div>
         @endif
 
-        @if ($currentstep == 4)
+        @if ($currentstep == 3)
             <div class="step-four">
                 <h1 class="blue handwritten">Outcomes</h1>
                 <input type="hidden" name="quest" id="question4" wire:model="question4" value="4">
@@ -543,7 +543,7 @@
             </div>
         @endif
 
-        @if ($currentstep == 5)
+        @if ($currentstep == 4)
             <div class="step-five">
                 <div class="form-group">
                     <div class="spinner">
@@ -564,22 +564,20 @@
             </div>
         @endif
 
-        @if ($currentstep == 1)
-            <div></div>
-        @endif
+        
 
-        @if ($currentstep == 1 || $currentstep == 2 || $currentstep == 3 || $currentstep == 4)
+        @if ($currentstep<= 3)
            
             <button type="submit" class="btn btn-primary btn-sm mt-3 mr-2 float-end next" >Next</button>
         @endif
 
-        @if ($currentstep == 2 || $currentstep == 3 || $currentstep == 4)
-         <button type="submit" class="btn btn-save mt-3 float-start state">Save/Exit</button>
+        @if ($currentstep > 0 && $currentstep <= 3)
+         <button type="button" class="btn btn-save mt-3 float-start state">Save/Exit</button>
         <button type="button" class="btn btn-primary btn-sm mt-3 mr-2 float-end" wire:click="decreaseStep()" style="margin-right: 5px;">Back</button>
            
         @endif
 
-        @if ($currentstep == 5)
+        @if ($currentstep == 4)
             <button type="submit" class="btn btn-primary btn-sm mt-3 mr-2 float-end">Submit</button>
         @endif
 
