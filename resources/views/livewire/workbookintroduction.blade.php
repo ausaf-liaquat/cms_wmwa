@@ -7,16 +7,17 @@
             <div class="text-end"><span class="percent"></span> Completed | Introduction <span
                     id="topic_no"></span></div>
             <div class="progress my-2" style="height: 10px;">
-                <div class="progress-bar" role="progressbar" style="width:" aria-valuenow="01" aria-valuemin="0"
+                <div class="progress-bar" role="progressbar" style="width:{{$percent}}%" aria-valuenow="01" aria-valuemin="0"
                     aria-valuemax="100"></div>
             </div>
         </div>
     </div>
     <div class="card float-none workbook">
         <div class="card-body">
-    <form wire:submit.prevent="submit">
+    <form data-persist="garlic" id="workbookform" wire:submit.prevent="submitintroduction">
 
-        @if ($currentstep == 0)
+        @if ($currentstep == 1)
+            <input type="text" name="currstep" value="{{$currentstep}}" style="display: none">
             <div class="step-one">
                 <input type="hidden" name="quest" id="question1" wire:model="question1" value="1">
                 <div class="content-container m-5">
@@ -26,7 +27,8 @@
             </div>
         @endif
 
-        @if ($currentstep == 1)
+        @if ($currentstep == 2)
+        <input type="text" name="currstep" value="{{$currentstep}}" style="display: none">
             <div class="step-two">
                 <input type="hidden" name="quest" id="question2" wire:model="question2" value="2">
                 <h1 class="blue handwritten">Ground Rules </h1>
@@ -57,7 +59,7 @@
             </div>
         @endif
 
-        @if ($currentstep == 2)
+        @if ($currentstep == 3)
             <div class="step-three">
                 <h1 class="blue handwritten">Working Agreement </h1>
                 <input type="hidden" name="quest" id="question3" wire:model="question3" value="3">
@@ -186,7 +188,7 @@
             </div>
         @endif
 
-        @if ($currentstep == 3)
+        @if ($currentstep == 4)
             <div class="step-four">
                 <h1 class="blue handwritten">Outcomes</h1>
                 <input type="hidden" name="quest" id="question4" wire:model="question4" value="4">
@@ -543,7 +545,7 @@
             </div>
         @endif
 
-        @if ($currentstep == 4)
+        @if ($currentstep == 5)
             <div class="step-five">
                 <div class="form-group">
                     <div class="spinner">
@@ -564,30 +566,23 @@
             </div>
         @endif
 
+        @if ($currentstep<= 4)
+           
+            <button type="button" class="btn btn-primary btn-sm mt-3 mr-2 float-end next" wire:click="increaseStep()" >Next</button>
+        @endif
+
+        @if ($currentstep > 1 && $currentstep <= 4)
+            <button type="button" class="btn btn-save mt-3 float-start state">Save/Exit</button>
+            <button type="button" class="btn btn-primary btn-sm mt-3 mr-2 float-end" wire:click="decreaseStep()" style="margin-right: 5px;">Back</button>
+           
+        @endif
+
+        @if ($currentstep == 5)
         
-
-        @if ($currentstep<= 3)
-           
-            <button type="submit" class="btn btn-primary btn-sm mt-3 mr-2 float-end next" >Next</button>
-        @endif
-
-        @if ($currentstep > 0 && $currentstep <= 3)
-         <button type="button" class="btn btn-save mt-3 float-start state">Save/Exit</button>
-        <button type="button" class="btn btn-primary btn-sm mt-3 mr-2 float-end" wire:click="decreaseStep()" style="margin-right: 5px;">Back</button>
-           
-        @endif
-
-        @if ($currentstep == 4)
             <button type="submit" class="btn btn-primary btn-sm mt-3 mr-2 float-end">Submit</button>
+            <button type="button" class="btn btn-primary btn-sm mt-3 mr-2 float-end" wire:click="decreaseStep()" style="margin-right: 5px;">Back</button>
         @endif
 
-        {{-- <button type="submit" class="btn btn-save mt-3 float-start state">Save/Exit</button>
-
-
-        <input type="button" class="btn btn-primary btn-sm mt-3 mr-2 float-end next state" value="Next" />
-
-        <input type="button" class="btn btn-primary btn-sm mt-3 mr-2 float-end previous "
-            style="margin-right: 5px;" value="Previous" /> --}}
     </form>
         </div>
     </div>
