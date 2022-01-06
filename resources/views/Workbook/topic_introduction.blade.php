@@ -14,9 +14,9 @@
 @endsection
 @section('extrajs')
 <script type="text/javascript">
-    $(window).on('load', function(){
-        $('form').sisyphus();
-    });
+    // $(window).on('load', function(){
+    //     $('form').sisyphus();
+    // });
 </script>
 <script type="text/javascript">
 

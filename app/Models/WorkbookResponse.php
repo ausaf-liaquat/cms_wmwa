@@ -28,4 +28,8 @@ class WorkbookResponse extends Model
     {
         return $this->belongsTo(Answer::class,'answer_id');
     }
+    public function detailquestions()
+    {
+        return $this->belongsTo(Detailquest::class,'detailquest_id');
+    }
 }

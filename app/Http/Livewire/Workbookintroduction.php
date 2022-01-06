@@ -86,10 +86,12 @@ class Workbookintroduction extends Component
     public $totalSteps = 5;
     public $currentstep = 1;
 
-
-    public $currstep=1;
+    public $currstep = 1;
     public $workbookanswer;
     public $percent;
+
+    public $getQuestionOnedata;
+    public $getQuestionTwodata;
 
     public function mount()
     {
@@ -98,17 +100,21 @@ class Workbookintroduction extends Component
         $q3 = WorkbookResponse::where('workbook_id', 1)->where('question_id', 3)->where('user_id', Auth::user()->id)->first();
         $q4 = WorkbookResponse::where('workbook_id', 1)->where('question_id', 4)->where('user_id', Auth::user()->id)->first();
         if (empty($q1)) {
-         $this->currentstep = 1;   
-        }elseif (empty($q2)) {
-            $this->currentstep = 2;  
-        }elseif (empty($q3)) {
-            $this->currentstep = 3;  
-        }elseif (empty($q4)) {
-            $this->currentstep = 4;  
-        }else {
-            $this->currentstep = 5;  
+            $this->currentstep = 1;
+        } elseif (empty($q2)) {
+            $this->currentstep = 2;
+        } elseif (empty($q3)) {
+            $this->currentstep = 3;
+        } elseif (empty($q4)) {
+            $this->currentstep = 4;
+        } else {
+            $this->currentstep = 5;
         }
-        
+
+
+        $this->currentstep = 1;
+
+      
 
     }
 
@@ -120,7 +126,7 @@ class Workbookintroduction extends Component
         if ($this->currentstep > $this->totalSteps) {
             $this->currentstep = $this->totalSteps;
         }
-        $this->currstep=+1;
+        $this->currstep = +1;
         $this->percent = floatval(100 / $this->totalSteps) * $this->currentstep;
         $this->percent = number_format($this->percent);
 
@@ -463,6 +469,9 @@ class Workbookintroduction extends Component
     }
     public function render()
     {
+
+        $this->getQuestionTwodata = WorkbookResponse::where('workbook_id', 1)->where('question_id', 4)->where('user_id', Auth::user()->id)->first();
+
         return view('livewire.workbookintroduction')->layoutData(['percent' => $this->percent]);
     }
 }

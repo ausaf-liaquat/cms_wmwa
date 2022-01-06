@@ -28,7 +28,7 @@
         @endif
 
         @if ($currentstep == 2)
-        <input type="text" name="currstep" value="{{$currentstep}}" style="display: none">
+            <input type="text" name="currstep" value="{{$currentstep}}" style="display: none">
             <div class="step-two">
                 <input type="hidden" name="quest" id="question2" wire:model="question2" value="2">
                 <h1 class="blue handwritten">Ground Rules </h1>
@@ -60,6 +60,7 @@
         @endif
 
         @if ($currentstep == 3)
+       
             <div class="step-three">
                 <h1 class="blue handwritten">Working Agreement </h1>
                 <input type="hidden" name="quest" id="question3" wire:model="question3" value="3">
@@ -69,30 +70,30 @@
                         <span class="question text-right">Session days that work for us:</span>
                         <div class="form-floating mb-3">
                             <input type="hidden" name="dtquestion[]" wire:model="dtquestion1" value="1">
-                            <input type="text" class="form-control" id="session_days1" placeholder=""
+                            <input type="text" name="session_days1" class="form-control"  id="session_days1" placeholder=""
                                 wire:model="session_days1">
                             <label for="session_days1">Your Answer</label>
-                            <span class="text-danger">@error('session_days1'){{ $message }}@enderror</span>
+                            <span class="text-danger" style="font-size: small;font-weight: 700;">@error('session_days1') This field is required. @enderror</span>
                         </div>
                     </div>
                     <div class="question mb-3">
                         <span class="question text-right">Times that work for us:</span>
                         <div class="form-floating mb-3">
                             <input type="hidden" name="dtquestion[]" wire:model="dtquestion2" value="2">
-                            <input type="text" class="form-control" id="session_days2" placeholder=""
+                            <input type="text" name="session_days2" class="form-control" id="session_days2" placeholder=""
                                 wire:model="session_days2">
                             <label for="session_days2">Your Answer</label>
-                            <span class="text-danger">@error('session_days2'){{ $message }}@enderror</span>
+                            <span class="text-danger" style="font-size: small;font-weight: 700;">@error('session_days2') This field is required. @enderror</span>
                         </div>
                     </div>
                     <div class="question mb-3">
                         <span class="question text-right">How often we will speak:</span>
                         <div class="form-floating mb-3">
                             <input type="hidden" name="dtquestion[]" wire:model="dtquestion3" value="3">
-                            <input type="text" wire:model="session_days3" class="form-control" id="session_days3"
+                            <input type="text" name="session_days3" wire:model="session_days3" class="form-control" id="session_days3"
                                 placeholder="" required>
                             <label for="session_days3">Your Answer</label>
-                            <span class="text-danger">@error('session_days3'){{ $message }}@enderror</span>
+                            <span class="text-danger" style="font-size: small;font-weight: 700;">@error('session_days3') This field is required. @enderror</span>
                         </div>
                     </div>
                     <div class="question mb-3">
@@ -100,10 +101,10 @@
                             will:</span>
                         <div class="form-floating mb-3">
                             <input type="hidden" name="dtquestion[]" wire:model="dtquestion4" value="4">
-                            <input type="text" wire:model="session_days4" class="form-control" id="session_days4"
+                            <input type="text" name="session_days4" wire:model="session_days4" class="form-control" id="session_days4"
                                 placeholder="" required>
                             <label for="session_days4">Your Answer</label>
-                            <span class="text-danger">@error('session_days4'){{ $message }}@enderror</span>
+                            <span class="text-danger" style="font-size: small;font-weight: 700;">@error('session_days4') This field is required. @enderror</span>
                         </div>
                     </div>
                     <div class="question mb-3">
@@ -112,20 +113,20 @@
                             us about sharing information with?</span>
                         <div class="form-floating mb-3">
                             <input type="hidden" name="dtquestion[]" wire:model="dtquestion5" value="5">
-                            <input type="text" wire:model="session_days5" class="form-control" id="session_days5"
+                            <input type="text" name="session_days5" wire:model="session_days5" class="form-control" id="session_days5"
                                 placeholder="" required>
                             <label for="session_days5">Your Answer</label>
-                            <span class="text-danger">@error('session_days5'){{ $message }}@enderror</span>
+                            <span class="text-danger" style="font-size: small;font-weight: 700;">@error('session_days5') This field is required. @enderror</span>
                         </div>
                     </div>
                     <div class="question mb-3">
                         <span class="question text-right">If you don’t answer the phone:</span>
                         <div class="form-floating mb-3">
                             <input type="hidden" name="dtquestion[]" wire:model="dtquestion6" value="6">
-                            <input type="text" wire:model="session_days6" class="form-control" id="session_days6"
+                            <input type="text" name="session_days6" wire:model="session_days6" class="form-control" id="session_days6"
                                 placeholder="" required>
                             <label for="session_days6">Your Answer</label>
-                            <span class="text-danger">@error('session_days6'){{ $message }}@enderror</span>
+                            <span class="text-danger" style="font-size: small;font-weight: 700;">@error('session_days6') This field is required. @enderror</span>
                         </div>
                     </div>
                     <div class="question mb-3">
@@ -133,10 +134,10 @@
                             in a week:</span>
                         <div class="form-floating mb-3">
                             <input type="hidden" name="dtquestion[]" wire:model="dtquestion7" value="7">
-                            <input type="text" wire:model="session_days7" class="form-control" id="session_days7"
+                            <input type="text" name="session_days7" wire:model="session_days7" class="form-control" id="session_days7"
                                 placeholder="" required>
                             <label for="session_days7">Your Answer</label>
-                            <span class="text-danger">@error('session_days7'){{ $message }}@enderror</span>
+                            <span class="text-danger" style="font-size: small;font-weight: 700;">@error('session_days7') This field is required. @enderror</span>
                         </div>
                     </div>
                     <div class="question mb-3">
@@ -144,10 +145,10 @@
                             we could include in our sessions?</span>
                         <div class="form-floating mb-3">
                             <input type="hidden" name="dtquestion[]" wire:model="dtquestion8" value="8">
-                            <input type="text" wire:model="session_days8" class="form-control" id="session_days8"
+                            <input type="text" name="session_days8" wire:model="session_days8" class="form-control" id="session_days8"
                                 placeholder="" required>
                             <label for="session_days8">Your Answer</label>
-                            <span class="text-danger">@error('session_days8'){{ $message }}@enderror</span>
+                            <span class="text-danger" style="font-size: small;font-weight: 700;">@error('session_days8') This field is required. @enderror</span>
                         </div>
                     </div>
                     <div class="question mb-3">
@@ -155,10 +156,10 @@
                             explained to me:</span>
                         <div class="form-floating mb-3">
                             <input type="hidden" name="dtquestion[]" wire:model="dtquestion9" value="9">
-                            <input type="text" wire:model="session_days9" class="form-control" id="session_days9"
+                            <input type="text" name="session_days9" wire:model="session_days9" class="form-control" id="session_days9"
                                 placeholder="" required>
                             <label for="session_days9">Your Answer</label>
-                            <span class="text-danger">@error('session_days9'){{ $message }}@enderror</span>
+                            <span class="text-danger" style="font-size: small;font-weight: 700;">@error('session_days9') This field is required. @enderror</span>
                         </div>
                     </div>
                     <div class="question mb-3">
@@ -166,10 +167,10 @@
                             respectful to each other)</span>
                         <div class="form-floating mb-3">
                             <input type="hidden" name="dtquestion[]" wire:model="dtquestion10" value="10">
-                            <input type="text" wire:model="session_days10" class="form-control" id="session_days10"
+                            <input type="text" name="session_days10" wire:model="session_days10" class="form-control" id="session_days10"
                                 placeholder="" required>
                             <label for="session_days10">Your Answer</label>
-                            <span class="text-danger">@error('session_days10'){{ $message }}@enderror</span>
+                            <span class="text-danger" style="font-size: small;font-weight: 700;">@error('session_days10') This field is required. @enderror</span>
                         </div>
                     </div>
                     <div class="question mb-3">
@@ -177,15 +178,16 @@
                             below you're agreeing to stick to the above agreements.</span>
                         <div class="form-floating mb-3">
                             <input type="hidden" name="dtquestion[]" wire:model="dtquestion11" value="11">
-                            <input type="text" wire:model="session_days11" class="form-control" id="session_days11"
+                            <input type="text" name="session_days11" wire:model="session_days11" class="form-control" id="session_days11"
                                 placeholder="" required>
                             <label for="session_days11">Your Signature</label>
-                            <span class="text-danger">@error('session_days11'){{ $message }}@enderror</span>
+                            <span class="text-danger" style="font-size: small;font-weight: 700;">@error('session_days11') This field is required. @enderror</span>
                         </div>
                     </div>
 
                 </div>
-            </div>
+            </div>  
+            
         @endif
 
         @if ($currentstep == 4)
