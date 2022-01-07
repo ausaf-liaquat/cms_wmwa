@@ -112,7 +112,7 @@ class Workbookintroduction extends Component
         }
 
 
-        $this->currentstep = 1;
+        // $this->currentstep = 1;
 
       
 

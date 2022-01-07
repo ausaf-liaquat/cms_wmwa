@@ -1,14 +1,11 @@
 @extends('User.layouts.master')
 @section('title')
-    Introduction - Youth Workbook
+    Topic One Workbook
 @endsection
 @section('content')
     <div class="row">
         <div class="col-md-12">
-
-
-            @livewire('workbookintroduction')
-
+            @livewire('workbooktopic1')
         </div>
     </div>
 @endsection
