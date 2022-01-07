@@ -94,7 +94,7 @@ class Workbooktopic1 extends Component
 
     public $totalSteps = 7;
     public $currentstep = 1;
-
+    public $percent;
     public $currstep = 1;
 
     public function mount()
@@ -115,7 +115,7 @@ class Workbooktopic1 extends Component
         //     $this->currentstep = 5;
         // }
 
-        $this->currentstep = 7;
+        $this->currentstep = 1;
 
     }
 
@@ -458,6 +458,6 @@ class Workbooktopic1 extends Component
     }
     public function render()
     {
-        return view('livewire.workbooktopic1');
+        return view('livewire.workbooktopic1')->layoutData(['percent' => $this->percent]);
     }
 }

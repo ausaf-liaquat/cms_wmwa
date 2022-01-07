@@ -26,6 +26,10 @@ class WorkbookController extends Controller
             $topics = Topic::where('id', $id)->with('questions')->first();
 
             return view('Workbook.topic_1', compact('topics'));
+        } elseif ($id==4) {
+            $topics = Topic::where('id', $id)->with('questions')->first();
+
+            return view('Workbook.topic_2', compact('topics'));
         }{
             # code...
         }
