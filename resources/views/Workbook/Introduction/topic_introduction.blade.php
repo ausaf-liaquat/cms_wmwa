@@ -2168,8 +2168,8 @@
                     question25: question25,
                     workbook_id: workbook_id,
 
-                    detailqs98: $("#dtquestion98").val(),
-                    detailqs99: $("#dtquestion99").val(),
+                    detailqs98:  $("#dtquestion98 ").val(),
+                    detailqs99:  $("#dtquestion99 ").val(),
                     detailqs100: $("#dtquestion100").val(),
                     detailqs101: $("#dtquestion101").val(),
                     detailqs102: $("#dtquestion102").val(),
@@ -2191,8 +2191,8 @@
                     detailqs118: $("#dtquestion118").val(),
                     detailqs119: $("#dtquestion119").val(),
 
-                    agree98: $("#agree98").val(),
-                    agree99: $("#agree99").val(),
+                    agree98:  $("#agree98  ").val(),
+                    agree99:  $("#agree99  ").val(),
                     agree100: $("#agree100").val(),
                     agree101: $("#agree101").val(),
                     agree102: $("#agree102").val(),
@@ -2214,8 +2214,8 @@
                     agree118: $("#agree118").val(),
                     agree119: $("#agree119").val(),
 
-                    healthy_unhealthy98: $("#healthy_unhealthy98").val(),
-                    healthy_unhealthy99: $("#healthy_unhealthy99").val(),
+                    healthy_unhealthy98:  $("#healthy_unhealthy98 ").val(),
+                    healthy_unhealthy99:  $("#healthy_unhealthy99 ").val(),
                     healthy_unhealthy100: $("#healthy_unhealthy100").val(),
                     healthy_unhealthy101: $("#healthy_unhealthy101").val(),
                     healthy_unhealthy102: $("#healthy_unhealthy102").val(),

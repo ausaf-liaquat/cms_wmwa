@@ -1450,7 +1450,7 @@
                     </div> 
                 @endif
 
-                @if ($currentstep==7)
+                @if ($currentstep == 7)
                     <div class="step-five">
                         <div class="form-group">
                             <div class="spinner">
