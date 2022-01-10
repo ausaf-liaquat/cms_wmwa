@@ -3,14 +3,14 @@
         <div class="col-md-9">
             <h2>Youth Workbook</h2>
         </div>
-        {{-- <div class="col-md-3">
-            <div class="text-end"><span class="percent">{{$percent}}%</span> Completed | Topic 01 <span
+        <div class="col-md-3">
+            <div class="text-end"><span class="percent">{{$percent}}%</span> Completed | Topic 02 <span
                     id="topic_no"></span></div>
             <div class="progress my-2" style="height: 10px;">
                 <div class="progress-bar" role="progressbar" style="width:{{$percent}}%" aria-valuenow="01" aria-valuemin="0"
                     aria-valuemax="100"></div>
             </div>
-        </div> --}}
+        </div>
     </div>
 
     <div class="card float-none workbook">
@@ -1080,6 +1080,8 @@
                                                         <option value="No">No</option>
                                                     </select>
                                                     <label for="agree">Do you agree?</label>
+                                                    <span class="text-danger"
+                                                style="font-size: small;font-weight: 700;">@error('agree99') Please select any option. @enderror</span>
                                                 </div>
                                             </div>
                                             <div class="col-md-9">
@@ -1090,6 +1092,8 @@
                                                     <span class="slider-label">Healthy</span>
                                                     <span class="slider-label">Unhealthy</span>
                                                 </div>
+                                                <span class="text-danger"
+                                                style="font-size: small;font-weight: 700;">@error('healthy_unhealthy99') Please select any range. @enderror</span>
                                             </div>
                                         </div>
                                     </div>
@@ -1106,6 +1110,8 @@
                                                         <option value="No">No</option>
                                                     </select>
                                                     <label for="agree">Do you agree?</label>
+                                                    <span class="text-danger"
+                                                style="font-size: small;font-weight: 700;">@error('agree100') Please select any option. @enderror</span>
                                                 </div>
                                             </div>
                                             <div class="col-md-9">
@@ -1116,6 +1122,8 @@
                                                     <span class="slider-label">Healthy</span>
                                                     <span class="slider-label">Unhealthy</span>
                                                 </div>
+                                                <span class="text-danger"
+                                                style="font-size: small;font-weight: 700;">@error('healthy_unhealthy100') Please select any range. @enderror</span>
                                             </div>
                                         </div>
                                     </div>
@@ -1131,6 +1139,8 @@
                                                         <option value="No">No</option>
                                                     </select>
                                                     <label for="agree">Do you agree?</label>
+                                                    <span class="text-danger"
+                                                style="font-size: small;font-weight: 700;">@error('agree101') Please select any option. @enderror</span>
                                                 </div>
                                             </div>
                                             <div class="col-md-9">
@@ -1141,6 +1151,8 @@
                                                     <span class="slider-label">Healthy</span>
                                                     <span class="slider-label">Unhealthy</span>
                                                 </div>
+                                                <span class="text-danger"
+                                                style="font-size: small;font-weight: 700;">@error('healthy_unhealthy101') Please select any range. @enderror</span>
                                             </div>
                                         </div>
                                     </div>
@@ -1156,6 +1168,8 @@
                                                         <option value="No">No</option>
                                                     </select>
                                                     <label for="agree">Do you agree?</label>
+                                                    <span class="text-danger"
+                                                style="font-size: small;font-weight: 700;">@error('agree102') Please select any option. @enderror</span>
                                                 </div>
                                             </div>
                                             <div class="col-md-9">
@@ -1166,6 +1180,8 @@
                                                     <span class="slider-label">Healthy</span>
                                                     <span class="slider-label">Unhealthy</span>
                                                 </div>
+                                                <span class="text-danger"
+                                                style="font-size: small;font-weight: 700;">@error('healthy_unhealthy102') Please select any range. @enderror</span>
                                             </div>
                                         </div>
                                     </div>
@@ -1181,6 +1197,8 @@
                                                         <option value="No">No</option>
                                                     </select>
                                                     <label for="agree">Do you agree?</label>
+                                                    <span class="text-danger"
+                                                style="font-size: small;font-weight: 700;">@error('agree103') Please select any option. @enderror</span>
                                                 </div>
                                             </div>
                                             <div class="col-md-9">
@@ -1191,6 +1209,8 @@
                                                     <span class="slider-label">Healthy</span>
                                                     <span class="slider-label">Unhealthy</span>
                                                 </div>
+                                                <span class="text-danger"
+                                                style="font-size: small;font-weight: 700;">@error('healthy_unhealthy103') Please select any range. @enderror</span>
                                             </div>
                                         </div>
                                     </div>
@@ -1206,6 +1226,8 @@
                                                         <option value="No">No</option>
                                                     </select>
                                                     <label for="agree">Do you agree?</label>
+                                                    <span class="text-danger"
+                                                style="font-size: small;font-weight: 700;">@error('agree104') Please select any option. @enderror</span>
                                                 </div>
                                             </div>
                                             <div class="col-md-9">
@@ -1216,6 +1238,8 @@
                                                     <span class="slider-label">Healthy</span>
                                                     <span class="slider-label">Unhealthy</span>
                                                 </div>
+                                                <span class="text-danger"
+                                                style="font-size: small;font-weight: 700;">@error('healthy_unhealthy104') Please select any range. @enderror</span>
                                             </div>
                                         </div>
                                     </div>
@@ -1231,6 +1255,8 @@
                                                         <option value="No">No</option>
                                                     </select>
                                                     <label for="agree">Do you agree?</label>
+                                                    <span class="text-danger"
+                                                style="font-size: small;font-weight: 700;">@error('agree105') Please select any option. @enderror</span>
                                                 </div>
                                             </div>
                                             <div class="col-md-9">
@@ -1241,6 +1267,8 @@
                                                     <span class="slider-label">Healthy</span>
                                                     <span class="slider-label">Unhealthy</span>
                                                 </div>
+                                                <span class="text-danger"
+                                                style="font-size: small;font-weight: 700;">@error('healthy_unhealthy105') Please select any range. @enderror</span>
                                             </div>
                                         </div>
                                     </div>
@@ -1256,6 +1284,8 @@
                                                         <option value="No">No</option>
                                                     </select>
                                                     <label for="agree">Do you agree?</label>
+                                                    <span class="text-danger"
+                                                style="font-size: small;font-weight: 700;">@error('agree106') Please select any option. @enderror</span>
                                                 </div>
                                             </div>
                                             <div class="col-md-9">
@@ -1266,6 +1296,8 @@
                                                     <span class="slider-label">Healthy</span>
                                                     <span class="slider-label">Unhealthy</span>
                                                 </div>
+                                                <span class="text-danger"
+                                                style="font-size: small;font-weight: 700;">@error('healthy_unhealthy106') Please select any range. @enderror</span>
                                             </div>
                                         </div>
                                     </div>
@@ -1281,6 +1313,8 @@
                                                         <option value="No">No</option>
                                                     </select>
                                                     <label for="agree">Do you agree?</label>
+                                                    <span class="text-danger"
+                                                style="font-size: small;font-weight: 700;">@error('agree107') Please select any option. @enderror</span>
                                                 </div>
                                             </div>
                                             <div class="col-md-9">
@@ -1291,6 +1325,8 @@
                                                     <span class="slider-label">Healthy</span>
                                                     <span class="slider-label">Unhealthy</span>
                                                 </div>
+                                                <span class="text-danger"
+                                                style="font-size: small;font-weight: 700;">@error('healthy_unhealthy107') Please select any range. @enderror</span>
                                             </div>
                                         </div>
                                     </div>
@@ -1306,6 +1342,8 @@
                                                         <option value="No">No</option>
                                                     </select>
                                                     <label for="agree">Do you agree?</label>
+                                                    <span class="text-danger"
+                                                style="font-size: small;font-weight: 700;">@error('agree108') Please select any option. @enderror</span>
                                                 </div>
                                             </div>
                                             <div class="col-md-9">
@@ -1316,6 +1354,8 @@
                                                     <span class="slider-label">Healthy</span>
                                                     <span class="slider-label">Unhealthy</span>
                                                 </div>
+                                                <span class="text-danger"
+                                                style="font-size: small;font-weight: 700;">@error('healthy_unhealthy108') Please select any range. @enderror</span>
                                             </div>
                                         </div>
                                     </div>
@@ -1332,6 +1372,8 @@
                                                         <option value="No">No</option>
                                                     </select>
                                                     <label for="agree">Do you agree?</label>
+                                                    <span class="text-danger"
+                                                style="font-size: small;font-weight: 700;">@error('agree109') Please select any option. @enderror</span>
                                                 </div>
                                             </div>
                                             <div class="col-md-9">
@@ -1342,6 +1384,8 @@
                                                     <span class="slider-label">Healthy</span>
                                                     <span class="slider-label">Unhealthy</span>
                                                 </div>
+                                                <span class="text-danger"
+                                                style="font-size: small;font-weight: 700;">@error('healthy_unhealthy109') Please select any range. @enderror</span>
                                             </div>
                                         </div>
                                     </div>
@@ -1357,6 +1401,8 @@
                                                         <option value="No">No</option>
                                                     </select>
                                                     <label for="agree">Do you agree?</label>
+                                                    <span class="text-danger"
+                                                style="font-size: small;font-weight: 700;">@error('agree110') Please select any option. @enderror</span>
                                                 </div>
                                             </div>
                                             <div class="col-md-9">
@@ -1367,6 +1413,8 @@
                                                     <span class="slider-label">Healthy</span>
                                                     <span class="slider-label">Unhealthy</span>
                                                 </div>
+                                                <span class="text-danger"
+                                                style="font-size: small;font-weight: 700;">@error('healthy_unhealthy110') Please select any range. @enderror</span>
                                             </div>
                                         </div>
                                     </div>
@@ -1382,6 +1430,8 @@
                                                         <option value="No">No</option>
                                                     </select>
                                                     <label for="agree">Do you agree?</label>
+                                                    <span class="text-danger"
+                                                style="font-size: small;font-weight: 700;">@error('agree111') Please select any option. @enderror</span>
                                                 </div>
                                             </div>
                                             <div class="col-md-9">
@@ -1392,6 +1442,8 @@
                                                     <span class="slider-label">Healthy</span>
                                                     <span class="slider-label">Unhealthy</span>
                                                 </div>
+                                                <span class="text-danger"
+                                                style="font-size: small;font-weight: 700;">@error('healthy_unhealthy111') Please select any range. @enderror</span>
                                             </div>
                                         </div>
                                     </div>
@@ -1407,6 +1459,8 @@
                                                         <option value="No">No</option>
                                                     </select>
                                                     <label for="agree">Do you agree?</label>
+                                                    <span class="text-danger"
+                                                style="font-size: small;font-weight: 700;">@error('agree112') Please select any option. @enderror</span>
                                                 </div>
                                             </div>
                                             <div class="col-md-9">
@@ -1417,6 +1471,8 @@
                                                     <span class="slider-label">Healthy</span>
                                                     <span class="slider-label">Unhealthy</span>
                                                 </div>
+                                                <span class="text-danger"
+                                                style="font-size: small;font-weight: 700;">@error('healthy_unhealthy112') Please select any range. @enderror</span>
                                             </div>
                                         </div>
                                     </div>
@@ -1433,6 +1489,8 @@
                                                         <option value="No">No</option>
                                                     </select>
                                                     <label for="agree">Do you agree?</label>
+                                                    <span class="text-danger"
+                                                style="font-size: small;font-weight: 700;">@error('agree113') Please select any option. @enderror</span>
                                                 </div>
                                             </div>
                                             <div class="col-md-9">
@@ -1443,6 +1501,8 @@
                                                     <span class="slider-label">Healthy</span>
                                                     <span class="slider-label">Unhealthy</span>
                                                 </div>
+                                                <span class="text-danger"
+                                                style="font-size: small;font-weight: 700;">@error('healthy_unhealthy113') Please select any range. @enderror</span>
                                             </div>
                                         </div>
                                     </div>
@@ -1458,6 +1518,8 @@
                                                         <option value="No">No</option>
                                                     </select>
                                                     <label for="agree">Do you agree?</label>
+                                                    <span class="text-danger"
+                                                style="font-size: small;font-weight: 700;">@error('agree114') Please select any option. @enderror</span>
                                                 </div>
                                             </div>
                                             <div class="col-md-9">
@@ -1468,6 +1530,8 @@
                                                     <span class="slider-label">Healthy</span>
                                                     <span class="slider-label">Unhealthy</span>
                                                 </div>
+                                                <span class="text-danger"
+                                                style="font-size: small;font-weight: 700;">@error('healthy_unhealthy114') Please select any range. @enderror</span>
                                             </div>
                                         </div>
                                     </div>
@@ -1484,6 +1548,8 @@
                                                         <option value="No">No</option>
                                                     </select>
                                                     <label for="agree">Do you agree?</label>
+                                                    <span class="text-danger"
+                                                style="font-size: small;font-weight: 700;">@error('agree115') Please select any option. @enderror</span>
                                                 </div>
                                             </div>
                                             <div class="col-md-9">
@@ -1494,6 +1560,8 @@
                                                     <span class="slider-label">Healthy</span>
                                                     <span class="slider-label">Unhealthy</span>
                                                 </div>
+                                                <span class="text-danger"
+                                                style="font-size: small;font-weight: 700;">@error('healthy_unhealthy115') Please select any range. @enderror</span>
                                             </div>
                                         </div>
                                     </div>
@@ -1510,6 +1578,8 @@
                                                         <option value="No">No</option>
                                                     </select>
                                                     <label for="agree">Do you agree?</label>
+                                                    <span class="text-danger"
+                                                style="font-size: small;font-weight: 700;">@error('agree116') Please select any option. @enderror</span>
                                                 </div>
                                             </div>
                                             <div class="col-md-9">
@@ -1520,6 +1590,8 @@
                                                     <span class="slider-label">Healthy</span>
                                                     <span class="slider-label">Unhealthy</span>
                                                 </div>
+                                                <span class="text-danger"
+                                                style="font-size: small;font-weight: 700;">@error('healthy_unhealthy116') Please select any range. @enderror</span>
                                             </div>
                                         </div>
                                     </div>
@@ -1536,6 +1608,8 @@
                                                         <option value="No">No</option>
                                                     </select>
                                                     <label for="agree">Do you agree?</label>
+                                                    <span class="text-danger"
+                                                style="font-size: small;font-weight: 700;">@error('agree117') Please select any option. @enderror</span>
                                                 </div>
                                             </div>
                                             <div class="col-md-9">
@@ -1546,6 +1620,8 @@
                                                     <span class="slider-label">Healthy</span>
                                                     <span class="slider-label">Unhealthy</span>
                                                 </div>
+                                                <span class="text-danger"
+                                                style="font-size: small;font-weight: 700;">@error('healthy_unhealthy117') Please select any range. @enderror</span>
                                             </div>
                                         </div>
                                     </div>
@@ -1561,6 +1637,8 @@
                                                         <option value="No">No</option>
                                                     </select>
                                                     <label for="agree">Do you agree?</label>
+                                                    <span class="text-danger"
+                                                style="font-size: small;font-weight: 700;">@error('agree118') Please select any option. @enderror</span>
                                                 </div>
                                             </div>
                                             <div class="col-md-9">
@@ -1571,6 +1649,8 @@
                                                     <span class="slider-label">Healthy</span>
                                                     <span class="slider-label">Unhealthy</span>
                                                 </div>
+                                                <span class="text-danger"
+                                                style="font-size: small;font-weight: 700;">@error('healthy_unhealthy118') Please select any range. @enderror</span>
                                             </div>
                                         </div>
                                     </div>
@@ -1586,6 +1666,8 @@
                                                         <option value="No">No</option>
                                                     </select>
                                                     <label for="agree">Do you agree?</label>
+                                                    <span class="text-danger"
+                                                style="font-size: small;font-weight: 700;">@error('agree119') Please select any option. @enderror</span>
                                                 </div>
                                             </div>
                                             <div class="col-md-9">
@@ -1596,6 +1678,8 @@
                                                     <span class="slider-label">Healthy</span>
                                                     <span class="slider-label">Unhealthy</span>
                                                 </div>
+                                                <span class="text-danger"
+                                                style="font-size: small;font-weight: 700;">@error('healthy_unhealthy119') Please select any range. @enderror</span>
                                             </div>
                                         </div>
                                     </div>
@@ -1620,15 +1704,20 @@
                         <div class="row">
                             <div class="col-md-6">
                             <p>In this heart, write down all the things you want in your perfect partner and relationship. For example, you might want a partner who makes you laugh, or a relationship that feels safe and calm.</p>
+                            <span class="text-danger"
+                            style="font-size: small;font-weight: 700;">@error('heart120') This field is required. @enderror</span>
                                 <div class="form-floating">
-                                    <textarea class="form-control" placeholder="Leave a comment here" class="text-center" id="heart120" style="height: 500px; background-position: center; background-image: url('https://www.westmerciawomensaid.org/crm/img/heart1.jpg'); background-repeat: no-repeat; background-size: 500px auto;"></textarea>
+                                    <textarea class="form-control" wire:model="heart120" placeholder="Leave a comment here" class="text-center" id="heart120" style="height: 500px; background-position: center; background-image: url('https://www.westmerciawomensaid.org/crm/img/heart1.jpg'); background-repeat: no-repeat; background-size: 500px auto;"></textarea>
                                     <label for="heart1">Comments</label>
                                 </div>
+
                             </div>
                             <div class="col-md-6">
                             <p>In this heart, write down all the things that might prevent your partner and relationship being healthy and happy. For example, a partner who is rude to you, or a relationship that feels controlling.</p>
+                            <span class="text-danger"
+                            style="font-size: small;font-weight: 700;">@error('heart121') This field is required. @enderror</span>
                                 <div class="form-floating">
-                                    <textarea class="form-control" placeholder="Leave a comment here" class="text-center" id="heart121" style="height: 500px;  background-position: center; background-image: url('https://www.westmerciawomensaid.org/crm/img/heart2.jpg'); background-repeat: no-repeat; background-size: 500px auto;"></textarea>
+                                    <textarea class="form-control" wire:model="heart121" placeholder="Leave a comment here" class="text-center" id="heart121" style="height: 500px;  background-position: center; background-image: url('https://www.westmerciawomensaid.org/crm/img/heart2.jpg'); background-repeat: no-repeat; background-size: 500px auto;"></textarea>
                                     <label for="heart2">Comments</label>
                                 </div>
                             </div>
@@ -1676,7 +1765,7 @@
                                 <h4 class="blue handwritten mb-4">Think U Know</h4>
                             </div>
                             <div class="col-md-3">
-                                <img src="asset{{('assets/img/zipit.png')}}" class="img-fluid img-logo">
+                                <img src="{{asset('assets/img/zipit.png')}}" class="img-fluid img-logo">
                                 <h4 class="blue handwritten mb-4">Zipit</h4>
                             </div>
                             <div class="col-md-3">
@@ -1737,16 +1826,14 @@
 
                 @if ($currentstep > 1 && $currentstep <= 9)
                     <button type="button" class="btn btn-save mt-3 float-start state">Save/Exit</button>
-                    <button type="button" class="btn btn-primary btn-sm mt-3 mr-2 float-end"
-                        wire:click="decreaseStep()" style="margin-right: 5px;">Back</button>
+                    <button type="button" class="btn btn-primary btn-sm mt-3 mr-2 float-end" wire:click="decreaseStep()" style="margin-right: 5px;">Back</button>
 
                 @endif
 
                 @if ($currentstep == 10)
 
                     <button type="submit" class="btn btn-primary btn-sm mt-3 mr-2 float-end">Submit</button>
-                    <button type="button" class="btn btn-primary btn-sm mt-3 mr-2 float-end"
-                        wire:click="decreaseStep()" style="margin-right: 5px;">Back</button>
+                    {{-- <button type="button" class="btn btn-primary btn-sm mt-3 mr-2 float-end" wire:click="decreaseStep()" style="margin-right: 5px;">Back</button> --}}
                 @endif
             </form>
         </div>

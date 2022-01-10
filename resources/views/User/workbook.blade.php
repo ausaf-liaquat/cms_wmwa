@@ -30,7 +30,7 @@
                                 @if ($item->status == 'inprocess')
                                     In Progress
                                 @else
-                                    {{ $item->status }}
+                                    Completed
                                 @endif
                             </td>
                             <td><a href="{{route('serviceuser.workbookopen',['id'=>$item->topic->id])}}" target="_blank" class="btn btn-primary">Open

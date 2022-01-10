@@ -1487,7 +1487,7 @@
                 @if ($currentstep == 7)
 
                     <button type="submit" class="btn btn-primary btn-sm mt-3 mr-2 float-end">Submit</button>
-                    <button type="button" class="btn btn-primary btn-sm mt-3 mr-2 float-end" wire:click="decreaseStep()" style="margin-right: 5px;">Back</button>
+                    {{-- <button type="button" class="btn btn-primary btn-sm mt-3 mr-2 float-end" wire:click="decreaseStep()" style="margin-right: 5px;">Back</button> --}}
                 @endif
 
             </form>

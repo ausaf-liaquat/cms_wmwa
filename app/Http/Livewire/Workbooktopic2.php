@@ -159,8 +159,8 @@ class Workbooktopic2 extends Component
     public $healthy_unhealthy118;
     public $healthy_unhealthy119;
 
-    public $dtquestion120;
-    public $dtquestion121;
+    public $dtquestion120=120;
+    public $dtquestion121=121;
 
     public $heart120;
     public $heart121;
@@ -174,23 +174,38 @@ class Workbooktopic2 extends Component
 
     public function mount()
     {
-        // $q1 = WorkbookResponse::where('workbook_id', 1)->where('question_id', 1)->where('user_id', Auth::user()->id)->first();
-        // $q2 = WorkbookResponse::where('workbook_id', 1)->where('question_id', 2)->where('user_id', Auth::user()->id)->first();
-        // $q3 = WorkbookResponse::where('workbook_id', 1)->where('question_id', 3)->where('user_id', Auth::user()->id)->first();
-        // $q4 = WorkbookResponse::where('workbook_id', 1)->where('question_id', 4)->where('user_id', Auth::user()->id)->first();
-        // if (empty($q1)) {
-        //     $this->currentstep = 1;
-        // } elseif (empty($q2)) {
-        //     $this->currentstep = 2;
-        // } elseif (empty($q3)) {
-        //     $this->currentstep = 3;
-        // } elseif (empty($q4)) {
-        //     $this->currentstep = 4;
-        // } else {
-        //     $this->currentstep = 5;
-        // }
+        $q1 = WorkbookResponse::where('workbook_id', 1)->where('question_id', 11)->where('user_id', Auth::user()->id)->first();
+        $q2 = WorkbookResponse::where('workbook_id', 1)->where('question_id', 12)->where('user_id', Auth::user()->id)->first();
+        $q3 = WorkbookResponse::where('workbook_id', 1)->where('question_id', 13)->where('user_id', Auth::user()->id)->first();
+        $q4 = WorkbookResponse::where('workbook_id', 1)->where('question_id', 14)->where('user_id', Auth::user()->id)->first();
+        $q5 = WorkbookResponse::where('workbook_id', 1)->where('question_id', 23)->where('user_id', Auth::user()->id)->first();
+        $q6 = WorkbookResponse::where('workbook_id', 1)->where('question_id', 24)->where('user_id', Auth::user()->id)->first();
+        $q7 = WorkbookResponse::where('workbook_id', 1)->where('question_id', 25)->where('user_id', Auth::user()->id)->first();
+        $q8 = WorkbookResponse::where('workbook_id', 1)->where('question_id', 26)->where('user_id', Auth::user()->id)->first();
+        $q9 = WorkbookResponse::where('workbook_id', 1)->where('question_id', 27)->where('user_id', Auth::user()->id)->first();
+        if (empty($q1)) {
+            $this->currentstep = 1;
+        } elseif (empty($q2)) {
+            $this->currentstep = 2;
+        } elseif (empty($q3)) {
+            $this->currentstep = 3;
+        } elseif (empty($q4)) {
+            $this->currentstep = 4;
+        } elseif(empty($q5)) {
+            $this->currentstep = 5;
+        }elseif (empty($q6)) {
+            $this->currentstep = 6;
+        } elseif (empty($q7)) {
+            $this->currentstep = 7;
+        } elseif (empty($q8)) {
+            $this->currentstep = 8;
+        } elseif(empty($q9)) {
+            $this->currentstep = 9;
+        }else {
+           $this->currentstep = 10; 
+        }
 
-        $this->currentstep = 7;
+        
 
     }
 
@@ -574,176 +589,201 @@ class Workbooktopic2 extends Component
 
             ]);
 
-            // $find = WorkbookResponse::where('workbook_id', 1)->where('question_id', 24)->where('user_id', Auth::user()->id)->first();
-            // if (empty($find)) {
-            //     $WorkbookResponse = WorkbookResponse::insert([
-            //         ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 24, 'detailquest_id' => $this->dtquestion98,  'answer' => $this->agree98 , 'status' => 'completed', 'complete_date' => now()],
-            //         ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 24, 'detailquest_id' => $this->dtquestion99,  'answer' => $this->agree99 , 'status' => 'completed', 'complete_date' => now()],
-            //         ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 24, 'detailquest_id' => $this->dtquestion100, 'answer' => $this->agree100, 'status' => 'completed', 'complete_date' => now()],
-            //         ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 24, 'detailquest_id' => $this->dtquestion101, 'answer' => $this->agree101, 'status' => 'completed', 'complete_date' => now()],
-            //         ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 24, 'detailquest_id' => $this->dtquestion102, 'answer' => $this->agree102, 'status' => 'completed', 'complete_date' => now()],
-            //         ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 24, 'detailquest_id' => $this->dtquestion103, 'answer' => $this->agree103, 'status' => 'completed', 'complete_date' => now()],
-            //         ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 24, 'detailquest_id' => $this->dtquestion104, 'answer' => $this->agree104, 'status' => 'completed', 'complete_date' => now()],
-            //         ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 24, 'detailquest_id' => $this->dtquestion105, 'answer' => $this->agree105, 'status' => 'completed', 'complete_date' => now()],
-            //         ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 24, 'detailquest_id' => $this->dtquestion106, 'answer' => $this->agree106, 'status' => 'completed', 'complete_date' => now()],
-            //         ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 24, 'detailquest_id' => $this->dtquestion107, 'answer' => $this->agree107, 'status' => 'completed', 'complete_date' => now()],
-            //         ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 24, 'detailquest_id' => $this->dtquestion108, 'answer' => $this->agree108, 'status' => 'completed', 'complete_date' => now()],
-            //         ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 24, 'detailquest_id' => $this->dtquestion109, 'answer' => $this->agree109, 'status' => 'completed', 'complete_date' => now()],
-            //         ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 24, 'detailquest_id' => $this->dtquestion110, 'answer' => $this->agree110, 'status' => 'completed', 'complete_date' => now()],
-            //         ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 24, 'detailquest_id' => $this->dtquestion111, 'answer' => $this->agree111, 'status' => 'completed', 'complete_date' => now()],
-            //         ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 24, 'detailquest_id' => $this->dtquestion112, 'answer' => $this->agree112, 'status' => 'completed', 'complete_date' => now()],
-            //         ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 24, 'detailquest_id' => $this->dtquestion113, 'answer' => $this->agree113, 'status' => 'completed', 'complete_date' => now()],
-            //         ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 24, 'detailquest_id' => $this->dtquestion114, 'answer' => $this->agree114, 'status' => 'completed', 'complete_date' => now()],
-            //         ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 24, 'detailquest_id' => $this->dtquestion115, 'answer' => $this->agree115, 'status' => 'completed', 'complete_date' => now()],
-            //         ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 24, 'detailquest_id' => $this->dtquestion116, 'answer' => $this->agree116, 'status' => 'completed', 'complete_date' => now()],
-            //         ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 24, 'detailquest_id' => $this->dtquestion117, 'answer' => $this->agree117, 'status' => 'completed', 'complete_date' => now()],
-            //         ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 24, 'detailquest_id' => $this->dtquestion118, 'answer' => $this->agree118, 'status' => 'completed', 'complete_date' => now()],
-            //         ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 24, 'detailquest_id' => $this->dtquestion119, 'answer' => $this->agree119, 'status' => 'completed', 'complete_date' => now()],
+            $find = WorkbookResponse::where('workbook_id', 1)->where('question_id', 25)->where('user_id', Auth::user()->id)->first();
+            if (empty($find)) {
+                $WorkbookResponse = WorkbookResponse::insert([
+                    ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 25, 'detailquest_id' => $this->dtquestion98,  'answer' => $this->agree98, 'status' => 'completed', 'complete_date' => now()],
+                    ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 25, 'detailquest_id' => $this->dtquestion99,  'answer' => $this->agree99, 'status' => 'completed', 'complete_date' => now()],
+                    ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 25, 'detailquest_id' => $this->dtquestion100, 'answer' => $this->agree100, 'status' => 'completed', 'complete_date' => now()],
+                    ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 25, 'detailquest_id' => $this->dtquestion101, 'answer' => $this->agree101, 'status' => 'completed', 'complete_date' => now()],
+                    ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 25, 'detailquest_id' => $this->dtquestion102, 'answer' => $this->agree102, 'status' => 'completed', 'complete_date' => now()],
+                    ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 25, 'detailquest_id' => $this->dtquestion103, 'answer' => $this->agree103, 'status' => 'completed', 'complete_date' => now()],
+                    ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 25, 'detailquest_id' => $this->dtquestion104, 'answer' => $this->agree104, 'status' => 'completed', 'complete_date' => now()],
+                    ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 25, 'detailquest_id' => $this->dtquestion105, 'answer' => $this->agree105, 'status' => 'completed', 'complete_date' => now()],
+                    ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 25, 'detailquest_id' => $this->dtquestion106, 'answer' => $this->agree106, 'status' => 'completed', 'complete_date' => now()],
+                    ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 25, 'detailquest_id' => $this->dtquestion107, 'answer' => $this->agree107, 'status' => 'completed', 'complete_date' => now()],
+                    ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 25, 'detailquest_id' => $this->dtquestion108, 'answer' => $this->agree108, 'status' => 'completed', 'complete_date' => now()],
+                    ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 25, 'detailquest_id' => $this->dtquestion109, 'answer' => $this->agree109, 'status' => 'completed', 'complete_date' => now()],
+                    ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 25, 'detailquest_id' => $this->dtquestion110, 'answer' => $this->agree110, 'status' => 'completed', 'complete_date' => now()],
+                    ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 25, 'detailquest_id' => $this->dtquestion111, 'answer' => $this->agree111, 'status' => 'completed', 'complete_date' => now()],
+                    ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 25, 'detailquest_id' => $this->dtquestion112, 'answer' => $this->agree112, 'status' => 'completed', 'complete_date' => now()],
+                    ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 25, 'detailquest_id' => $this->dtquestion113, 'answer' => $this->agree113, 'status' => 'completed', 'complete_date' => now()],
+                    ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 25, 'detailquest_id' => $this->dtquestion114, 'answer' => $this->agree114, 'status' => 'completed', 'complete_date' => now()],
+                    ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 25, 'detailquest_id' => $this->dtquestion115, 'answer' => $this->agree115, 'status' => 'completed', 'complete_date' => now()],
+                    ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 25, 'detailquest_id' => $this->dtquestion116, 'answer' => $this->agree116, 'status' => 'completed', 'complete_date' => now()],
+                    ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 25, 'detailquest_id' => $this->dtquestion117, 'answer' => $this->agree117, 'status' => 'completed', 'complete_date' => now()],
+                    ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 25, 'detailquest_id' => $this->dtquestion118, 'answer' => $this->agree118, 'status' => 'completed', 'complete_date' => now()],
+                    ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 25, 'detailquest_id' => $this->dtquestion119, 'answer' => $this->agree119, 'status' => 'completed', 'complete_date' => now()],
 
-            //         ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 24, 'detailquest_id' => $this->dtquestion98,  'answer' => $this->healthy_unhealthy98 , 'status' => 'completed', 'complete_date' => now()],
-            //         ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 24, 'detailquest_id' => $this->dtquestion99,  'answer' => $this->healthy_unhealthy99 , 'status' => 'completed', 'complete_date' => now()],
-            //         ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 24, 'detailquest_id' => $this->dtquestion100, 'answer' => $this->healthy_unhealthy100, 'status' => 'completed', 'complete_date' => now()],
-            //         ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 24, 'detailquest_id' => $this->dtquestion101, 'answer' => $this->healthy_unhealthy101, 'status' => 'completed', 'complete_date' => now()],
-            //         ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 24, 'detailquest_id' => $this->dtquestion102, 'answer' => $this->healthy_unhealthy102, 'status' => 'completed', 'complete_date' => now()],
-            //         ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 24, 'detailquest_id' => $this->dtquestion103, 'answer' => $this->healthy_unhealthy103, 'status' => 'completed', 'complete_date' => now()],
-            //         ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 24, 'detailquest_id' => $this->dtquestion104, 'answer' => $this->healthy_unhealthy104, 'status' => 'completed', 'complete_date' => now()],
-            //         ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 24, 'detailquest_id' => $this->dtquestion105, 'answer' => $this->healthy_unhealthy105, 'status' => 'completed', 'complete_date' => now()],
-            //         ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 24, 'detailquest_id' => $this->dtquestion106, 'answer' => $this->healthy_unhealthy106, 'status' => 'completed', 'complete_date' => now()],
-            //         ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 24, 'detailquest_id' => $this->dtquestion107, 'answer' => $this->healthy_unhealthy107, 'status' => 'completed', 'complete_date' => now()],
-            //         ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 24, 'detailquest_id' => $this->dtquestion108, 'answer' => $this->healthy_unhealthy108, 'status' => 'completed', 'complete_date' => now()],
-            //         ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 24, 'detailquest_id' => $this->dtquestion109, 'answer' => $this->healthy_unhealthy109, 'status' => 'completed', 'complete_date' => now()],
-            //         ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 24, 'detailquest_id' => $this->dtquestion110, 'answer' => $this->healthy_unhealthy110, 'status' => 'completed', 'complete_date' => now()],
-            //         ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 24, 'detailquest_id' => $this->dtquestion111, 'answer' => $this->healthy_unhealthy111, 'status' => 'completed', 'complete_date' => now()],
-            //         ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 24, 'detailquest_id' => $this->dtquestion112, 'answer' => $this->healthy_unhealthy112, 'status' => 'completed', 'complete_date' => now()],
-            //         ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 24, 'detailquest_id' => $this->dtquestion113, 'answer' => $this->healthy_unhealthy113, 'status' => 'completed', 'complete_date' => now()],
-            //         ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 24, 'detailquest_id' => $this->dtquestion114, 'answer' => $this->healthy_unhealthy114, 'status' => 'completed', 'complete_date' => now()],
-            //         ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 24, 'detailquest_id' => $this->dtquestion115, 'answer' => $this->healthy_unhealthy115, 'status' => 'completed', 'complete_date' => now()],
-            //         ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 24, 'detailquest_id' => $this->dtquestion116, 'answer' => $this->healthy_unhealthy116, 'status' => 'completed', 'complete_date' => now()],
-            //         ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 24, 'detailquest_id' => $this->dtquestion117, 'answer' => $this->healthy_unhealthy117, 'status' => 'completed', 'complete_date' => now()],
-            //         ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 24, 'detailquest_id' => $this->dtquestion118, 'answer' => $this->healthy_unhealthy118, 'status' => 'completed', 'complete_date' => now()],
-            //         ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 24, 'detailquest_id' => $this->dtquestion119, 'answer' => $this->healthy_unhealthy119, 'status' => 'completed', 'complete_date' => now()],
-            //     ]);
-            // } else {
-            //     $answerdata = [
-            //         $this->agree98 ,
-            //         $this->agree99 ,
-            //         $this->agree100,
-            //         $this->agree101,
-            //         $this->agree102,
-            //         $this->agree103,
-            //         $this->agree104,
-            //         $this->agree105,
-            //         $this->agree106,
-            //         $this->agree107,
-            //         $this->agree108,
-            //         $this->agree109,
-            //         $this->agree110,
-            //         $this->agree111,
-            //         $this->agree112,
-            //         $this->agree113,
-            //         $this->agree114,
-            //         $this->agree115,
-            //         $this->agree116,
-            //         $this->agree117,
-            //         $this->agree118,
-            //         $this->agree119,
+                    ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 25, 'detailquest_id' => $this->dtquestion98,  'answer' => $this->healthy_unhealthy98, 'status' => 'completed', 'complete_date' => now()],
+                    ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 25, 'detailquest_id' => $this->dtquestion99,  'answer' => $this->healthy_unhealthy99, 'status' => 'completed', 'complete_date' => now()],
+                    ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 25, 'detailquest_id' => $this->dtquestion100, 'answer' => $this->healthy_unhealthy100, 'status' => 'completed', 'complete_date' => now()],
+                    ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 25, 'detailquest_id' => $this->dtquestion101, 'answer' => $this->healthy_unhealthy101, 'status' => 'completed', 'complete_date' => now()],
+                    ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 25, 'detailquest_id' => $this->dtquestion102, 'answer' => $this->healthy_unhealthy102, 'status' => 'completed', 'complete_date' => now()],
+                    ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 25, 'detailquest_id' => $this->dtquestion103, 'answer' => $this->healthy_unhealthy103, 'status' => 'completed', 'complete_date' => now()],
+                    ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 25, 'detailquest_id' => $this->dtquestion104, 'answer' => $this->healthy_unhealthy104, 'status' => 'completed', 'complete_date' => now()],
+                    ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 25, 'detailquest_id' => $this->dtquestion105, 'answer' => $this->healthy_unhealthy105, 'status' => 'completed', 'complete_date' => now()],
+                    ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 25, 'detailquest_id' => $this->dtquestion106, 'answer' => $this->healthy_unhealthy106, 'status' => 'completed', 'complete_date' => now()],
+                    ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 25, 'detailquest_id' => $this->dtquestion107, 'answer' => $this->healthy_unhealthy107, 'status' => 'completed', 'complete_date' => now()],
+                    ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 25, 'detailquest_id' => $this->dtquestion108, 'answer' => $this->healthy_unhealthy108, 'status' => 'completed', 'complete_date' => now()],
+                    ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 25, 'detailquest_id' => $this->dtquestion109, 'answer' => $this->healthy_unhealthy109, 'status' => 'completed', 'complete_date' => now()],
+                    ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 25, 'detailquest_id' => $this->dtquestion110, 'answer' => $this->healthy_unhealthy110, 'status' => 'completed', 'complete_date' => now()],
+                    ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 25, 'detailquest_id' => $this->dtquestion111, 'answer' => $this->healthy_unhealthy111, 'status' => 'completed', 'complete_date' => now()],
+                    ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 25, 'detailquest_id' => $this->dtquestion112, 'answer' => $this->healthy_unhealthy112, 'status' => 'completed', 'complete_date' => now()],
+                    ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 25, 'detailquest_id' => $this->dtquestion113, 'answer' => $this->healthy_unhealthy113, 'status' => 'completed', 'complete_date' => now()],
+                    ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 25, 'detailquest_id' => $this->dtquestion114, 'answer' => $this->healthy_unhealthy114, 'status' => 'completed', 'complete_date' => now()],
+                    ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 25, 'detailquest_id' => $this->dtquestion115, 'answer' => $this->healthy_unhealthy115, 'status' => 'completed', 'complete_date' => now()],
+                    ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 25, 'detailquest_id' => $this->dtquestion116, 'answer' => $this->healthy_unhealthy116, 'status' => 'completed', 'complete_date' => now()],
+                    ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 25, 'detailquest_id' => $this->dtquestion117, 'answer' => $this->healthy_unhealthy117, 'status' => 'completed', 'complete_date' => now()],
+                    ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 25, 'detailquest_id' => $this->dtquestion118, 'answer' => $this->healthy_unhealthy118, 'status' => 'completed', 'complete_date' => now()],
+                    ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 25, 'detailquest_id' => $this->dtquestion119, 'answer' => $this->healthy_unhealthy119, 'status' => 'completed', 'complete_date' => now()],
+                ]);
+            } else {
+                $answerdata = [
+                    $this->agree98,
+                    $this->agree99,
+                    $this->agree100,
+                    $this->agree101,
+                    $this->agree102,
+                    $this->agree103,
+                    $this->agree104,
+                    $this->agree105,
+                    $this->agree106,
+                    $this->agree107,
+                    $this->agree108,
+                    $this->agree109,
+                    $this->agree110,
+                    $this->agree111,
+                    $this->agree112,
+                    $this->agree113,
+                    $this->agree114,
+                    $this->agree115,
+                    $this->agree116,
+                    $this->agree117,
+                    $this->agree118,
+                    $this->agree119,
 
-            //         $this->healthy_unhealthy98 ,
-            //         $this->healthy_unhealthy99 ,
-            //         $this->healthy_unhealthy100,
-            //         $this->healthy_unhealthy101,
-            //         $this->healthy_unhealthy102,
-            //         $this->healthy_unhealthy103,
-            //         $this->healthy_unhealthy104,
-            //         $this->healthy_unhealthy105,
-            //         $this->healthy_unhealthy106,
-            //         $this->healthy_unhealthy107,
-            //         $this->healthy_unhealthy108,
-            //         $this->healthy_unhealthy109,
-            //         $this->healthy_unhealthy110,
-            //         $this->healthy_unhealthy111,
-            //         $this->healthy_unhealthy112,
-            //         $this->healthy_unhealthy113,
-            //         $this->healthy_unhealthy114,
-            //         $this->healthy_unhealthy115,
-            //         $this->healthy_unhealthy116,
-            //         $this->healthy_unhealthy117,
-            //         $this->healthy_unhealthy118,
-            //         $this->healthy_unhealthy119,
-            //     ];
+                    $this->healthy_unhealthy98,
+                    $this->healthy_unhealthy99,
+                    $this->healthy_unhealthy100,
+                    $this->healthy_unhealthy101,
+                    $this->healthy_unhealthy102,
+                    $this->healthy_unhealthy103,
+                    $this->healthy_unhealthy104,
+                    $this->healthy_unhealthy105,
+                    $this->healthy_unhealthy106,
+                    $this->healthy_unhealthy107,
+                    $this->healthy_unhealthy108,
+                    $this->healthy_unhealthy109,
+                    $this->healthy_unhealthy110,
+                    $this->healthy_unhealthy111,
+                    $this->healthy_unhealthy112,
+                    $this->healthy_unhealthy113,
+                    $this->healthy_unhealthy114,
+                    $this->healthy_unhealthy115,
+                    $this->healthy_unhealthy116,
+                    $this->healthy_unhealthy117,
+                    $this->healthy_unhealthy118,
+                    $this->healthy_unhealthy119,
+                ];
 
-            //     $dtid = [
-            //         [$this->dtquestion98],
-            //         [$this->dtquestion99],
-            //         [$this->dtquestion100],
-            //         [$this->dtquestion101],
-            //         [$this->dtquestion102],
-            //         [$this->dtquestion103],
-            //         [$this->dtquestion104],
-            //         [$this->dtquestion105],
-            //         [$this->dtquestion106],
-            //         [$this->dtquestion107],
-            //         [$this->dtquestion108],
-            //         [$this->dtquestion109],
-            //         [$this->dtquestion110],
-            //         [$this->dtquestion111],
-            //         [$this->dtquestion112],
-            //         [$this->dtquestion113],
-            //         [$this->dtquestion114],
-            //         [$this->dtquestion115],
-            //         [$this->dtquestion116],
-            //         [$this->dtquestion117],
-            //         [$this->dtquestion118],
-            //         [$this->dtquestion119],
+                $dtid = [
+                    [$this->dtquestion98],
+                    [$this->dtquestion99],
+                    [$this->dtquestion100],
+                    [$this->dtquestion101],
+                    [$this->dtquestion102],
+                    [$this->dtquestion103],
+                    [$this->dtquestion104],
+                    [$this->dtquestion105],
+                    [$this->dtquestion106],
+                    [$this->dtquestion107],
+                    [$this->dtquestion108],
+                    [$this->dtquestion109],
+                    [$this->dtquestion110],
+                    [$this->dtquestion111],
+                    [$this->dtquestion112],
+                    [$this->dtquestion113],
+                    [$this->dtquestion114],
+                    [$this->dtquestion115],
+                    [$this->dtquestion116],
+                    [$this->dtquestion117],
+                    [$this->dtquestion118],
+                    [$this->dtquestion119],
 
-            //     ];
+                ];
 
-            //     $questid = [
-            //         ['question_id' => 24],
-            //         ['question_id' => 24],
-            //         ['question_id' => 24],
-            //         ['question_id' => 24],
-            //         ['question_id' => 24],
-            //         ['question_id' => 24],
-            //         ['question_id' => 24],
-            //         ['question_id' => 24],
-            //         ['question_id' => 24],
-            //         ['question_id' => 24],
-            //         ['question_id' => 24],
-            //         ['question_id' => 24],
-            //         ['question_id' => 24],
-            //         ['question_id' => 24],
-            //         ['question_id' => 24],
-            //         ['question_id' => 24],
-            //         ['question_id' => 24],
-            //         ['question_id' => 24],
-            //         ['question_id' => 24],
-            //         ['question_id' => 24],
-            //         ['question_id' => 24],
-            //         ['question_id' => 24],
+               
+                $responseid = WorkbookResponse::where('workbook_id', 1)->where('question_id', 25)->where('user_id', Auth::user()->id)->pluck('id')->toArray();
+                // dd($responseid);
+                for ($i = 0; $i <= 43; $i++) {
 
-            //     ];
-            //     $responseid = WorkbookResponse::where('workbook_id', 1)->where('question_id', 24)->where('user_id', Auth::user()->id)->pluck('id')->toArray();
-            //     // dd($responseid);
-            //     for ($i = 0; $i <= 27; $i++) {
+                    WorkbookResponse::where('workbook_id', 1)->where(['question_id' => 25])->where(['id' => $responseid[$i]])->where('user_id', Auth::user()->id)
+                        ->update(['answer' => $answerdata[$i]]);
 
-            //         WorkbookResponse::where('workbook_id', 1)->where(['question_id' => $questid[$i]])->where(['id' => $responseid[$i]])->where('user_id', Auth::user()->id)
-            //             ->update(['answer' => $answerdata[$i]]);
+                }
+            }
+        } elseif ($this->currentstep == 8) {
+            $this->validate([
+                'heart120' => 'required',
+                'heart121' => 'required',
+                
+            ]);
 
-            //     }
-            // }
+            $find = WorkbookResponse::where('workbook_id', 1)->where('question_id', 26)->where('user_id', Auth::user()->id)->first();
+            if (empty($find)) {
+                $WorkbookResponse = WorkbookResponse::insert([
+                    ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 26, 'detailquest_id' => $this->dtquestion120,  'answer' => $this->heart120, 'status' => 'completed', 'complete_date' => now()],
+                    ['workbook_id' => 1, 'user_id' => Auth::user()->id, 'question_id' => 26, 'detailquest_id' => $this->dtquestion121,  'answer' => $this->heart121, 'status' => 'completed', 'complete_date' => now()],
+                    
+                ]);
+            } else {
+                $answerdata = [
+                    $this->heart120,
+                    $this->heart121,
+                   
+                ];
+
+                $dtid = [
+                    [$this->dtquestion120],
+                    [$this->dtquestion121],
+                  
+                ];
+
+               
+                $responseid = WorkbookResponse::where('workbook_id', 1)->where('question_id', 26)->where('user_id', Auth::user()->id)->pluck('id')->toArray();
+                // dd($responseid);
+                for ($i = 0; $i <= 1; $i++) {
+
+                    WorkbookResponse::where('workbook_id', 1)->where(['question_id' => 26])->where(['id' => $responseid[$i]])->where('user_id', Auth::user()->id)
+                        ->update(['answer' => $answerdata[$i]]);
+
+                }
+            }
+        } elseif ($this->currentstep == 9) {
+            $find = WorkbookResponse::where('workbook_id', 1)->where('question_id', 27)->where('user_id', Auth::user()->id)->first();
+            if (empty($find)) {
+                $WorkbookResponse = WorkbookResponse::create([
+                    'workbook_id' => 1,
+                    'user_id' => Auth::user()->id,
+                    'question_id' => 27,
+                    'status' => 'completed',
+                    'complete_date' => now(),
+                ]);
+                return response()->json(['status' => 'Success', 'message' => 'response save Qs 27'], 200);
+            }
         }
     }
 
-    public function submitintroduction()
+    public function submittopic2()
     {
-        ShareWorkbook::where('user_id', Auth::user()->id)->where('workbook_id', 1)->where('topic_id', 1)->update(['status' => 'complete', 'complete_date' => now()]);
+        ShareWorkbook::where('user_id', Auth::user()->id)->where('workbook_id', 1)->where('topic_id', 4)->update(['status' => 'complete', 'complete_date' => now()]);
         return redirect()->route('serviceuser.myworkbook');
 
     }
 
     public function render()
     {
-        return view('livewire.workbooktopic2');
+        return view('livewire.workbooktopic2')->layoutData(['percent' => $this->percent]);
     }
 }

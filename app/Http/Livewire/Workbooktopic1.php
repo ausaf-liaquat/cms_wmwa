@@ -99,23 +99,30 @@ class Workbooktopic1 extends Component
 
     public function mount()
     {
-        // $q1 = WorkbookResponse::where('workbook_id', 1)->where('question_id', 1)->where('user_id', Auth::user()->id)->first();
-        // $q2 = WorkbookResponse::where('workbook_id', 1)->where('question_id', 2)->where('user_id', Auth::user()->id)->first();
-        // $q3 = WorkbookResponse::where('workbook_id', 1)->where('question_id', 3)->where('user_id', Auth::user()->id)->first();
-        // $q4 = WorkbookResponse::where('workbook_id', 1)->where('question_id', 4)->where('user_id', Auth::user()->id)->first();
-        // if (empty($q1)) {
-        //     $this->currentstep = 1;
-        // } elseif (empty($q2)) {
-        //     $this->currentstep = 2;
-        // } elseif (empty($q3)) {
-        //     $this->currentstep = 3;
-        // } elseif (empty($q4)) {
-        //     $this->currentstep = 4;
-        // } else {
-        //     $this->currentstep = 5;
-        // }
+        $q1 = WorkbookResponse::where('workbook_id', 1)->where('question_id', 5)->where('user_id', Auth::user()->id)->first();
+        $q2 = WorkbookResponse::where('workbook_id', 1)->where('question_id', 6)->where('user_id', Auth::user()->id)->first();
+        $q3 = WorkbookResponse::where('workbook_id', 1)->where('question_id', 7)->where('user_id', Auth::user()->id)->first();
+        $q4 = WorkbookResponse::where('workbook_id', 1)->where('question_id', 8)->where('user_id', Auth::user()->id)->first();
+        $q5 = WorkbookResponse::where('workbook_id', 1)->where('question_id', 9)->where('user_id', Auth::user()->id)->first();
+        $q6 = WorkbookResponse::where('workbook_id', 1)->where('question_id', 10)->where('user_id', Auth::user()->id)->first();
+        if (empty($q1)) {
+            $this->currentstep = 1;
+        } elseif (empty($q2)) {
+            $this->currentstep = 2;
+        } elseif (empty($q3)) {
+            $this->currentstep = 3;
+        } elseif (empty($q4)) {
+            $this->currentstep = 4;
+        } elseif (empty($q5)) {
+            $this->currentstep = 5;
+        } elseif(empty($q6)) {
+            $this->currentstep = 6;
+        } else {
+            $this->currentstep = 7;
+        }
 
-        $this->currentstep = 1;
+
+        // $this->currentstep = 1;
 
     }
 

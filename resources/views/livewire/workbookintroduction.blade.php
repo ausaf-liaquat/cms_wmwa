@@ -14,7 +14,7 @@
     </div>
     <div class="card float-none workbook">
         <div class="card-body">
-            <form data-persist="garlic" id="workbookform" wire:submit.prevent="submitintroduction">
+            <form  id="workbookform" wire:submit.prevent="submitintroduction">
 
                 @if ($currentstep == 1)
                     <input type="text" name="currstep" value="{{$currentstep}}" style="display: none">
@@ -582,7 +582,7 @@
                 @if ($currentstep == 5)
                 
                     <button type="submit" class="btn btn-primary btn-sm mt-3 mr-2 float-end">Submit</button>
-                    <button type="button" class="btn btn-primary btn-sm mt-3 mr-2 float-end" wire:click="decreaseStep()" style="margin-right: 5px;">Back</button>
+                    {{-- <button type="button" class="btn btn-primary btn-sm mt-3 mr-2 float-end" wire:click="decreaseStep()" style="margin-right: 5px;">Back</button> --}}
                 @endif
 
             </form>
