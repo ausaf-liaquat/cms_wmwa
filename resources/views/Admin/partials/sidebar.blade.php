@@ -1,5 +1,5 @@
 <div class="flex-shrink-0 p-5 sidebar sidebar-admin" style="width: 280px;">
-    <h3>Admin Dashboard</h3>
+    <p style="font-size: 26px;font-weight:bold">Admin Dashboard</p>
     <p>Welcome {{ Auth::user()->name }}</p>
     <ul class="list-unstyled ps-0">
         <li class="border-top mt-5 mb-3"></li>

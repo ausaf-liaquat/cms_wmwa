@@ -51,7 +51,7 @@
         </div>
 
        
-        <button class="mb-1 w-100 btn btn-primary" type="submit">Password Setup</button>
+        <button class="mb-1 w-100 btn btn-primary" type="submit">Submit Password</button>
 
        
     </form>

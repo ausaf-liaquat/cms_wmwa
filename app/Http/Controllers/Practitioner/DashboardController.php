@@ -6,8 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Models\Practitioner;
 use App\Models\Resource;
 use App\Models\User;
+use App\Models\ShareWorkbook;
 use App\Models\Admin;
+use App\Models\Topic;
 use App\Notifications\WelcomeServiceUser;
+use App\Notifications\PractitionerUpdatedUserDetails;
+use App\Notifications\PractitionerDeletedUser;
+use App\Notifications\WorkbookSent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -50,13 +55,16 @@ class DashboardController extends Controller
         $serviceusers = User::all();
         $practitioner = Practitioner::find(Auth::user()->id);
         $serviceuserscount = User::count();
-        return view('practitioner.services_users', compact('serviceusers', 'practitioner', 'serviceuserscount'));
+        $topic = Topic::all();
+        return view('Practitioner.services_users', compact('serviceusers', 'practitioner', 'serviceuserscount','topic'));
     }
     public function ServiceUsercheckEmail(Request $request)
     {
         $email = $request->input('email');
         $isExists = User::where('email', $email)->first();
-        if ($isExists) {
+        $isAdminExixts=Admin::where('email', $email)->first();
+        $isPractitionerExixts=Practitioner::where('email', $email)->first();
+        if ($isExists || $isAdminExixts || $isPractitionerExixts) {
             return response()->json(array("exists" => true));
         } else {
             return response()->json(array("exists" => false));
@@ -84,12 +92,15 @@ class DashboardController extends Controller
     {
         if ($request->editserviceuser_name != null && $request->editserviceuser_category != null && $request->editserviceuser_practitioner != null) {
             User::find($id)->update(['name' => $request->editserviceuser_name, 'category' => $request->editserviceuser_category, 'practitioner_id' => $request->editserviceuser_practitioner]);
+            User::find($id)->notify(new PractitionerUpdatedUserDetails());
         }
         return response()->json(200);
     }
     public function ServiceUserDelete(Request $request)
     {
-        User::find($request->getserviceuser_id)->delete();
+        $user = User::find($request->id);
+        $user->notify(new PractitionerDeletedUser());
+        $user->delete();
         return redirect()->route('practitioner.serviceuser');
     }
     public function Resource()
@@ -132,5 +143,63 @@ class DashboardController extends Controller
         $practitioner = Practitioner::find($id);
         return response()->json($practitioner, 200);
         return redirect()->back()->withErrors($validator)->withInput();
+    }
+    public function markAsReadOne($id)
+    {
+        $userUnreadNotification = auth()->user()->unreadNotifications->where('id', $id)->first();
+
+        if ($userUnreadNotification) {
+            $userUnreadNotification->markAsRead();
+        }
+       return redirect()->route('practitioner.dashboard')->with('status','Notification mark as read.');
+    }
+    public function SendWorkbook(Request $request)
+    {
+        if (!empty($request->check)) {
+            $workbook = ShareWorkbook::where('user_id', $request->sendserviceuser_id)->first();
+
+            // dd($remainingtopics);
+            if (empty($workbook)) {
+                foreach ($request->check as $key => $value) {
+                    $shareworkbook = ShareWorkbook::create([
+                        'workbook_id' => 1,
+                        'topic_id' => $value,
+                        'user_id' => $request->sendserviceuser_id,
+                        'status' => 'inprocess',
+                        'practitioner_notes' => $request->practitionernotes,
+                    ]);
+                    $shareworkbook->sent_date = now();
+                    $shareworkbook->save();
+
+                }
+                User::find($request->sendserviceuser_id)->notify(new WorkbookSent());
+                return response()->json(['success' => 'Topics Sent Succesfully'], 200);
+            } else {
+                $topicsarray = ShareWorkbook::where('user_id', $request->sendserviceuser_id)->pluck('topic_id')->toArray();
+                $remainingtopics = array_diff($request->check, $topicsarray);
+                if (!empty($remainingtopics)) {
+                    foreach ($remainingtopics as $key => $value) {
+                        $shareworkbook = ShareWorkbook::create([
+                            'workbook_id' => 1,
+                            'topic_id' => $value,
+                            'user_id' => $request->sendserviceuser_id,
+                            'status' => 'inprocess',
+                            'practitioner_notes' => $request->practitionernotes,
+                        ]);
+                        $shareworkbook->sent_date = now();
+                        $shareworkbook->save();
+
+                    }
+                    User::find($request->sendserviceuser_id)->notify(new WorkbookSent());
+                    return response()->json(['success' => 'Topics Sent Succesfully'], 200);
+                }
+                return response()->json(['error' => 'Topics Already sent'], 200);
+
+            }
+
+        } else {
+            return response()->json(['error' => 'Please select Topics to send'], 200);
+        }
+
     }
 }

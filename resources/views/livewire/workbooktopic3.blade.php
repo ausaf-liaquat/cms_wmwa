@@ -4,7 +4,7 @@
             <h2>Youth Workbook</h2>
         </div>
         <div class="col-md-3">
-            <div class="text-end"><span class="percent">{{ $percent }}%</span> Completed | Topic 03
+            <div class="text-end"><span class="percent">{{!empty($percent)?$percent:'0'}}%</span> Completed | Topic 03
                 <span id="topic_no"></span>
             </div>
             <div class="progress my-2" style="height: 10px;">

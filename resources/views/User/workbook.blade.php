@@ -25,7 +25,7 @@
                             <th scope="row">{{ $item->workbook->workbook_title }}</th>
                             <td>{{ $item->topic->topic_title }}</td>
                             <td>{{ $item->sent_date->format('d/m/Y') }}</td>
-                            <td><a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalnotes" onclick="getPractitionernotes(event.target)" data-notes="{{$item->practitioner_notes}}">View Note</a></td>
+                            <td><a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalnotes" onclick="getPractitionernotes(event.target)" data-notes="{{!empty($item->practitioner_notes)? $item->practitioner_notes:'No data found.'}}">View Note</a></td>
                             <td>
                                 @if ($item->status == 'inprocess')
                                     In Progress

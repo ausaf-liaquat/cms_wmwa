@@ -28,7 +28,7 @@ class WelcomePractitioner extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['mail','database'];
     }
 
     /**
@@ -56,7 +56,7 @@ class WelcomePractitioner extends Notification
     public function toArray($notifiable)
     {
         return [
-            //
+            'message'=>'Welcome to West Mercia Women\'s Aid Portal.'
         ];
     }
 }

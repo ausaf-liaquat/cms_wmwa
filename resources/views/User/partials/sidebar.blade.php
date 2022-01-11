@@ -1,5 +1,5 @@
 <div class="flex-shrink-0 p-5 sidebar sidebar-service-users" style="width: 280px;">
-    <h3>Service User Dashboard</h3>
+    <p style="font-size: 26px;font-weight:bold">Service User Dashboard</p>
     <p>Welcome {{ \Str::ucfirst(Auth::user()->name) }}</p>
 
       <a class="btn btn-toggle align-items-center rounded" href="{{ route('logout') }}"

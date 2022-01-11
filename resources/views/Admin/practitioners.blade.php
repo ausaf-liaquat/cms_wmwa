@@ -570,8 +570,6 @@
             var id = $("#getpractitioner_id").val();
             var count = $("#serviceuserscount").val();
 
-          
-
             $("#deletepract").modal("hide");
             Swal.fire({
                 title: "Are you sure?",

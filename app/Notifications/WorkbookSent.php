@@ -7,18 +7,18 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class WelcomeServiceUser extends Notification
+class WorkbookSent extends Notification
 {
     use Queueable;
-    protected $token;
+
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($token)
+    public function __construct()
     {
-        $this->token = $token;
+        //
     }
 
     /**
@@ -41,11 +41,9 @@ class WelcomeServiceUser extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-        ->subject("Welcome Email")
-        ->line("Welcome " . $notifiable->name)
-        ->line('Please set your password first.')
-        ->action('Setup password', url(route('password.reset', ['token' => $this->token, 'email' => $notifiable->getEmailForPasswordReset()], false)))
-        ->line('Thank you for using our application!');
+                    ->subject('Youth Workbook')
+                    ->line('You have been assigned new workbook topics by WMWA.')
+                    ->line('Thank you for using WMWA CRM!');
     }
 
     /**
@@ -57,7 +55,7 @@ class WelcomeServiceUser extends Notification
     public function toArray($notifiable)
     {
         return [
-            'message'=>'Welcome to West Mercia Women\'s Aid Portal.'
+            'message'=>'You have been assigned new workbook topics by WMWA.'
         ];
     }
 }

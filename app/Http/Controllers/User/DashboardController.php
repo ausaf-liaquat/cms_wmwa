@@ -79,4 +79,14 @@ class DashboardController extends Controller
             return response()->json(array("exists" => false));
         }
     }
+
+    public function markAsReadOne($id)
+    {
+        $userUnreadNotification = auth()->user()->unreadNotifications->where('id', $id)->first();
+
+        if ($userUnreadNotification) {
+            $userUnreadNotification->markAsRead();
+        }
+       return redirect()->route('user.dashboard')->with('status','Notification mark as read.');
+    }
 }

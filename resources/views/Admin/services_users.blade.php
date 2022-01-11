@@ -31,11 +31,11 @@
                             <td>{{ $item->category }}</td>
                             <td>{{ !empty($item->practitioner) ? $item->practitioner->name : 'N/A' }}</td>
                             <td>
-                                @if ($item->shareworkbook->count() > 0)
+                                {{-- @if ($item->shareworkbook->status=='completed') --}}
                                     <a class="btn btn-primary"
-                                        href="{{ route('view.workbook', ['id' => $item->id]) }}">View</a>
+                                        href="#">View</a>
 
-                                @endif
+                                {{-- @endif --}}
                                 <a class="btn btn-primary" onclick='sendworkbook(event.target)' data-bs-toggle="modal"
                                     data-sendid="{{ $item->id }}" data-sendemail="{{ $item->email }}"
                                     data-userid="{{ $item->id }}" data-bs-target="#send">Send
@@ -46,7 +46,7 @@
                                     onclick='editServiceUserDetail(event.target)' data-bs-target="#edit">Edit</a><a
                                     class="btn btn-danger" data-bs-toggle="modal"
                                     onclick='getPractitionerDetail(event.target)' data-serviceuserid="{{ $item->id }}"
-                                    data-bs-target="#delete">Delete</a></td>
+                                    data-bs-target="#deletemodal">Delete</a></td>
                         </tr>
                     @empty
                         <tr>
@@ -85,9 +85,12 @@
                             <label for="serviceuser_name">Enter Name</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="email" class="form-control" name="serviceuser_email" id="serviceuser_email"
-                                placeholder="name@example.com" required>
+                            <input type="email" class="form-control" name="serviceuser_email"
+                                onkeyup="duplicateEmail(this)" id="serviceuser_email" placeholder="name@example.com"
+                                required>
                             <label for="serviceuser_email">Enter Email Address</label>
+                            <span class="text-danger mb-4 email-error" id="addserviceuser_error"
+                                style="font-size: small;"></span>
                         </div>
                         <div class="form-floating mb-3">
                             <select class="form-select" name="serviceuser_category" id="serviceuser_category"
@@ -133,6 +136,14 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    <div class="alert alert-danger print-error-msg" style="display:none">
+                        <ul></ul>
+                    </div>
+                    <div class="spinner">
+                        <div class="bounce1"></div>
+                        <div class="bounce2"></div>
+                        <div class="bounce3"></div>
+                    </div>
                     <p>If you need to edit a service user's details please update the form below and press update.</p>
                     <form>
                         <input type="hidden" name="editserviceuser_id" id="editserviceuser_id">
@@ -184,15 +195,23 @@
     </div>
 
     <!-- DELETE MODAL -->
-    <div class="modal fade" id="delete" tabindex="-1" aria-labelledby="deleteLabel" aria-hidden="true">
+    <div class="modal fade" id="deletemodal" tabindex="-1" aria-labelledby="deleteLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="deleteLabel">Delete Service User</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ route('serviceuser.delete') }}" method="get">
+                <form method="get">
                     <div class="modal-body">
+                        <div class="alert alert-danger print-error-msg" style="display:none">
+                            <ul></ul>
+                        </div>
+                        <div class="spinner">
+                            <div class="bounce1"></div>
+                            <div class="bounce2"></div>
+                            <div class="bounce3"></div>
+                        </div>
                         <p>WARNING you are about to delete this service user.</p>
                         <input type="hidden" name="getserviceuser_id" id="getserviceuser_id">
                         <fieldset disabled>
@@ -237,7 +256,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Go Back</button>
-                        <button type="submit" class="btn btn-danger">Delete practitioner</button>
+                        <button type="button" class="btn btn-danger deleteserviceuser">Delete Service User</button>
                     </div>
                 </form>
             </div>
@@ -253,7 +272,7 @@
                     <h4 class="modal-title" id="sendLabel">Send Workbook Topic</h4><br>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form id="sendform" action="{{ route('serviceuser.workbook') }}" method="post">
+                <form id="sendform">
                     <div class="modal-body">
                         <p>Sending workbook to: <strong> <span id="sendserviceuser_email"></span></strong></p>
 
@@ -277,7 +296,7 @@
                         <div class="chapters mb-3">
                             @foreach ($topic as $item)
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="check[]"
+                                    <input class="form-check-input check" type="checkbox" name="check[]"
                                         value="{{ $item->id }}" id="check{{ $item->id }}">
                                     <label class="form-check-label" for="check{{ $item->id }}">
                                         {{ $item->topic_title }}
@@ -289,7 +308,7 @@
                         <p><mark>The chapters will automatically update based on the workbook selected.</mark></p>
                         <div class="form-floating mb-3">
                             <textarea class="form-control" placeholder="Leave a comment here" name="practitionernotes"
-                                id="floatingTextarea2" style="height: 200px"></textarea>
+                                id="practnotes" style="height: 200px"></textarea>
                             <label for="floatingTextarea2">Your Message</label>
                         </div>
 
@@ -298,7 +317,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-success">Send</button>
+                        <button type="button" class="btn btn-success" onclick="shareWorkbook()">Send</button>
                     </div>
                 </form>
             </div>
@@ -401,15 +420,19 @@
                 success: function(res) {
                     if (res.exists) {
 
-                        $('#email-error')
+                        $('#addserviceuser_error')
                             .css('color', 'red')
                             .html("This Email already exists!");
-                        $('#addpract').prop('disabled', true);
+                        $('#addserviceuser_error')
+                            .prop('hidden', false);
+                        $('#addserviceuser').prop('disabled', true);
 
                     } else {
                         // $('#email-error')
                         //     .css('display', 'none')
-                        $('#addpract').prop('disabled', false);;
+                        $('#addserviceuser_error')
+                            .prop('hidden', true);
+                        $('#addserviceuser').prop('disabled', false);;
 
                     }
                 },
@@ -519,8 +542,8 @@
                     }
                     // location.reload();
                 },
-                beforeSend: function() {
-                    $('.spinner').show()
+                afterSend: function() {
+                    $('.spinner').hide()
                 },
                 error: function(response) {
                     $('#statusError').text(response.responseJSON.errors);
@@ -571,32 +594,36 @@
             var workbook_topic = $('#workbook_topic').val();
             var url = '{{ route('serviceuser.workbook') }}';
             let _token = $('meta[name="csrf-token"]').attr('content');
+            var chekedValue = [];
+            $('.check:checked').each(function() {
+                chekedValue.push($(this).val());
+            })
+            var notes = $('#practnotes').val();
+
             $.ajax({
                 url: url,
                 type: "post",
                 data: {
-                    serviceuser_id: serviceuser_id,
+                    sendserviceuser_id: serviceuser_id,
                     send_workbook: send_workbook,
                     workbook_topic: workbook_topic,
-
+                    check: chekedValue,
+                    practitionernotes: notes,
                     _token: _token
                 },
                 beforeSend: function() {
                     $('.spinner').show()
                 },
                 success: function(data) {
-                    if ($.isEmptyObject(data.error)) {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Workbook sent.',
-                            showConfirmButton: false,
-                            timer: 2500
-                        }).then((result) => {
-                            // Reload the Page
-                            location.reload();
-                        });;
-                        $('#send').modal('hide');
-                        // location.reload();
+                    $('#send').modal('hide');
+                    if (data.success) {
+                        tata.success('Success', data.success, {
+                            onClose: location.reload()
+                        })
+                    } else if (data.error) {
+                        tata.error('Error', data.error, {
+                            onClose: location.reload()
+                        })
                     }
                 },
                 complete: function() {
@@ -606,7 +633,62 @@
                     $('#statusError').text(response.responseJSON.errors);
                 }
             });
-            // }
+
         }
+
+        
+        $(".deleteserviceuser").click(function(e) {
+            e.preventDefault();
+
+            var id = $("#getserviceuser_id").val();
+            // var count = $("#serviceuserscount").val();
+
+          
+
+            // $("#deletemodal").modal("hide");
+            // Swal.fire({
+            //     title: "Are you sure?",
+            //     text: "Once deleted, you will not be able to recover",
+            //     icon: "warning",
+            //     showCancelButton: true,
+
+
+
+            //     confirmButtonText: "Yes, delete it!",
+            // }).then((result) => {
+            //     if (result.value) {
+                    $.ajax({
+                        type: "GET",
+                        url: '{{ route('serviceuser.delete') }}',
+                        data: {
+                            id: id
+                        },
+                        beforeSend: function() {
+                    $('.spinner').show()
+                },
+                        success: function(data) {
+                            $("#deletemodal").modal("hide");
+                            if ($.isEmptyObject(data.error)) {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Service User Deleted successfully',
+                                    showConfirmButton: true,
+                                    timer: 2500
+                                }).then((result) => {
+                                    // Reload the Page
+                                    location.reload();
+                                });
+                            }
+                        },
+                        afterSend: function() {
+                    $('.spinner').hide()
+                },
+                    });
+
+            //     }
+            // });
+
+
+        });
     </script>
 @endsection
