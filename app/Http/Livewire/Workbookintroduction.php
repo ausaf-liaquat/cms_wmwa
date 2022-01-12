@@ -111,10 +111,16 @@ class Workbookintroduction extends Component
             $this->currentstep = 5;
         }
 
+        // $this->currentstep = 4;
 
-        // $this->currentstep = 1;
+        // $w = WorkbookResponse::where('workbook_id', 1)->where('question_id', 4)->where('user_id', Auth::user()->id)->where('detailquest_id', 13)->pluck('id')->toArray();
+        // $ans = WorkbookResponse::where('workbook_id', 1)->where('question_id', 4)->where('user_id', Auth::user()->id)->where('detailquest_id', 13)->pluck('answer')->toArray();
+        // dd($ans[1]);
 
-      
+        // $this->safety = $ans[0];
+        // $this->details13 =$ans[1];
+        // $this->agreed13=$ans[2];
+        // $this->by_who13=$ans[3];
 
     }
 

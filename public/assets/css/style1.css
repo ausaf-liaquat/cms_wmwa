@@ -107,10 +107,7 @@ visibility: hidden;
     color:#fff;
     border-color:#a82342;
 } 
-.boxed {
-    padding:3rem;
-    border:solid 6px #a82342;
-}
+
 /* SIDEBAR */
 
 .sidebar {
@@ -181,6 +178,7 @@ table td {
 table .btn {
     font-size: .8rem;
     padding: .25rem .4rem;
+    margin: 2px
 }
 
 /* WORKBOOKS */
@@ -229,14 +227,6 @@ border-radius: 50%;
 .box-container-1 {padding:30px;border:solid 10px #fff;}
 .box-1 { background-color:#eadeca;}
 .box-2 { background-color:#d2d1e1;}
-.box-green { background-color: rgba(47, 186, 57, 1); border-color: #fff!important;}
-.box-green-50 { background-color: rgba(47, 186, 57, 0.5); border-color: rgba(47, 186, 57, 1)!important; }
-.box-yellow { background-color: rgba(255, 255, 60, 1); border-color: #fff!important;}
-.box-yellow-50 { background-color: rgba(255, 255, 60, 0.5);  border-color: rgba(230, 230, 40, 1)!important; }
-.box-amber { background-color: rgba(230, 164, 20, 1); border-color: #fff!important;}
-.box-amber-50 { background-color: rgba(230, 164, 20, 0.5);  border-color: rgba(230, 164, 20, 1)!important; }
-.box-red { background-color: rgba(252, 38, 45, 1); border-color: #fff!important;}
-.box-red-50 { background-color: rgba(252, 38, 45, 0.5);  border-color: rgba(252, 38, 45, 1)!important; }
 .section {
     border-bottom:solid 6px #eadeca;
     padding-bottom:1rem;

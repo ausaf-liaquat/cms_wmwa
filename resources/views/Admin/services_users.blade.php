@@ -618,11 +618,11 @@
                     $('#send').modal('hide');
                     if (data.success) {
                         tata.success('Success', data.success, {
-                            onClose: location.reload()
+                            // onClose: location.reload()
                         })
                     } else if (data.error) {
                         tata.error('Error', data.error, {
-                            onClose: location.reload()
+                            // onClose: location.reload()
                         })
                     }
                 },
