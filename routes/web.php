@@ -100,6 +100,8 @@ Route::group(['prefix' => 'practitioner'], function () {
         Route::post('serviceuser/{id}/details/updated', [App\Http\Controllers\Practitioner\DashboardController::class, 'ServiceUserUpdate'])->name('practitioner.serviceuser.update');
         Route::get('serviceuser/delete', [App\Http\Controllers\Practitioner\DashboardController::class, 'ServiceUserDelete'])->name('practitioner.serviceuser.delete');
 
+        Route::get('serviceuser/workbook/details/{id}', [App\Http\Controllers\Practitioner\DashboardController::class, 'ServiceUserWorkbookDetails'])->name('practitioner.serviceuser.workbookdetails');
+        Route::get('view/{userid}/completed/topics/{id}', [App\Http\Controllers\Practitioner\DashboardController::class, 'viewCompletedtopics'])->name('practitioner.serviceuser.viewcompletedtopics');
 
         // send work
         Route::post('send/workbook', [App\Http\Controllers\Practitioner\DashboardController::class, 'SendWorkbook'])->name('practitioner.shareworkbookserviceuser');

@@ -202,4 +202,35 @@ class DashboardController extends Controller
         }
 
     }
+
+    public function ServiceUserWorkbookDetails($id)
+    {
+        $share_workbook = ShareWorkbook::where('user_id', $id)->where('workbook_id', 1)->where('status','complete')->with('topic')->get();
+        return response()->json(['share_workbook'=>$share_workbook], 200);
+    }
+    public function viewCompletedtopics($userid,$id)
+    {
+        // dd($id);
+        if ($id == 1) {
+            $topics = Topic::where('id', $id)->with('questions')->first();
+
+            return view('Practitioner.topics.topic_0', compact('topics','userid'));
+        } elseif ($id == 2) {
+            $topics = Topic::where('id', $id)->with('questions')->first();
+
+            return view('Practitioner.topics.topic_1', compact('topics','userid'));
+        } elseif ($id==4) {
+            $topics = Topic::where('id', $id)->with('questions')->first();
+
+            return view('Practitioner.topics.topic_2', compact('topics','userid'));
+        }elseif ($id==6) {
+            $topics = Topic::where('id', $id)->with('questions')->first();
+
+            return view('Practitioner.topics.topic_3', compact('topics','userid'));
+        } elseif ($id==7) {
+            $topics = Topic::where('id', $id)->with('questions')->first();
+
+            return view('Practitioner.topics.topic_4', compact('topics','userid'));
+        } 
+    }
 }
