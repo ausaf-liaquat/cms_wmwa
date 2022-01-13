@@ -85,6 +85,7 @@
         }
 
     </style>
+    @livewireStyles()
 </head>
 
 <body>
@@ -112,6 +113,7 @@
         integrity="sha512-niNQgNQ4mHtOdt//YjERRRbsmlc9aH+1c+fIQ9bQWD5kByzpE10EBDOhyV/n+anhaLW9GN4Dalu/z9QrXBvDUQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     @yield('extrajs')
+    @livewireScripts()
 </body>
 
 </html>

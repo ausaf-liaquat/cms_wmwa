@@ -33,8 +33,13 @@
                                     Completed
                                 @endif
                             </td>
-                            <td><a href="{{route('serviceuser.workbookopen',['id'=>$item->topic->id])}}" target="_blank" class="btn btn-primary">Open
-                                    Workbook</a></td>
+                            <td>
+                                @if ($item->status == 'inprocess')
+                                   <a href="{{route('serviceuser.workbookopen',['id'=>$item->topic->id])}}" target="_blank" class="btn btn-primary">Open
+                                    Workbook</a></td> 
+                                @else
+                                    N/A
+                                @endif
                         </tr>
                     @empty
                         <tr>

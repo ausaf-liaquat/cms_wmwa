@@ -31,11 +31,12 @@
                             <td>{{ $item->category }}</td>
                             <td>{{ !empty($item->practitioner) ? $item->practitioner->name : 'N/A' }}</td>
                             <td>
-                                {{-- @if ($item->shareworkbook->status=='completed') --}}
-                                    <a class="btn btn-primary"
-                                        href="#">View</a>
+                                @if ($item->shareworkbook->count() > 0)
 
-                                {{-- @endif --}}
+                                    <a class="btn btn-primary" data-bs-toggle="modal"
+                                        data-serviceuser_id="{{ $item->id }}" onclick='viewTopics(event.target)'
+                                        data-bs-target="#view">View</a>
+                                @endif
                                 <a class="btn btn-primary" onclick='sendworkbook(event.target)' data-bs-toggle="modal"
                                     data-sendid="{{ $item->id }}" data-sendemail="{{ $item->email }}"
                                     data-userid="{{ $item->id }}" data-bs-target="#send">Send
@@ -324,6 +325,26 @@
         </div>
     </div>
 
+    <!-- VIEW MODAL -->
+    <div class="modal fade" id="view" tabindex="-1" aria-labelledby="viewLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="viewLabel">View Workbook Topic</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul class="list-unstyled" id="topics_list">
+
+                    </ul>
+                    <p><mark>Links open completed chapters in new tab</mark></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 @section('extrajs')
     <script>
@@ -636,14 +657,14 @@
 
         }
 
-        
+
         $(".deleteserviceuser").click(function(e) {
             e.preventDefault();
 
             var id = $("#getserviceuser_id").val();
             // var count = $("#serviceuserscount").val();
 
-          
+
 
             // $("#deletemodal").modal("hide");
             // Swal.fire({
@@ -657,38 +678,69 @@
             //     confirmButtonText: "Yes, delete it!",
             // }).then((result) => {
             //     if (result.value) {
-                    $.ajax({
-                        type: "GET",
-                        url: '{{ route('serviceuser.delete') }}',
-                        data: {
-                            id: id
-                        },
-                        beforeSend: function() {
+            $.ajax({
+                type: "GET",
+                url: '{{ route('serviceuser.delete') }}',
+                data: {
+                    id: id
+                },
+                beforeSend: function() {
                     $('.spinner').show()
                 },
-                        success: function(data) {
-                            $("#deletemodal").modal("hide");
-                            if ($.isEmptyObject(data.error)) {
-                                Swal.fire({
-                                    icon: 'success',
-                                    title: 'Service User Deleted successfully',
-                                    showConfirmButton: true,
-                                    timer: 2500
-                                }).then((result) => {
-                                    // Reload the Page
-                                    location.reload();
-                                });
-                            }
-                        },
-                        afterSend: function() {
+                success: function(data) {
+                    $("#deletemodal").modal("hide");
+                    if ($.isEmptyObject(data.error)) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Service User Deleted successfully',
+                            showConfirmButton: true,
+                            timer: 2500
+                        }).then((result) => {
+                            // Reload the Page
+                            location.reload();
+                        });
+                    }
+                },
+                afterSend: function() {
                     $('.spinner').hide()
                 },
-                    });
+            });
 
             //     }
             // });
 
 
         });
+    </script>
+    <script>
+        function viewTopics(e) {
+            var id = $(e).data("serviceuser_id");
+
+            var url = '{{ route('serviceuser.workbookdetails', ':id') }}';
+            url = url.replace(':id', id);
+
+            $.get(url, function(data) {
+                if (!$.trim(data.share_workbook)) {
+                    $("#topics_list").empty();
+                    $("#topics_list").append(" <li class='mb-2'><strong>No record found.</strong></li>");
+                    $('#view').modal('show');
+
+                } else {
+                    $("#topics_list").empty();
+
+                    $.each(data.share_workbook, function(i, val) {
+                        var viewurl = '{{ route('serviceuser.viewcompletedtopics', [':userid',':id']) }}';
+                        viewurl = viewurl.replace(':userid', val.user_id).replace(':id', val.topic_id);
+                        $("#topics_list").append(
+                            " <li class='mb-2'><a href=" + viewurl +
+                            " class='btn btn-primary btn-sml' target='_blank'>View</a><strong>" +
+                            val.topic.topic_title + ".</strong></li>");
+                    })
+
+
+                    $('#view').modal('show');
+                }
+            });
+        }
     </script>
 @endsection

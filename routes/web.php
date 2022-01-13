@@ -56,7 +56,8 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('serviceuser/delete', [App\Http\Controllers\Admin\DashboardController::class, 'ServiceUserDelete'])->name('serviceuser.delete');
         // send work
         Route::post('send/workbook', [App\Http\Controllers\Admin\DashboardController::class, 'SendWorkbook'])->name('serviceuser.workbook');
-
+        Route::get('serviceuser/workbook/details/{id}', [App\Http\Controllers\Admin\DashboardController::class, 'ServiceUserWorkbookDetails'])->name('serviceuser.workbookdetails');
+        Route::get('view/{userid}/workbook/completed/topics/{id}', [App\Http\Controllers\Admin\DashboardController::class, 'viewCompletedtopics'])->name('serviceuser.viewcompletedtopics');
 
         // Resource
         Route::get('resources', [App\Http\Controllers\Admin\ResourceController::class, 'Resources'])->name("admin.resources");
