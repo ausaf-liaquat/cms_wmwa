@@ -29,7 +29,7 @@
             </div>
         @endif
         @csrf
-        <h2>West Mercia Women's Aid Practitioner Login</h2>
+        <h2 style="font-size:23px;font-weight:600;">West Mercia Women's Aid Practitioner Login</h2>
         <p class="mb-3">Please enter your email address and password</p>
         <div class="form-floating mb-3">
             <input type="email" class="form-control " id="email" placeholder="name@example.com" name="email"

@@ -96,7 +96,7 @@
                                     <div class="form-floating mb-3">
 
                                         <input type="text" class="form-control" id="character1_name" placeholder=""
-                                            name="character1_name" wire:model="character1_name" required>
+                                            name="character1_name" wire:model="character1_name"  readonly>
                                         <label for="character1_name">Name</label>
                                      <span class="text-danger" style="font-size: small;font-weight: 700;">@error('character1_name') This field is required. @enderror</span>
                                     </div>
@@ -106,7 +106,7 @@
                                     <span class="question text-right">Age</span>
                                     <div class="form-floating mb-3">
                                         <input type="text" class="form-control" id="character1_age" placeholder=""
-                                            name="character1_age" wire:model="character1_age" required>
+                                            name="character1_age" wire:model="character1_age" readonly>
                                         <label for="character1_age">Age</label>
                                      <span class="text-danger" style="font-size: small;font-weight: 700;">@error('character1_age') This field is required. @enderror</span>
                                     </div>
@@ -117,7 +117,7 @@
                                     <div class="form-floating mb-3">
                                         <input type="text" class="form-control" id="character1_occupation"
                                             placeholder="" name="occupation" wire:model="character1_occupation"
-                                            required>
+                                            readonly>
                                         <label for="character1_occupation">Occupation</label>
                                      <span class="text-danger" style="font-size: small;font-weight: 700;">@error('character1_occupation') This field is required. @enderror</span>
                                     </div>
@@ -127,7 +127,7 @@
                                     <span class="question text-right">Home</span>
                                     <div class="form-floating mb-3">
                                         <input type="text" class="form-control" id="character1_home" placeholder=""
-                                            name="c1home" wire:model="character1_home" required>
+                                            name="c1home" wire:model="character1_home" readonly>
                                         <label for="character1_home">Home</label>
                                      <span class="text-danger" style="font-size: small;font-weight: 700;">@error('character1_home') This field is required. @enderror</span>
                                     </div>
@@ -138,7 +138,7 @@
                                     <div class="form-floating mb-3">
                                         <input type="text" class="form-control" id="character1_personality"
                                             name="c1personality" wire:model="character1_personality" placeholder=""
-                                            required>
+                                            readonly>
                                         <label for="character1_personality">Personality</label>
                                      <span class="text-danger" style="font-size: small;font-weight: 700;">@error('character1_personality') This field is required. @enderror</span>
                                     </div>
@@ -148,7 +148,7 @@
                                     <span class="question text-right">Victim or perpetrator?</span>
                                     <div class="form-floating mb-3">
                                         <input type="text" class="form-control" name="c1role"
-                                            wire:model="character1_role" id="character1_role" placeholder="" required>
+                                            wire:model="character1_role" id="character1_role" placeholder="" readonly>
                                         <label for="character1_role">Role</label>
                                      <span class="text-danger" style="font-size: small;font-weight: 700;">@error('character1_role') This field is required. @enderror</span>
                                     </div>
@@ -158,7 +158,7 @@
                                     <span class="question text-right">Anything else?</span>
                                     <div class="form-floating mb-3">
                                         <input type="text" name="c1notes" class="form-control"
-                                            wire:model="character1_notes" id="character1_notes" placeholder="" required>
+                                            wire:model="character1_notes" id="character1_notes" placeholder="" readonly>
                                         <label for="character1_notes">Additional notes</label>
                                      <span class="text-danger" style="font-size: small;font-weight: 700;">@error('character1_notes') This field is required. @enderror</span>
                                     </div>
@@ -174,7 +174,7 @@
                                     <div class="form-floating mb-3">
 
                                         <input type="text" class="form-control" id="character2_name" placeholder=""
-                                            name="character2_name" wire:model="character2_name" required>
+                                            name="character2_name" wire:model="character2_name" readonly>
                                         <label for="character2_name">Name</label>
                                     <span class="text-danger" style="font-size: small;font-weight: 700;">@error('character2_name') This field is required. @enderror</span>
                                     </div>
@@ -184,7 +184,7 @@
                                     <span class="question text-right">Age</span>
                                     <div class="form-floating mb-3">
                                         <input type="text" class="form-control" id="character2_age" placeholder=""
-                                            name="character2_age" wire:model="character2_age" required>
+                                            name="character2_age" wire:model="character2_age" readonly>
                                         <label for="character2_age">Age</label>
                                     <span class="text-danger" style="font-size: small;font-weight: 700;">@error('character2_age') This field is required. @enderror</span>
 
@@ -195,7 +195,7 @@
                                     <span class="question text-right">Occupation</span>
                                     <div class="form-floating mb-3">
                                         <input type="text" class="form-control" id="character2_occupation"
-                                            placeholder="" name="c2occu" wire:model="character2_occupation" required>
+                                            placeholder="" name="c2occu" wire:model="character2_occupation" readonly>
                                         <label for="character2_occupation">Occupation</label>
                                     <span class="text-danger" style="font-size: small;font-weight: 700;">@error('character2_occupation') This field is required. @enderror</span>
                                     </div>
@@ -205,7 +205,7 @@
                                     <span class="question text-right">Home</span>
                                     <div class="form-floating mb-3">
                                         <input type="text" class="form-control" id="character2_home" placeholder=""
-                                            name="c2home" wire:model="character2_home" required>
+                                            name="c2home" wire:model="character2_home" readonly>
                                         <label for="character2_home">Home</label>
                                     <span class="text-danger" style="font-size: small;font-weight: 700;">@error('character2_home') This field is required. @enderror</span>
                                     </div>
@@ -216,7 +216,7 @@
                                     <div class="form-floating mb-3">
                                         <input type="text" class="form-control" id="character2_personality"
                                             placeholder="" name="c2personality" wire:model="character2_personality"
-                                            required>
+                                            readonly>
                                         <label for="character2_personality">Personality</label>
                                     <span class="text-danger" style="font-size: small;font-weight: 700;">@error('character2_personality') This field is required. @enderror</span>
                                     </div>
@@ -226,7 +226,7 @@
                                     <span class="question text-right">Victim or perpetrator?</span>
                                     <div class="form-floating mb-3">
                                         <input type="text" class="form-control" id="character2_role" placeholder=""
-                                            name="c2role" wire:model="character2_role" required>
+                                            name="c2role" wire:model="character2_role" readonly>
                                         <label for="character2_role">Role</label>
                                     <span class="text-danger" style="font-size: small;font-weight: 700;">@error('character2_role') This field is required. @enderror</span>
                                     </div>
@@ -236,7 +236,7 @@
                                     <span class="question text-right">Anything else?</span>
                                     <div class="form-floating mb-3">
                                         <input type="text" class="form-control" id="character2_notes" placeholder=""
-                                            name="c2notes" wire:model="character2_notes" required>
+                                            name="c2notes" wire:model="character2_notes" readonly>
                                         <label for="character2_notes">Additional notes</label>
                                     <span class="text-danger" style="font-size: small;font-weight: 700;">@error('character2_notes') This field is required. @enderror</span>
                                     </div>

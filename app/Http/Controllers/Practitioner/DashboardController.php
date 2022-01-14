@@ -144,13 +144,15 @@ class DashboardController extends Controller
         return response()->json($practitioner, 200);
         return redirect()->back()->withErrors($validator)->withInput();
     }
-    public function markAsReadOne($id)
+    public function markAsReadOne()
     {
-        $userUnreadNotification = auth()->user()->unreadNotifications->where('id', $id)->first();
+        // $userUnreadNotification = auth()->user()->unreadNotifications->where('id', $id)->first();
 
-        if ($userUnreadNotification) {
-            $userUnreadNotification->markAsRead();
-        }
+        // if ($userUnreadNotification) {
+        //     $userUnreadNotification->markAsRead();
+        // }
+
+        Auth::user()->unreadNotifications->markAsRead();
        return redirect()->route('practitioner.dashboard')->with('status','Notification mark as read.');
     }
     public function SendWorkbook(Request $request)

@@ -50,7 +50,7 @@
                                
                             </td>
                             <td><a class="btn btn-secondary mr-1" data-bs-toggle="modal" data-id="{{ $item->id }}"
-                                    onclick='editResourceDetail(event.target)' data-bs-target="#edit">Edit</a><a
+                                    onclick='editResourceDetail(event.target)' data-bs-target="#edit" style="margin-right: 3px;">Edit</a><a
                                     class="btn btn-danger" data-bs-toggle="modal" onclick='getResourceDetail(event.target)'
                                     data-delid="{{ $item->id }}" data-bs-target="#delete">Delete</a></td>
                         </tr>

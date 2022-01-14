@@ -20,6 +20,20 @@
         <link rel="stylesheet" href="{{asset('assets/css/index.css')}}">
    <link rel="icon" href="https://www.westmerciawomensaid.org/wp-content/uploads/2019/12/WMWA-150x150.png" sizes="32x32" />
     <style>
+        ul.pagination {
+            margin-top: 1rem;
+            font-size: 13px;
+        }
+
+        .page-item.active .page-link {
+            background-color: #a06aef;
+            border-color: #a06aef;
+        }
+
+        .page-link {
+            color: #a06aef;
+            padding: .3rem .5rem;
+        }
         .swal2-container {
             z-index: {
                 X

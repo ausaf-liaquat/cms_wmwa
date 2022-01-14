@@ -44,7 +44,7 @@
 
                             </td>
                             <td><a class="btn btn-secondary mr-1" data-bs-toggle="modal" data-id="{{ $item->id }}"
-                                    onclick='editServiceUserDetail(event.target)' data-bs-target="#edit">Edit</a><a
+                                    onclick='editServiceUserDetail(event.target)' data-bs-target="#edit" style="margin-right: 3px;">Edit</a><a
                                     class="btn btn-danger" data-bs-toggle="modal"
                                     onclick='getPractitionerDetail(event.target)' data-serviceuserid="{{ $item->id }}"
                                     data-bs-target="#deletemodal">Delete</a></td>
@@ -55,7 +55,11 @@
                         </tr>
                     @endforelse
                 </tbody>
+               
+                    
+                
             </table>
+            {{$serviceusers->links()}}
         </div>
     </div>
 

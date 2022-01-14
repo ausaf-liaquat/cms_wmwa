@@ -17,14 +17,8 @@
 </script>
 <script type="text/javascript">
 
-$(document).ready(function() {
-    $('input[type="checkbox"]').each(function() {
-        if ($(this).is(':checked'))
-            $(this).attr("disabled", false);
-          //  
-        else
-            $(this).attr("disabled", true);
-    });
-}); 
+
+    $('input[type="checkbox"]').attr("disabled", "disabled")
+
    </script>
 @endsection

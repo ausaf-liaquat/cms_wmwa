@@ -26,7 +26,7 @@ class DashboardController extends Controller
     }
     public function PractitionerAccount()
     {
-        $practitioners = Practitioner::all();
+        $practitioners = Practitioner::paginate(20);
         $practitionercount = Practitioner::count();
         return view('Admin.practitioners', compact('practitioners', 'practitionercount'));
     }
@@ -95,7 +95,7 @@ class DashboardController extends Controller
 
     public function ServiceUser()
     {
-        $serviceusers = User::all();
+        $serviceusers = User::paginate(15);
         $practitioners = Practitioner::all();
         $serviceuserscount = User::count();
         $topic = Topic::all();

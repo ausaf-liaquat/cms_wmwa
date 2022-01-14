@@ -36,7 +36,7 @@
                                     Accounts</a>
                             </td>
                             <td><a class="btn btn-secondary mr-1" data-bs-toggle="modal" data-id="{{ $item->id }}"
-                                    onclick='editPractitionerDetail(event.target)' data-bs-target="#editpract">Edit</a><a
+                                    onclick='editPractitionerDetail(event.target)' data-bs-target="#editpract" style="margin-right: 3px;">Edit</a><a
                                     class="btn btn-danger" data-bs-toggle="modal"
                                     onclick="getPractitionerDetail(event.target)"
                                     data-attachuser="{{ $item->users->count() }}" data-practid="{{ $item->id }}"
@@ -49,6 +49,7 @@
                     @endforelse
                 </tbody>
             </table>
+            {{$practitioners->links()}}
         </div>
     </div>
 

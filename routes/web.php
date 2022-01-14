@@ -89,7 +89,7 @@ Route::group(['prefix' => 'practitioner'], function () {
         Route::get('dashboard', [App\Http\Controllers\Practitioner\DashboardController::class, 'index'])->name('practitioner.dashboard');
         Route::get('account/details', [App\Http\Controllers\Practitioner\DashboardController::class, 'AccountDetails'])->name('practitioner.accountdetails');
         Route::post('account/edit', [App\Http\Controllers\Practitioner\DashboardController::class, 'AccountEdit'])->name('practitioner.accountedit');
-        Route::get('mark/as/read/{id}', [App\Http\Controllers\Practitioner\DashboardController::class,'markAsReadOne'])->name('practitioner.markasread');
+        Route::get('mark/as/read/', [App\Http\Controllers\Practitioner\DashboardController::class,'markAsReadOne'])->name('practitioner.markasread');
         Route::post('checkemail', [App\Http\Controllers\Practitioner\DashboardController::class, 'checkEmail'])->name('duppractitioner.checkEmail');
 
         // Service user
@@ -130,7 +130,7 @@ Route::group(['prefix' => 'user'], function () {
         Route::get('open/workbook/{id}', [App\Http\Controllers\Workbook\WorkbookController::class, 'openWorkbook'])->name('serviceuser.workbookopen');
         Route::post('store/workbook', [App\Http\Controllers\Workbook\WorkbookController::class, 'storeWorkbook'])->name('workbookopen.store');
         
-        Route::get('mark-as-read/{id}', [App\Http\Controllers\User\DashboardController::class,'markAsReadOne'])->name('user.markasread');
+        Route::get('mark-as-read', [App\Http\Controllers\User\DashboardController::class,'markAsReadOne'])->name('user.markasread');
         // Resources
      Route::get('resources', [App\Http\Controllers\User\DashboardController::class, 'Resource'])->name("user.resource");
      Route::get('resources/{id}/download', [App\Http\Controllers\User\DashboardController::class, 'ResourceDownload'])->name('serviceuserresource.download');
