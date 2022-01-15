@@ -4,20 +4,21 @@
             <h2>Youth Workbook</h2>
         </div>
         <div class="col-md-3">
-            <div class="text-end"><span class="percent">{{ !empty($percent) ? $percent : '13' }}%</span>
+            <div class="text-end"><span class="percent">100%</span>
                 Completed
                 | Topic 05
                 <span id="topic_no"></span>
             </div>
             <div class="progress my-2" style="height: 10px;">
-                <div class="progress-bar" role="progressbar" style="width:{{ !empty($percent) ? $percent : '13' }}%"
-                    aria-valuenow="01" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar" role="progressbar" style="width:100%" aria-valuenow="01" aria-valuemin="0"
+                    aria-valuemax="100"></div>
             </div>
         </div>
     </div>
     <div class="card float-none workbook">
         <div class="card-body">
-            <form  id="workbookform" wire:submit.prevent="submittopic5">
+            <strong>Submitted By: {{ $username }}</strong>
+            <form id="workbookform">
 
                 @if ($currentstep == 1)
                     <div class="content-container m-5 ">
@@ -44,22 +45,22 @@
                                     style="font-size: small;font-weight: 700;">@error('feelings178') Please select any
                                     options. @enderror</span>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="Happy" wire:model="feelings178"
-                                        id="feelings1">
+                                    <input class="form-check-input" type="checkbox" value="Happy"
+                                        wire:model="feelings178" id="feelings1">
                                     <label class="form-check-label" for="feelings1">
                                         Happy
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="Discust" wire:model="feelings178"
-                                        id="feelings2">
+                                    <input class="form-check-input" type="checkbox" value="Discust"
+                                        wire:model="feelings178" id="feelings2">
                                     <label class="form-check-label" for="feelings2">
                                         Discust
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="Angry" wire:model="feelings178"
-                                        id="feelings3">
+                                    <input class="form-check-input" type="checkbox" value="Angry"
+                                        wire:model="feelings178" id="feelings3">
                                     <label class="form-check-label" for="feelings3">
                                         Angry
                                     </label>
@@ -72,15 +73,15 @@
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="Scared" wire:model="feelings178"
-                                        id="feelings5">
+                                    <input class="form-check-input" type="checkbox" value="Scared"
+                                        wire:model="feelings178" id="feelings5">
                                     <label class="form-check-label" for="feelings5">
                                         Scared
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="Excited" wire:model="feelings178"
-                                        id="feelings6">
+                                    <input class="form-check-input" type="checkbox" value="Excited"
+                                        wire:model="feelings178" id="feelings6">
                                     <label class="form-check-label" for="feelings6">
                                         Excited
                                     </label>
@@ -306,9 +307,10 @@
                                         </div>
                                     </div>
                                     <div class="col-5">
-                                         <span class="text-danger"
-                                    style="font-size: small;font-weight: 700;">@error('embarrassed181') This field is
-                                    required. @enderror</span>
+                                        <span class="text-danger"
+                                            style="font-size: small;font-weight: 700;">@error('embarrassed181') This
+                                                field is
+                                            required. @enderror</span>
                                         <div class="form-floating">
                                             <textarea class="form-control" placeholder="Enter positive reaction"
                                                 id="embarrassed-2" style="height: 150px;"
@@ -324,9 +326,9 @@
                                                 class="bi bi-arrow-right-circle-fill"></i></h6>
                                     </div>
                                     <div class="col-md-5">
-                                         <span class="text-danger"
-                                    style="font-size: small;font-weight: 700;">@error('scared182') This field is
-                                    required. @enderror</span>
+                                        <span class="text-danger"
+                                            style="font-size: small;font-weight: 700;">@error('scared182') This field is
+                                            required. @enderror</span>
                                         <div class="form-floating">
                                             <textarea class="form-control" placeholder="Enter negative reaction"
                                                 id="scared-1" style="height: 150px;" wire:model="scared182"></textarea>
@@ -334,9 +336,9 @@
                                         </div>
                                     </div>
                                     <div class="col-md-5">
-                                         <span class="text-danger"
-                                    style="font-size: small;font-weight: 700;">@error('scared183') This field is
-                                    required. @enderror</span>
+                                        <span class="text-danger"
+                                            style="font-size: small;font-weight: 700;">@error('scared183') This field is
+                                            required. @enderror</span>
                                         <div class="form-floating">
                                             <textarea class="form-control" placeholder="Enter positive reaction"
                                                 id="scared-2" style="height: 150px;" wire:model="scared183"></textarea>
@@ -351,9 +353,9 @@
                                                 class="bi bi-arrow-right-circle-fill"></i></h6>
                                     </div>
                                     <div class="col-md-5">
-                                         <span class="text-danger"
-                                    style="font-size: small;font-weight: 700;">@error('guilty184') This field is
-                                    required. @enderror</span>
+                                        <span class="text-danger"
+                                            style="font-size: small;font-weight: 700;">@error('guilty184') This field is
+                                            required. @enderror</span>
                                         <div class="form-floating">
                                             <textarea class="form-control" placeholder="Enter negative reaction"
                                                 id="guilty-1" style="height: 150px;" wire:model="guilty184"></textarea>
@@ -361,9 +363,9 @@
                                         </div>
                                     </div>
                                     <div class="col-md-5">
-                                         <span class="text-danger"
-                                    style="font-size: small;font-weight: 700;">@error('guilty185') This field is
-                                    required. @enderror</span>
+                                        <span class="text-danger"
+                                            style="font-size: small;font-weight: 700;">@error('guilty185') This field is
+                                            required. @enderror</span>
                                         <div class="form-floating">
                                             <textarea class="form-control" placeholder="Enter positive reaction"
                                                 id="guilty-2" style="height: 150px;" wire:model="guilty185"></textarea>
@@ -378,9 +380,10 @@
                                                 class="bi bi-arrow-right-circle-fill"></i></h6>
                                     </div>
                                     <div class="col-md-5">
-                                         <span class="text-danger"
-                                    style="font-size: small;font-weight: 700;">@error('anxious186') This field is
-                                    required. @enderror</span>
+                                        <span class="text-danger"
+                                            style="font-size: small;font-weight: 700;">@error('anxious186') This field
+                                                is
+                                            required. @enderror</span>
                                         <div class="form-floating">
                                             <textarea class="form-control" placeholder="Enter negative reaction"
                                                 id="anxious-1" style="height: 150px;"
@@ -389,9 +392,10 @@
                                         </div>
                                     </div>
                                     <div class="col-md-5">
-                                         <span class="text-danger"
-                                    style="font-size: small;font-weight: 700;">@error('anxious187') This field is
-                                    required. @enderror</span>
+                                        <span class="text-danger"
+                                            style="font-size: small;font-weight: 700;">@error('anxious187') This field
+                                                is
+                                            required. @enderror</span>
                                         <div class="form-floating">
                                             <textarea class="form-control" placeholder="Enter positive reaction"
                                                 id="anxious-2" style="height: 150px;"
@@ -407,9 +411,10 @@
                                                 class="bi bi-arrow-right-circle-fill"></i></h6>
                                     </div>
                                     <div class="col-md-5">
-                                         <span class="text-danger"
-                                    style="font-size: small;font-weight: 700;">@error('stressed188') This field is
-                                    required. @enderror</span>
+                                        <span class="text-danger"
+                                            style="font-size: small;font-weight: 700;">@error('stressed188') This field
+                                                is
+                                            required. @enderror</span>
                                         <div class="form-floating">
                                             <textarea class="form-control" placeholder="Enter negative reaction"
                                                 id="stressed-1" style="height: 150px;"
@@ -418,9 +423,10 @@
                                         </div>
                                     </div>
                                     <div class="col-md-5">
-                                         <span class="text-danger"
-                                    style="font-size: small;font-weight: 700;">@error('stressed189') This field is
-                                    required. @enderror</span>
+                                        <span class="text-danger"
+                                            style="font-size: small;font-weight: 700;">@error('stressed189') This field
+                                                is
+                                            required. @enderror</span>
                                         <div class="form-floating">
                                             <textarea class="form-control" placeholder="Enter positive reaction"
                                                 id="stressed-2" style="height: 150px;"
@@ -436,9 +442,9 @@
                                                 class="bi bi-arrow-right-circle-fill"></i></h6>
                                     </div>
                                     <div class="col-md-5">
-                                         <span class="text-danger"
-                                    style="font-size: small;font-weight: 700;">@error('uneasy190') This field is
-                                    required. @enderror</span>
+                                        <span class="text-danger"
+                                            style="font-size: small;font-weight: 700;">@error('uneasy190') This field is
+                                            required. @enderror</span>
                                         <div class="form-floating">
                                             <textarea class="form-control" placeholder="Enter negative reaction"
                                                 id="uneasy-1" style="height: 150px;" wire:model="uneasy190"></textarea>
@@ -446,9 +452,9 @@
                                         </div>
                                     </div>
                                     <div class="col-md-5">
-                                         <span class="text-danger"
-                                    style="font-size: small;font-weight: 700;">@error('uneasy191') This field is
-                                    required. @enderror</span>
+                                        <span class="text-danger"
+                                            style="font-size: small;font-weight: 700;">@error('uneasy191') This field is
+                                            required. @enderror</span>
                                         <div class="form-floating">
                                             <textarea class="form-control" placeholder="Enter positive reaction"
                                                 id="uneasy-2" style="height: 150px;" wire:model="uneasy191"></textarea>
@@ -463,9 +469,10 @@
                                                 class="bi bi-arrow-right-circle-fill"></i></h6>
                                     </div>
                                     <div class="col-md-5">
-                                         <span class="text-danger"
-                                    style="font-size: small;font-weight: 700;">@error('frustrated192') This field is
-                                    required. @enderror</span>
+                                        <span class="text-danger"
+                                            style="font-size: small;font-weight: 700;">@error('frustrated192') This
+                                                field is
+                                            required. @enderror</span>
                                         <div class="form-floating">
                                             <textarea class="form-control" placeholder="Enter negative reaction"
                                                 id="frustrated-1" style="height: 150px;"
@@ -474,9 +481,10 @@
                                         </div>
                                     </div>
                                     <div class="col-md-5">
-                                         <span class="text-danger"
-                                    style="font-size: small;font-weight: 700;">@error('frustrated193') This field is
-                                    required. @enderror</span>
+                                        <span class="text-danger"
+                                            style="font-size: small;font-weight: 700;">@error('frustrated193') This
+                                                field is
+                                            required. @enderror</span>
                                         <div class="form-floating">
                                             <textarea class="form-control" placeholder="Enter positive reaction"
                                                 id="frustrated-2" style="height: 150px;"
@@ -510,52 +518,47 @@
                                         emotions but you can control your behaviour.</h4>
                                     <p class="mb-4">Read through the process and use the table below to apply
                                         it to a time when you’ve experienced a difficult emotion.</p>
-                                     <span class="text-danger"
-                                    style="font-size: small;font-weight: 700;">@error('rest199') This field is
-                                    required. @enderror</span>   
+                                    <span class="text-danger"
+                                        style="font-size: small;font-weight: 700;">@error('rest199') This field is
+                                        required. @enderror</span>
                                     <div class="form-floating mb-3">
-                                        <input type="text" class="form-control" id="resetr"
-                                             wire:model="rest199">
+                                        <input type="text" class="form-control" id="resetr" wire:model="rest199">
                                         <label for="resetr">R:</label>
                                     </div>
-                                     
+
                                     <span class="text-danger"
-                                    style="font-size: small;font-weight: 700;">@error('rest200') This field is
-                                    required. @enderror</span>
+                                        style="font-size: small;font-weight: 700;">@error('rest200') This field is
+                                        required. @enderror</span>
                                     <div class="form-floating mb-3">
-                                        <input type="text" class="form-control" id="resete"
-                                             wire:model="rest200">
+                                        <input type="text" class="form-control" id="resete" wire:model="rest200">
                                         <label for="resete">E:</label>
                                     </div>
-                                     
-                                     <span class="text-danger"
-                                    style="font-size: small;font-weight: 700;">@error('rest201') This field is
-                                    required. @enderror</span>
+
+                                    <span class="text-danger"
+                                        style="font-size: small;font-weight: 700;">@error('rest201') This field is
+                                        required. @enderror</span>
                                     <div class="form-floating mb-3">
-                                        <input type="text" class="form-control" id="resets"
-                                             wire:model="rest201">
+                                        <input type="text" class="form-control" id="resets" wire:model="rest201">
                                         <label for="resets">S:</label>
                                     </div>
-                                    
+
                                     <span class="text-danger"
-                                    style="font-size: small;font-weight: 700;">@error('rest202') This field is
-                                    required. @enderror</span>
+                                        style="font-size: small;font-weight: 700;">@error('rest202') This field is
+                                        required. @enderror</span>
                                     <div class="form-floating mb-3">
-                                        <input type="text" class="form-control" id="resete2"
-                                             wire:model="rest202">
+                                        <input type="text" class="form-control" id="resete2" wire:model="rest202">
                                         <label for="resete2">E:</label>
                                     </div>
-                                     
+
                                     <span class="text-danger"
-                                    style="font-size: small;font-weight: 700;">@error('rest203') This field is
-                                    required. @enderror</span>
+                                        style="font-size: small;font-weight: 700;">@error('rest203') This field is
+                                        required. @enderror</span>
                                     <div class="form-floating mb-3">
-                                        <input type="text" class="form-control" id="resett"
-                                             wire:model="rest203">
+                                        <input type="text" class="form-control" id="resett" wire:model="rest203">
                                         <label for="resett">T:</label>
                                     </div>
-                                     
-                                    
+
+
                                 </div>
 
                                 <div class="col-md-7 offset-md-1 p-5" style="background-color:#f2f2f2;">
@@ -662,14 +665,15 @@
                 @endif
 
                 @if ($currentstep > 1 && $currentstep <= 6)
-                    <button type="button" class="btn btn-save mt-3 float-start state">Save/Exit</button>
+
                     <button type="button" class="btn btn-primary btn-sm mt-3 mr-2 float-end"
                         wire:click="decreaseStep()" style="margin-right: 5px;">Back</button>
 
                 @endif
                 @if ($currentstep == 7)
 
-                    <button type="submit" class="btn btn-primary btn-sm mt-3 mr-2 float-end">Submit</button>
+                    <a href="{{ route('admin.serviceuser') }}"
+                        class="btn btn-primary btn-sm mt-3 mr-2 float-end">Exit</a>
                     {{-- <button type="button" class="btn btn-primary btn-sm mt-3 mr-2 float-end" wire:click="decreaseStep()" style="margin-right: 5px;">Back</button> --}}
                 @endif
 
