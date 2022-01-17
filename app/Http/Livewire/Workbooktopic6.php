@@ -116,7 +116,22 @@ class Workbooktopic6 extends Component
     public $percent;
     public function mount()
     {
-        $this->currentstep=4;
+        $q1 = WorkbookResponse::where('workbook_id', 1)->where('question_id', 50)->where('user_id', Auth::user()->id)->first();
+        $q2 = WorkbookResponse::where('workbook_id', 1)->where('question_id', 51)->where('user_id', Auth::user()->id)->first();
+        $q3 = WorkbookResponse::where('workbook_id', 1)->where('question_id', 52)->where('user_id', Auth::user()->id)->first();
+        $q4 = WorkbookResponse::where('workbook_id', 1)->where('question_id', 53)->where('user_id', Auth::user()->id)->first();
+        
+        if (empty($q1)) {
+            $this->currentstep = 1;
+        } elseif (empty($q2)) {
+            $this->currentstep = 2;
+        } elseif (empty($q3)) {
+            $this->currentstep = 3;
+        } elseif (empty($q4)) {
+            $this->currentstep = 4;
+        } else {
+            $this->currentstep = 5;
+        } 
     }
     public function increaseStep()
     {

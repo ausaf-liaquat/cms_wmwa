@@ -104,7 +104,7 @@
                                     required. @enderror</span>
                                 <div class="form-floating mb-3">
                                     <textarea class="form-control" placeholder="Leave a comment here"
-                                        wire:model="comment179" id="heart1" style="height: 500px;"></textarea>
+                                        wire:model="comment179" id="heart1" style="height: 500px;" readonly></textarea>
                                     <label for="heart1">Use this space to write about how you're feeling today.</label>
                                 </div>
                             </div>
@@ -137,8 +137,8 @@
                                     <textarea class="form-control"
                                         placeholder="How does your body react to stress? What bodily sensation can you feel?"
                                         id="person" wire:model="comment180"
-                                        style="height: 500px; background-position: center; background-image: url('https://www.westmerciawomensaid.org/crm/img/person.jpg'); background-repeat: no-repeat; background-size: 500px auto;"></textarea>
-                                    <label for="person">How does your body react to stress? What bodily sensation can
+                                        style="height: 500px; background-position: center; background-image: url('https://www.westmerciawomensaid.org/crm/img/person.jpg'); background-repeat: no-repeat; background-size: 500px auto;" readonly></textarea>
+                                    <label for="person" style="font-size: 14px;">How does your body react to stress? What bodily sensation can
                                         you feel?</label>
                                 </div>
                             </div>
