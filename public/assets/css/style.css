@@ -229,6 +229,7 @@ border-radius: 50%;
 .box-container-1 {padding:30px;border:solid 10px #fff;}
 .box-1 { background-color:#eadeca;}
 .box-2 { background-color:#d2d1e1;}
+.box-3 { background-color:#6e659e;}
 .box-green { background-color: rgba(47, 186, 57, 1); border-color: #fff!important;}
 .box-green-50 { background-color: rgba(47, 186, 57, 0.5); border-color: rgba(47, 186, 57, 1)!important; }
 .box-yellow { background-color: rgba(255, 255, 60, 1); border-color: #fff!important;}
@@ -241,6 +242,9 @@ border-radius: 50%;
     border-bottom:solid 6px #eadeca;
     padding-bottom:1rem;
     margin-bottom:1rem;
+}
+.big-letters {
+    font-size:10rem; margin-top:-65px; height: 190px; text-align:center;
 }
 .btn-healthy, .btn-depends, .btn-warn { margin-right: 10px;}
 .btn-healthy { background-color:#f2f2f2!important; border: 1px solid #f2f2f2!important; color:#333; }
@@ -271,6 +275,15 @@ table.workbook tr th:nth-child(1), table.workbook tr td:nth-child(1) {
 table.workbook tr th:nth-child(2), table.workbook tr td:nth-child(2) {
      background-color:#d2d1e1;
 }
+table.workbook-diary input[type=text] {
+    border:none;
+}
+table.workbook-diary .form-control {
+    font-size:0.8rem;
+}
+table.workbook-diary .form-control:disabled, .form-control[readonly] {
+    padding-left:2px;
+}
 img.img-logo {
     height:150px;
     margin-bottom:30px;
@@ -285,6 +298,19 @@ img.img-advert {
     background-color:#6e659e;
     padding:5rem 0;
 }
+.postive-affirmations {
+    font-size:0.8rem;
+    text-align:center;
+}
+
+.postive-affirmations .col-3 {
+    padding:1rem;
+
+}
+.aff-1, .aff-2, .aff-3 { border:3px #fff solid;}
+.postive-affirmations .aff-1 {background-color:#eadeca;}
+.postive-affirmations .aff-2 {background-color:#d2d1e1;}
+.postive-affirmations .aff-3 {background-color:#dcb7be;}
 p a, h5 a {
     color: #6d659e;
     font-weight: bold;
