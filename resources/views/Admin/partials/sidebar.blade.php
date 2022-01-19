@@ -57,7 +57,8 @@
             </button>
             <div class="collapse" id="forms-collapse" style="">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                    <li><a href="../admin/forms-general-enquiry.php" class="link-dark rounded">General Enquiry Form</a>
+                    <li><a href="{{route('form.certificate')}}" class="link-dark rounded">Accreditation Certificate Request Form</a></li>
+                    <li><a href="#" class="link-dark rounded">General Enquiry Form</a>
                     </li>
                     <li><a href="#" class="link-dark rounded">Job Application Form</a></li>
                     <li><a href="#" class="link-dark rounded">Referral Form</a></li>

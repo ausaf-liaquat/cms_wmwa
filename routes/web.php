@@ -69,6 +69,16 @@ Route::group(['prefix' => 'admin'], function () {
     
         // Workbook
         Route::get('view/workbook/{id}', [App\Http\Controllers\Admin\DashboardController::class, 'ViewWorkbook'])->name('view.workbook');
+        
+        // Forms
+        Route::get('form/accreditation-certificate-request', [App\Http\Controllers\Admin\FormController::class, 'CertificateForm'])->name('form.certificate');
+        Route::get('form/accreditation-certificate-request/{id}', [App\Http\Controllers\Admin\FormController::class, 'ViewCertificateForm'])->name('viewform.certificate');
+        Route::get('form/delete/accreditation-certificate-request', [App\Http\Controllers\Admin\FormController::class, 'DeleteCertificateForm'])->name('deleteform.certificate');
+
+        Route::get('form/Job-Application-form', [App\Http\Controllers\Admin\FormController::class, 'JobApplicationForm'])->name('form.jobapplication');
+        Route::get('form/Job-Application-form/{id}', [App\Http\Controllers\Admin\FormController::class, 'ViewJobApplicationForm'])->name('viewform.jobapplication');
+        Route::get('form/delete/Job-Application-form', [App\Http\Controllers\Admin\FormController::class, 'DeleteJobApplicationForm'])->name('deleteform.jobapplication');
+    
     });
 });
 
