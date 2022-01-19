@@ -244,6 +244,10 @@ class DashboardController extends Controller
             $topics = Topic::where('id', $id)->with('questions')->first();
 
             return view('Admin.topics.topic_7', compact('topics','userid'));
+        } elseif ($id==14) {
+            $topics = Topic::where('id', $id)->with('questions')->first();
+
+            return view('Admin.topics.topic_8', compact('topics','userid'));
         } 
     }
   

@@ -646,8 +646,8 @@
                             </div>
                             <p>
                                 All finished!
-                                <br>
-                                Please press Submit/Continue to ensure your responses are submitted
+                              
+                                
                             </p>
                             <h4 style="text-align: center">Thank You</h4>
 

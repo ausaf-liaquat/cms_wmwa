@@ -165,7 +165,27 @@ class Workbooktopic7 extends Component
 
     public function mount()
     {
-        $this->currentstep = 6;
+        $q1 = WorkbookResponse::where('workbook_id', 1)->where('question_id', 54)->where('user_id', Auth::user()->id)->first();
+        $q2 = WorkbookResponse::where('workbook_id', 1)->where('question_id', 55)->where('user_id', Auth::user()->id)->first();
+        $q3 = WorkbookResponse::where('workbook_id', 1)->where('question_id', 56)->where('user_id', Auth::user()->id)->first();
+        $q4 = WorkbookResponse::where('workbook_id', 1)->where('question_id', 57)->where('user_id', Auth::user()->id)->first();
+        $q5 = WorkbookResponse::where('workbook_id', 1)->where('question_id', 58)->where('user_id', Auth::user()->id)->first();
+        $q6 = WorkbookResponse::where('workbook_id', 1)->where('question_id', 59)->where('user_id', Auth::user()->id)->first();
+        if (empty($q1)) {
+            $this->currentstep = 1;
+        } elseif (empty($q2)) {
+            $this->currentstep = 2;
+        } elseif (empty($q3)) {
+            $this->currentstep = 3;
+        } elseif (empty($q4)) {
+            $this->currentstep = 4;
+        } elseif (empty($q5)) {
+            $this->currentstep = 5;
+        } elseif (empty($q6)) {
+            $this->currentstep = 6;
+        } else {
+            $this->currentstep = 7;
+        }  
     }
     public function increaseStep()
     {
